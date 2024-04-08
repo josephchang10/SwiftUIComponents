@@ -12,14 +12,18 @@ public struct SegmentedControl<Content: View>: View {
     
     public var body: some View {
         HStack(spacing: 2) {
-            content
+            Group {
+                content
+            }
+            .shadowBlur(.small)
         }
-        .padding(2)
-        .background(LinearGradient(colors: [.white.opacity(0.02), .white.opacity(0.5)], startPoint: .top, endPoint: .bottom))
-        .clipShape(RoundedRectangle(cornerRadius: 99))
+        .padding(3)
+        .background {
+            RoundedRectangle(cornerRadius: 99)
+                .fill(LinearGradient(colors: [.white.opacity(0.02), .white.opacity(0.5)], startPoint: .top, endPoint: .bottom))
+        }
         .overlay {
             RoundedRectangle(cornerRadius: 99)
-                .inset(by: 0.5)
                 .strokeBorder(.container(.divider), lineWidth: 1)
         }
     }
