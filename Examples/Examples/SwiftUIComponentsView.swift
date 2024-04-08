@@ -46,7 +46,7 @@ struct HeroView: View {
             textBlock
             components
         }
-        .padding(.top, 96)
+        .padding(96)
     }
     
     var textBlock: some View {
@@ -105,7 +105,77 @@ struct HeroView: View {
     var components: some View {
         VStack(spacing: 30) {
             HStack(spacing: 30) {
-                
+                TemplateCard {
+                    ZStack(alignment: .topLeading) {
+                        Color.clear
+                            .frame(height: 200)
+                            .overlay {
+                                Image("Image")
+                                    .resizable()
+                                    .scaledToFill()
+                            }
+                            .clipShape(RoundedRectangle(cornerRadius: 6))
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 6)
+                                    .inset(by: 0.5)
+                                    .stroke(LinearGradient(stops: [
+                                        .init(color: .white, location: 0),
+                                        .init(color: .white.opacity(0), location: 0.48),
+                                        .init(color: .white, location: 1)
+                                    ], startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: /*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
+                                    .stroke(.white.opacity(0.1), lineWidth: 1)
+                                    .blendMode(.overlay)
+                            }
+                            .compositingGroup()
+                            .shadow(color: .black.opacity(0.1), radius: 60, y: 30)
+                            .shadow(color: .black.opacity(0.5), radius: 60, y: 30)
+                        ButtonLogo {
+                            Image(systemName: "swift")
+                        }
+                        .padding(10)
+                    }
+                } content: {
+                    VStack(alignment: .leading, spacing: 10) {
+                        HStack(spacing: 8) {
+                            Image(systemName: "circle.dotted")
+                                .resizable()
+                                .frame(width: 16, height: 16)
+                                .fontWeight(.black)
+                            Text("New update")
+                                .font(.captionRegular)
+                                .foregroundStyle(.foreground(.secondary))
+                            Spacer()
+                            HStack(spacing: 0) {
+                                ButtonIcon {
+                                    Image(systemName: "arrow.left")
+                                }
+                                .disabled(true)
+                                Separator()
+                                ButtonIcon {
+                                    Image(systemName: "arrow.right")
+                                }
+                            }
+                            .fixedSize(horizontal: false, vertical: true)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 30)
+                                    .inset(by: 0.5)
+                                    .stroke(.container(.divider), lineWidth: /*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
+                            }
+                        }
+                        DividerLine()
+                        Text("UI Templates")
+                            .font(.footnoteMedium)
+                        Text("Introducing a collection of fully designed and functional components, tailored to enhance...")
+                            .font(.captionRegular)
+                            .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                            .width(.full, alignment: .leading)
+                        DividerLine()
+                        ButtonGlow("Browse templates") {
+                            Image(systemName: "circle.hexagongrid")
+                        } action: {}
+                    }
+                    .padding(10)
+                }
             }
         }
     }

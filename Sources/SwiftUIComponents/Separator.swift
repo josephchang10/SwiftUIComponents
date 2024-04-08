@@ -9,7 +9,7 @@ import SwiftUI
 
 public struct Separator: View {
     public var body: some View {
-        Divider()
+        DividerLine()
             .opacity(0)
             .overlay {
                 Rectangle()

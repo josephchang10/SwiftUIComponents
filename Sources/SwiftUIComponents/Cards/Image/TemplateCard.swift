@@ -29,17 +29,21 @@ public struct TemplateCard<Image: View, Content: View>: View {
         }
         .shadowBlur(.extraLarge)
         .background {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(AngularGradient(stops: [
-                    .init(color: .init(red: 242 / 255, green: 98 / 255, blue: 181 / 255, opacity: 0), location: 0.35),
-                    .init(color: .init(red: 95 / 255, green: 197 / 255, blue: 1), location: 0.54),
-                    .init(color: .init(red: 1, green: 172 / 255, blue: 137 / 255), location: 0.6),
-                    .init(color: .init(red: 129 / 255, green: 85 / 255, blue: 1), location: 0.66),
-                    .init(color: .init(red: 120 / 255, green: 157 / 255, blue: 1), location: 0.72),
-                    .init(color: .init(red: 159 / 255, green: 115 / 255, blue: 241 / 255, opacity: 0), location: 0.86)
-                ], center: .center).opacity(0.7))
-                .blur(radius: 70)
+            glow
         }
+    }
+    
+    var glow: some View {
+        RoundedRectangle(cornerRadius: 10)
+            .fill(AngularGradient(stops: [
+                .init(color: .init(red: 242.0 / 255, green: 98.0 / 255, blue: 181.0 / 255, opacity: 0), location: 0.35),
+                .init(color: .init(red: 95.0 / 255, green: 197.0 / 255, blue: 1), location: 0.54),
+                .init(color: .init(red: 1, green: 172.0 / 255, blue: 137.0 / 255), location: 0.6),
+                .init(color: .init(red: 129.0 / 255, green: 85.0 / 255, blue: 1), location: 0.66),
+                .init(color: .init(red: 120.0 / 255, green: 157.0 / 255, blue: 1), location: 0.72),
+                .init(color: .init(red: 159.0 / 255, green: 115.0 / 255, blue: 241.0 / 255, opacity: 0), location: 0.86)
+            ], center: .center).opacity(0.7))
+            .blur(radius: 70)
     }
     
     public init(@ViewBuilder image: () -> Image, content: () -> Content) {
@@ -106,14 +110,14 @@ public struct TemplateCard<Image: View, Content: View>: View {
                         .stroke(.container(.divider), lineWidth: /*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
                 }
             }
-            Divider()
+            DividerLine()
             Text("UI Templates")
                 .font(.footnoteMedium)
             Text("Introducing a collection of fully designed and functional components, tailored to enhance...")
                 .font(.captionRegular)
                 .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 .width(.full, alignment: .leading)
-            Divider()
+            DividerLine()
             ButtonGlow("Browse templates") {
                 Image(systemName: "circle.hexagongrid")
             } action: {}
