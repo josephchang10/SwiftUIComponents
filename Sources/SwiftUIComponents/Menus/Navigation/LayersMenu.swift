@@ -7,22 +7,13 @@
 
 import SwiftUI
 
-struct LayersMenu: View {
-    var body: some View {
+public struct LayersMenu<Content: View>: View {
+    let content: Content
+    
+    public var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             browserButtons
-            ButtonTooltip("Wallpaper") {
-                Image(systemName: "photo")
-            } rightIcon: {
-                Image(systemName: "eye")
-            } action: {}
-            DividerLine()
-            ButtonTooltip("Blurs") {
-                Image(systemName: "drop.halffull")
-            } rightIcon: {
-                Image(systemName: "eye")
-            } action: {}
-            DividerLine()
+            content
         }
         .padding(10)
         .frame(minWidth: 220, maxWidth: 320)
@@ -42,10 +33,39 @@ struct LayersMenu: View {
             ButtonBrowser()
         }
     }
+    
+    public init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
 }
 
 #Preview {
-    LayersMenu()
+    LayersMenu {
+        ButtonTooltip("Wallpaper") {
+            Image(systemName: "photo")
+        } rightIcon: {
+            Image(systemName: "eye")
+        } action: {}
+        DividerLine()
+        ButtonTooltip("Blurs") {
+            Image(systemName: "drop.halffull")
+        } rightIcon: {
+            Image(systemName: "eye")
+        } action: {}
+        DividerLine()
+        ButtonTooltip("Overlay") {
+            Image(systemName: "wand.and.stars.inverse")
+        } rightIcon: {
+            Image(systemName: "eye")
+        } action: {}
+        DividerLine()
+        ButtonTooltip("UI Components", state: .selected) {
+            Image(systemName: "iphone")
+                .symbolRenderingMode(.monochrome)
+        } rightIcon: {
+            Image(systemName: "eye")
+        } action: {}
+    }
         .padding()
         .background(.container(.background))
         .background(Color(red: 30/255, green: 30/255, blue: 30/255))
