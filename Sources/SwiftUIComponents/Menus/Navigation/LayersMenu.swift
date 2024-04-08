@@ -24,6 +24,7 @@ public struct LayersMenu<Content: View>: View {
                 .inset(by: 0.5)
                 .strokeBorder(.container(.border), lineWidth: 1)
         }
+        .shadowBlurStrong(.extraLarge)
     }
     
     var browserButtons: some View {
@@ -69,6 +70,42 @@ public struct LayersMenu<Content: View>: View {
             ButtonToggle("Glass", .small, state: .selected, showRightIcon: false) {}
             ButtonToggle("Outline", .small, showRightIcon: false) {}
             ButtonToggle("Flat", .small, showRightIcon: false) {}
+        }
+        .padding(10)
+        .width(.full)
+        HStack(spacing: 10) {
+            GridItem {
+                Image(systemName: "moon")
+                    .resizable()
+                    .fontWeight(.medium)
+                    .scaledToFit()
+                    .frame(width: 16, height: 16)
+                    .padding(12)
+            }
+            GridItem {
+                Image(systemName: "sun.max")
+                    .resizable()
+                    .fontWeight(.medium)
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                    .padding(10)
+            }
+            GridItem {
+                Image(systemName: "wand.and.stars.inverse")
+                    .resizable()
+                    .fontWeight(.medium)
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                    .padding(10)
+            }
+            GridItem {
+                Image(systemName: "eye")
+                    .resizable()
+                    .fontWeight(.medium)
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                    .padding(10)
+            }
         }
         .padding(10)
         .width(.full)
