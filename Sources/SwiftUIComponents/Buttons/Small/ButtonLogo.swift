@@ -14,10 +14,15 @@ public struct ButtonLogo<Logo: View>: View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
                 .fill(.container(.background))
+                .padding(7)
+                .rotationEffect(.degrees(45))
+                .shadowBlur(.small)
+            RoundedRectangle(cornerRadius: 10)
+                .inset(by: 0.5)
                 .stroke(.container(.border), lineWidth: 1)
                 .padding(7)
                 .rotationEffect(.degrees(45))
-                .shadowBlur()
+                .blendMode(.overlay)
             logo
                 .frame(width: 24, height: 24)
         }
@@ -30,8 +35,13 @@ public struct ButtonLogo<Logo: View>: View {
 }
 
 #Preview {
-    ButtonLogo { Image(systemName: "calendar").resizable() }
-        .padding(20)
-        .background(.background(.secondary))
-        .background(Color(red: 30 / 255, green: 30 / 255, blue: 30 / 255))
+    ButtonLogo {
+        Image(systemName: "calendar")
+            .resizable()
+            .padding(3)
+    }
+    .padding(20)
+    .background(.background(.secondary))
+    .background(Color(red: 30 / 255, green: 30 / 255, blue: 30 / 255))
+    .environment(\.colorScheme, .light)
 }

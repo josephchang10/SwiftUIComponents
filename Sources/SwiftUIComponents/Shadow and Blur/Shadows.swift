@@ -7,15 +7,53 @@
 
 import SwiftUI
 
+public struct ShadowBlur: ViewModifier {
+    public enum Size {
+        case small
+        case medium
+        case large
+        case extraLarge
+    }
+    
+    let size: Size
+    
+    public func body(content: Content) -> some View {
+        switch size {
+        case .small:
+            content
+                .compositingGroup()
+                .shadow(color: .black.opacity(0.05), radius: 0, y: 1)
+                .shadow(color: .black.opacity(0.05), radius: 4, y: 4)
+                .shadow(color: .black.opacity(0.1), radius: 10, y: 10)
+                // Workaround: Background blur not supported in SwiftUI
+        case .medium:
+            content
+                .compositingGroup()
+                .shadow(color: .black.opacity(0.1), radius: 4, y: 2)
+                .shadow(color: .black.opacity(0.1), radius: 10, y: 5)
+                .shadow(color: .black.opacity(0.15), radius: 30, y: 15)
+                // Workaround: Background blur not supported in SwiftUI
+        case .large:
+            content
+                .compositingGroup()
+                .shadow(color: .black.opacity(0.1), radius: 6, y: 3)
+                .shadow(color: .black.opacity(0.1), radius: 20, y: 10)
+                .shadow(color: .black.opacity(0.15), radius: 30, y: 15)
+                // Workaround: Background blur not supported in SwiftUI
+        case .extraLarge:
+            content
+                .compositingGroup()
+                .shadow(color: .black.opacity(0.1), radius: 10, y: 5)
+                .shadow(color: .black.opacity(0.1), radius: 30, y: 15)
+                .shadow(color: .black.opacity(0.15), radius: 40, y: 20)
+                // Workaround: Background blur not supported in SwiftUI
+        }
+    }
+}
+
 public extension View {
-    func shadowBlur() -> some View {
-        compositingGroup()
-            .shadow(color: .black.opacity(0.05), radius: 0, y: 1)
-            .shadow(color: .black.opacity(0.05), radius: 4, y: 4)
-            .shadow(color: .black.opacity(0.1), radius: 10, y: 10)
-            .background {
-                self
-            }
+    func shadowBlur(_ size: ShadowBlur.Size) -> some View {
+        modifier(ShadowBlur(size: size))
     }
 }
 
@@ -23,7 +61,7 @@ struct ShadowsView: View {
     var body: some View {
         VStack {
             ButtonPrimary("regular sm", icon: Image(systemName: "chevron.right")) {}
-                .shadowBlur()
+                .shadowBlur(.small)
         }
     }
 }

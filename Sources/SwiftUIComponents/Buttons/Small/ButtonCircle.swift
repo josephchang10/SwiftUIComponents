@@ -29,7 +29,7 @@ public struct ButtonCircle<Icon: View>: View {
                         .stroke(.container(.border), lineWidth: 1)
                 }
             }
-            .shadowBlur()
+            .shadowBlur(.small)
     }
     
     public init(state: State = .normal, @ViewBuilder icon: () -> Icon, action: @escaping () -> Void) {

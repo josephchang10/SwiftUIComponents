@@ -21,7 +21,7 @@ struct SwiftUIComponentsView: View {
             } buttons: {
                 ButtonToggle("Log in", showRightIcon: false, font: .footnoteMedium) {}
                 ButtonToggle("Buy now", style: .glass, showRightIcon: false, font: .footnoteMedium) {}
-                    .shadowBlur()
+                    .shadowBlur(.small)
             }
             .frame(minWidth: 720, maxWidth: 860)
             .padding(.top, 40)

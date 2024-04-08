@@ -39,7 +39,7 @@ public struct ButtonPrimary<Icon: View>: View {
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(.container(.border), lineWidth: 1)
                 }
-                .shadowBlur()
+                .shadowBlur(.small)
         default:
             base
                 .background(LinearGradient(colors: [.white, .white.opacity(0.5)], startPoint: .top, endPoint: .bottom).opacity(0.5))
@@ -50,7 +50,7 @@ public struct ButtonPrimary<Icon: View>: View {
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(.white.opacity(0.05), lineWidth: 1)
                 }
-                .shadowBlur()
+                .shadowBlur(.small)
         }
         
     }

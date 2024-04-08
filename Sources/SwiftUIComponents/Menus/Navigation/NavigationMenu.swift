@@ -26,7 +26,7 @@ public struct NavigationMenu<MenuContent: View, ButtonsContent: View>: View {
             RoundedRectangle(cornerRadius: 99)
                 .stroke(.container(.border), lineWidth: 1)
         }
-        .shadowBlur()
+        .shadowBlur(.small)
     }
     
     var logo: some View {
@@ -77,7 +77,7 @@ public struct NavigationMenu<MenuContent: View, ButtonsContent: View>: View {
     } buttons: {
         ButtonToggle("Log in", showRightIcon: false, font: .footnoteMedium) {}
         ButtonToggle("Sign up", style: .glass, showRightIcon: false) {}
-            .shadowBlur()
+            .shadowBlur(.small)
     }
     .padding(20)
     .background(.background(.secondary))

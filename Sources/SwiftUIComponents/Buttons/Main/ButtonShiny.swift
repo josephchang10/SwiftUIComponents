@@ -35,7 +35,7 @@ public struct ButtonShiny<Icon: View>: View {
                         .fill(.container(.background))
                         .stroke(.container(.border), lineWidth: 2)
                 }
-                .shadowBlur()
+                .shadowBlur(.small)
                 .background {
                     Rectangle()
                         .fill(Angular1())
