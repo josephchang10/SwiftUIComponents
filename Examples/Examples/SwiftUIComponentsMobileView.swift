@@ -10,12 +10,16 @@ import SwiftUIComponents
 
 struct SwiftUIComponentsMobileView: View {
     var body: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                hero
+        ZStack(alignment: .top) {
+            ScrollView {
+                VStack(spacing: 0) {
+                    hero
+                }
             }
+            .ignoresSafeArea()
+            NavigationMenu("SwiftUI Components", logo: Image(systemName: "square.on.square.intersection.dashed")) {} buttons: {}
+            .padding(.horizontal, 20)
         }
-        .ignoresSafeArea()
     }
     
     var hero: some View {

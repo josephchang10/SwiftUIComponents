@@ -20,7 +20,7 @@ public struct NavigationMenu<MenuContent: View, ButtonsContent: View>: View {
             buttons
         }
         .padding(6)
-        .background(.container(.background))
+        .background(.thinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 99))
         .overlay{
             RoundedRectangle(cornerRadius: 99)

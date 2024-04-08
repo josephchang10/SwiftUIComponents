@@ -26,11 +26,11 @@ public struct ShadowBlur: ViewModifier {
                 .shadow(color: .black.opacity(0.05), radius: 4, y: 4)
                 .shadow(color: .black.opacity(0.1), radius: 10, y: 10)
                 // Workaround: Background blur not supported in SwiftUI
-                .background {
-                    Rectangle()
-                        .fill(.ultraThinMaterial)
-                        .blur(radius: 20)
-                }
+//                .background {
+//                    Rectangle()
+//                        .fill(.ultraThinMaterial)
+//                        .blur(radius: 20)
+//                }
         case .medium:
             content
                 .compositingGroup()
