@@ -15,12 +15,12 @@ struct SwiftUIComponentsView: View {
                 HeroView()
             }
             NavigationMenu("SwiftUI Components", logo: Image(systemName: "square.on.square.intersection.dashed")) {
-                ButtonToggle("Components", showRightIcon: false, font: .footnoteMedium) {}
-                ButtonToggle("Pricing", showRightIcon: false, font: .footnoteMedium) {}
-                ButtonToggle("Changelog", showRightIcon: false, font: .footnoteMedium) {}
+                ButtonToggle("Components", .medium, showRightIcon: false, font: .footnoteMedium) {}
+                ButtonToggle("Pricing", .medium, showRightIcon: false, font: .footnoteMedium) {}
+                ButtonToggle("Changelog", .medium, showRightIcon: false, font: .footnoteMedium) {}
             } buttons: {
-                ButtonToggle("Log in", showRightIcon: false, font: .footnoteMedium) {}
-                ButtonToggle("Buy now", style: .glass, showRightIcon: false, font: .footnoteMedium) {}
+                ButtonToggle("Log in", .medium, showRightIcon: false, font: .footnoteMedium) {}
+                ButtonToggle("Buy now", .medium, style: .glass, showRightIcon: false, font: .footnoteMedium) {}
                     .shadowBlur(.small)
             }
             .frame(minWidth: 720, maxWidth: 860)
