@@ -17,7 +17,7 @@ public struct LayersMenu<Content: View>: View {
         }
         .padding(10)
         .frame(minWidth: 220, maxWidth: 320)
-        .background(.container(.background))
+        .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .overlay {
             RoundedRectangle(cornerRadius: 10)

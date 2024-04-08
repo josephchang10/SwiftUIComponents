@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7CA4C7682BC04FF200E3A293 /* SwiftUIComponentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4C7672BC04FF200E3A293 /* SwiftUIComponentsView.swift */; };
+		7CA4C76A2BC3FAE600E3A293 /* SwiftUIComponentsMobileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA4C7692BC3FAE600E3A293 /* SwiftUIComponentsMobileView.swift */; };
 		7CB4782B2BBEDABE003EAE51 /* ExamplesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB4782A2BBEDABE003EAE51 /* ExamplesApp.swift */; };
 		7CB4782F2BBEDABE003EAE51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CB4782E2BBEDABE003EAE51 /* Assets.xcassets */; };
 		7CB478332BBEDABE003EAE51 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CB478322BBEDABE003EAE51 /* Preview Assets.xcassets */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		7CA4C7672BC04FF200E3A293 /* SwiftUIComponentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIComponentsView.swift; sourceTree = "<group>"; };
+		7CA4C7692BC3FAE600E3A293 /* SwiftUIComponentsMobileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIComponentsMobileView.swift; sourceTree = "<group>"; };
 		7CB478272BBEDABE003EAE51 /* Examples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Examples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CB4782A2BBEDABE003EAE51 /* ExamplesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesApp.swift; sourceTree = "<group>"; };
 		7CB4782E2BBEDABE003EAE51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				7CB478302BBEDABE003EAE51 /* Examples.entitlements */,
 				7CB478312BBEDABE003EAE51 /* Preview Content */,
 				7CA4C7672BC04FF200E3A293 /* SwiftUIComponentsView.swift */,
+				7CA4C7692BC3FAE600E3A293 /* SwiftUIComponentsMobileView.swift */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA4C76A2BC3FAE600E3A293 /* SwiftUIComponentsMobileView.swift in Sources */,
 				7CB4782B2BBEDABE003EAE51 /* ExamplesApp.swift in Sources */,
 				7CA4C7682BC04FF200E3A293 /* SwiftUIComponentsView.swift in Sources */,
 			);

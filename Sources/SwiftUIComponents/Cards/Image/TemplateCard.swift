@@ -20,7 +20,7 @@ public struct TemplateCard<Image: View, Content: View>: View {
         .frame(minWidth: 240)
         .background {
             RoundedRectangle(cornerRadius: 10)
-                .fill(.container(.background))
+                .fill(.thinMaterial)
         }
         .overlay {
             RoundedRectangle(cornerRadius: 10)
@@ -43,7 +43,7 @@ public struct TemplateCard<Image: View, Content: View>: View {
                 .init(color: .init(red: 120.0 / 255, green: 157.0 / 255, blue: 1), location: 0.72),
                 .init(color: .init(red: 159.0 / 255, green: 115.0 / 255, blue: 241.0 / 255, opacity: 0), location: 0.86)
             ], center: .center).opacity(0.7))
-            .blur(radius: 70)
+            .blur(radius: .point(70))
     }
     
     public init(@ViewBuilder image: () -> Image, content: () -> Content) {

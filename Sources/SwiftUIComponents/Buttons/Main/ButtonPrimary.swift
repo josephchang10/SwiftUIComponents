@@ -42,12 +42,15 @@ public struct ButtonPrimary<Icon: View>: View {
                 .shadowBlur(.small)
         default:
             base
-                .background(LinearGradient(colors: [.white, .white.opacity(0.5)], startPoint: .top, endPoint: .bottom).opacity(0.5))
+                .background(LinearGradient(colors: [.white, .white.opacity(0)], startPoint: .top, endPoint: .bottom).opacity(0.5)) // highlight
+                .background(.ultraThinMaterial) // keep shadows from visible
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .overlay {
                     RoundedRectangle(cornerRadius: 8)
+                        .inset(by: 0.5)
                         .stroke(LinearGradient(colors: [.white, .white.opacity(0)], startPoint: .init(x: 0.5, y: 0), endPoint: .init(x: 0.45, y: 0.6)).opacity(0.5), lineWidth: 1)
                     RoundedRectangle(cornerRadius: 8)
+                        .inset(by: 0.5)
                         .stroke(.white.opacity(0.05), lineWidth: 1)
                 }
                 .shadowBlur(.small)

@@ -28,11 +28,11 @@ public struct ButtonShiny<Icon: View>: View {
                 }
                 .font(.footnoteMedium)
                 .foregroundStyle(.foreground(.primary))
-                .padding(.horizontal, 12)
+                .padding(.horizontal, 16)
                 .padding(.vertical, 8)
                 .background {
                     RoundedRectangle(cornerRadius: 8)
-                        .fill(.container(.background))
+                        .fill(.regularMaterial)
                         .stroke(.container(.border), lineWidth: 2)
                 }
                 .shadowBlur(.small)

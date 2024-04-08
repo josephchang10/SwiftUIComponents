@@ -21,8 +21,6 @@ public struct BackgroundWeb1: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .blur(radius: .point(200))
             LinearGradient(colors: [.init(red: 64 / 255, green: 105 / 255, blue: 228 / 255), .white.opacity(0)], startPoint: .top, endPoint: .bottom)
-            Rectangle()
-                .fill(.white.opacity(0.2))
             Grid1()
             let verticalRatio = proxy.size.height / 1440
             Wave1()

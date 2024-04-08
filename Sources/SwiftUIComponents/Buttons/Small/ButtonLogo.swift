@@ -13,7 +13,7 @@ public struct ButtonLogo<Logo: View>: View {
     public var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10)
-                .fill(.container(.background))
+                .fill(.thinMaterial)
                 .padding(7)
                 .rotationEffect(.degrees(45))
                 .shadowBlur(.small)
