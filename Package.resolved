@@ -1,0 +1,15 @@
+{
+  "originHash" : "2918cbd72ec220b02028dd19fd2017a7627817130996edd31083178477466c13",
+  "pins" : [
+    {
+      "identity" : "tailwindswiftui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/josephchang10/TailwindSwiftUI",
+      "state" : {
+        "branch" : "main",
+        "revision" : "1047d3ad97f7e85d6eb8a24297a2b02275b658d3"
+      }
+    }
+  ],
+  "version" : 3
+}

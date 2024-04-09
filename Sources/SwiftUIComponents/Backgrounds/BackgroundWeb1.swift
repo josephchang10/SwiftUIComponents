@@ -13,7 +13,7 @@ public struct BackgroundWeb1: View {
         GeometryReader { proxy in
             let width = proxy.size.width * 1040 / 1440
             let height = width * 800 / 1040
-            Image("Wallpaper Blur", bundle: .module)
+            Image("Wallpaper Blur 1", bundle: .module)
                 .resizable()
                 .scaledToFill()
                 .frame(width: width, height: height)
