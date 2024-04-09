@@ -7,41 +7,12 @@
 
 import SwiftUI
 
-struct InspectorMenu: View {
-    var body: some View {
+public struct InspectorMenu<Content: View>: View {
+    let content: Content
+    
+    public var body: some View {
         VStack(spacing: 4) {
-            ButtonTooltip("Pixel Density") {
-                Image(systemName: "arrow.up.backward.and.arrow.down.forward")
-            } rightIcon: {
-                Image(systemName: "chevron.down")
-            } action: {}
-            container {
-                SegmentedControl {
-                    ButtonToggle("1x", .small, state: .selected, showRightIcon: false) {}
-                    ButtonToggle("2x", .small, showRightIcon: false) {}
-                    ButtonToggle("3x", .small, showRightIcon: false) {}
-                    ButtonToggle("4x", .small, showRightIcon: false) {}
-                }
-            }
-            DividerLine()
-            ButtonTooltip("Format") {
-                Image(systemName: "doc.text")
-            } rightIcon: {
-                Image(systemName: "chevron.down")
-            } action: {}
-            container {
-                SegmentedControl {
-                    ButtonToggle("PNG", .small, state: .selected, showRightIcon: false) {}
-                    ButtonToggle("JPG", .small, showRightIcon: false) {}
-                    ButtonToggle("WebP", .small, showRightIcon: false) {}
-                }
-            }
-            DividerLine()
-            container {
-                ButtonGlow("Download") {
-                    Image(systemName: "square.and.arrow.down")
-                } action: {}
-            }
+            content
         }
         .padding(10)
         .frame(maxWidth: 560)
@@ -55,16 +26,49 @@ struct InspectorMenu: View {
         .shadowBlurStrong(.extraLarge)
     }
     
-    func container(@ViewBuilder _ toggle: () -> some View) -> some View {
-        ZStack {
-            toggle()
-        }
-        .padding(10)
+    public init(@ViewBuilder content: () -> Content) {
+        self.content = content()
     }
 }
 
 #Preview {
-    InspectorMenu()
+    InspectorMenu {
+        ButtonTooltip("Pixel Density") {
+            Image(systemName: "arrow.up.backward.and.arrow.down.forward")
+        } rightIcon: {
+            Image(systemName: "chevron.down")
+        } action: {}
+        ZStack {
+            SegmentedControl {
+                ButtonToggle("1x", .small, state: .selected, showRightIcon: false) {}
+                ButtonToggle("2x", .small, showRightIcon: false) {}
+                ButtonToggle("3x", .small, showRightIcon: false) {}
+                ButtonToggle("4x", .small, showRightIcon: false) {}
+            }
+        }
+        .padding(10)
+        DividerLine()
+        ButtonTooltip("Format") {
+            Image(systemName: "doc.text")
+        } rightIcon: {
+            Image(systemName: "chevron.down")
+        } action: {}
+        ZStack {
+            SegmentedControl {
+                ButtonToggle("PNG", .small, state: .selected, showRightIcon: false) {}
+                ButtonToggle("JPG", .small, showRightIcon: false) {}
+                ButtonToggle("WebP", .small, showRightIcon: false) {}
+            }
+        }
+        .padding(10)
+        DividerLine()
+        ZStack {
+            ButtonGlow("Download") {
+                Image(systemName: "square.and.arrow.down")
+            } action: {}
+        }
+        .padding(10)
+    }
         .padding()
         .frame(width: 250)
         .background(.background(.secondary))
