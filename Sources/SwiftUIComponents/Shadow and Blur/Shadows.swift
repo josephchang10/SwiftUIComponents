@@ -150,7 +150,7 @@ public extension View {
 struct ShadowsView: View {
     var body: some View {
         VStack {
-            ButtonPrimary("regular sm", icon: Image(systemName: "chevron.right")) {}
+            ButtonPrimary("regular sm", .small) { Image(systemName: "chevron.right") } action: {}
                 .shadowBlur(.small)
         }
     }

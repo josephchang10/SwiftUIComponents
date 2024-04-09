@@ -8,24 +8,72 @@
 import SwiftUI
 
 public struct ButtonPrimary<Icon: View>: View {
+    public enum Size {
+        case small, medium, large, extraLarge
+        
+        var horizontalPadding: CGFloat {
+            switch self {
+            case .small:
+                12
+            case .medium, .large:
+                16
+            case .extraLarge:
+                20
+            }
+        }
+        
+        var verticalPadding: CGFloat {
+            switch self {
+            case .small:
+                4
+            case .medium:
+                6
+            case .large:
+                8
+            case .extraLarge:
+                10
+            }
+        }
+        
+        var font: Font {
+            switch self {
+            case .small, .medium:
+                .captionMedium
+            case .large:
+                .footnoteMedium
+            case .extraLarge:
+                .bodyMedium
+            }
+        }
+        
+        var spacing: CGFloat {
+            switch self {
+            case .small, .medium:
+                8
+            case .large, .extraLarge:
+                12
+            }
+        }
+    }
+    
     @Environment(\.colorScheme) var colorScheme
     
+    let size: Size
     let titleKey: LocalizedStringKey
     let icon: Icon
     let action: () -> Void
-    let font: Font
     
     private var base: some View {
         Button(action: action) {
-            HStack(spacing: 8) {
+            HStack(spacing: size.spacing) {
                 Text(titleKey)
                 icon
             }
             .foregroundStyle(.foreground(.primary))
-            .font(font)
+            .font(size.font)
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 6)
+        .padding(.horizontal, size.horizontalPadding)
+        .padding(.vertical, size.verticalPadding)
         .buttonStyle(.plain)
     }
     
@@ -58,19 +106,19 @@ public struct ButtonPrimary<Icon: View>: View {
         
     }
     
-    public init(_ titleKey: LocalizedStringKey, icon: Icon, action: @escaping () -> Void) {
+    public init(_ titleKey: LocalizedStringKey, _ size: Size, @ViewBuilder icon: () -> Icon, action: @escaping () -> Void) {
         self.titleKey = titleKey
-        self.icon = icon
+        self.size = size
+        self.icon = icon()
         self.action = action
-        self.font = .captionMedium
     }
 }
 
 #Preview {
     VStack(spacing: 20) {
-        ButtonPrimary("Primary", icon: Image(systemName: "chevron.right")) {}
+        ButtonPrimary("Primary", .small) { Image(systemName: "chevron.right") } action: {}
             .environment(\.colorScheme, .light)
-        ButtonPrimary("Primary", icon: Image(systemName: "chevron.right")) {}
+        ButtonPrimary("Primary", .small) { Image(systemName: "chevron.right") } action: {}
             .environment(\.colorScheme, .dark)
     }
     .padding()
