@@ -52,7 +52,7 @@ public extension ShapeStyle where Self == Color {
     static func background(_ colorStyle: BackgroundColorStyle) -> Self {
         switch colorStyle {
         case .secondary:
-            Color("Background Secondary", bundle: .module).opacity(0.1)
+            Color("Background Secondary", bundle: .module)
         }
     }
 }

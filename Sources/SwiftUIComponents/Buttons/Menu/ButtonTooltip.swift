@@ -33,6 +33,7 @@ public struct ButtonTooltip: View {
                     rightIcon
                 }
             }
+            .foregroundStyle(.foreground(.primary))
             .font(.captionMedium)
             .padding(.horizontal, 16)
             .padding(.vertical, 6)
