@@ -12,7 +12,7 @@ public struct GridItem<Icon: View>: View {
     
     public var body: some View {
         icon
-            .background(.container(.background))
+            .background(.regularMaterial)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .overlay {
                 RoundedRectangle(cornerRadius: 10)
