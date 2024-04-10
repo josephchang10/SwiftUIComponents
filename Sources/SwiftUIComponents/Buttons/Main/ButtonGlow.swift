@@ -11,6 +11,7 @@ public struct ButtonGlow<Icon: View>: View {
     let action: () -> Void
     let text: LocalizedStringKey
     let icon: Icon
+    let borderWidth: CGFloat
     
     public var body: some View {
         Button(action: action) {
@@ -27,8 +28,8 @@ public struct ButtonGlow<Icon: View>: View {
             }
             .overlay {
                 RoundedRectangle(cornerRadius: 8)
-                    .inset(by: 0.5)
-                    .strokeBorder(.container(.border), lineWidth: 1)
+                    .inset(by: borderWidth / 2)
+                    .strokeBorder(.container(.border), lineWidth: borderWidth)
             }
             .shadowBlur(.small)
         }
@@ -41,10 +42,11 @@ public struct ButtonGlow<Icon: View>: View {
         }
     }
     
-    public init(_ text: LocalizedStringKey, @ViewBuilder icon: () -> Icon, action: @escaping () -> Void) {
+    public init(_ text: LocalizedStringKey, borderWidth: CGFloat = 1, @ViewBuilder icon: () -> Icon, action: @escaping () -> Void) {
         self.action = action
         self.text = text
         self.icon = icon()
+        self.borderWidth = borderWidth
     }
 }
 

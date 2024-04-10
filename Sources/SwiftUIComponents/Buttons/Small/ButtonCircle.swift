@@ -18,18 +18,21 @@ public struct ButtonCircle<Icon: View>: View {
     let icon: Icon
     
     public var body: some View {
-        icon
-            .font(.captionMedium)
-            .foregroundStyle(.foreground(.primary))
-            .padding(6)
-            .background {
-                if state == .selected {
-                    Circle()
-                        .fill(.container(.background))
-                        .stroke(.container(.border), lineWidth: 1)
+        Button(action: action) {
+            icon
+                .font(.captionMedium)
+                .foregroundStyle(.foreground(.primary))
+                .padding(6)
+                .background {
+                    if state == .selected {
+                        Circle()
+                            .fill(.container(.background))
+                            .stroke(.container(.border), lineWidth: 1)
+                    }
                 }
-            }
-            .shadowBlur(.small)
+                .shadowBlur(.small)
+        }
+        .buttonStyle(.plain)
     }
     
     public init(state: State = .normal, @ViewBuilder icon: () -> Icon, action: @escaping () -> Void) {
