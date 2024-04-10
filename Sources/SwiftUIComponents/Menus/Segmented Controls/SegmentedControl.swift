@@ -8,6 +8,8 @@
 import SwiftUI
 
 public struct SegmentedControl<Content: View>: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     let content: Content
     
     public var body: some View {
@@ -20,7 +22,7 @@ public struct SegmentedControl<Content: View>: View {
         .padding(3)
         .background {
             RoundedRectangle(cornerRadius: 99)
-                .fill(LinearGradient(colors: [.white.opacity(0.02), .white.opacity(0.5)], startPoint: .top, endPoint: .bottom))
+                .fill(LinearGradient(colors: [.white.opacity(0.02), .white.opacity(colorScheme == .dark ? 0.1 : 0.5)], startPoint: .top, endPoint: .bottom))
         }
         .overlay {
             RoundedRectangle(cornerRadius: 99)

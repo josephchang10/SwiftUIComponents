@@ -68,12 +68,12 @@ public struct ButtonGradient<RightIcon: View>: View {
                 rightIcon
             }
             .font(size.font)
+            .foregroundStyle(.white)
             .padding(.horizontal, size.horizontalPadding)
             .padding(.vertical, size.verticalPadding)
             .background(alignment: .bottom) {
                 Image("Angular", bundle: .module)
                     .resizable()
-                    .blur(radius: .point(5))
             }
             .clipShape(RoundedRectangle(cornerRadius: 100))
             .overlay {

@@ -46,6 +46,7 @@ public extension ShapeStyle where Self == Color {
 
 public enum BackgroundColorStyle {
     case secondary
+    case blue
 }
 
 public extension ShapeStyle where Self == Color {
@@ -53,6 +54,8 @@ public extension ShapeStyle where Self == Color {
         switch colorStyle {
         case .secondary:
             Color("Background Secondary", bundle: .module)
+        case .blue:
+            Color(red: 6 / 255, green: 7 / 255, blue: 21 / 255)
         }
     }
 }

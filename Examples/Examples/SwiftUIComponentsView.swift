@@ -87,12 +87,12 @@ struct HeroView: View {
                         .padding(3)
                 }
             }
-            ButtonShiny("Preview in Xcode", showLeftIcon: true, showRightIcon: false) {
+            ButtonShiny("Preview in Xcode", .large, showLeftIcon: true, showRightIcon: false) {
                 Image("Xcode Logo")
                     .resizable()
                     .scaledToFit()
             } action: {}
-            ButtonShiny("SwiftUI Template", showLeftIcon: true, showRightIcon: false) {
+            ButtonShiny("SwiftUI Template", .large, showLeftIcon: true, showRightIcon: false) {
                 Image(systemName: "swift")
                     .resizable()
                     .scaledToFit()

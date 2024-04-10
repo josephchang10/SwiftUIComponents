@@ -41,10 +41,10 @@ public struct Toggle<ButtonsContent: View>: View {
 
 #Preview {
     Toggle {
-        ButtonCircle(state: .selected) {
+        ButtonCircle(.small, state: .selected) {
             Image(systemName: "moon")
         } action: {}
-        ButtonCircle {
+        ButtonCircle(.small) {
             Image(systemName: "display")
                 .symbolRenderingMode(.monochrome)
         } action: {}
@@ -55,10 +55,10 @@ public struct Toggle<ButtonsContent: View>: View {
 
 #Preview {
     Toggle(isVertical: true) {
-        ButtonCircle(state: .selected) {
+        ButtonCircle(.small, state: .selected) {
             Image(systemName: "moon")
         } action: {}
-        ButtonCircle {
+        ButtonCircle(.small) {
             Image(systemName: "display")
                 .symbolRenderingMode(.monochrome)
         } action: {}
