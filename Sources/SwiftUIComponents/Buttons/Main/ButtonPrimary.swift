@@ -81,10 +81,11 @@ public struct ButtonPrimary<Icon: View>: View {
         switch colorScheme {
         case .dark:
             base
-                .background(.container(.background))
+                .background(.ultraThinMaterial)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .overlay {
                     RoundedRectangle(cornerRadius: 8)
+                        .inset(by: 0.5)
                         .stroke(.container(.border), lineWidth: 1)
                 }
                 .shadowBlur(.small)

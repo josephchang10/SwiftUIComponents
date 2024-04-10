@@ -71,7 +71,12 @@ public struct ButtonShiny<Icon: View>: View {
                 .background {
                     RoundedRectangle(cornerRadius: 8)
                         .fill(.regularMaterial)
+                }
+                .overlay {
+                    RoundedRectangle(cornerRadius: 8)
+                        .inset(by: 1)
                         .stroke(.container(.border), lineWidth: 2)
+                        .stroke(.white.opacity(0.07), lineWidth: 2)
                 }
                 .shadowBlur(.small)
                 .background {

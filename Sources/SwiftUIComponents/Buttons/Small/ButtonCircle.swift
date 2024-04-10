@@ -27,11 +27,11 @@ public struct ButtonCircle<Icon: View>: View {
         var padding: CGFloat {
             switch self {
             case .small:
-                8
+                6
             case .medium:
-                10
+                8
             case .large, .extraLarge:
-                12
+                10
             }
         }
     }
@@ -56,7 +56,14 @@ public struct ButtonCircle<Icon: View>: View {
                 .background {
                     if state == .selected {
                         Circle()
+                            .fill(.ultraThinMaterial)
                             .fill(.container(.background))
+                    }
+                }
+                .overlay {
+                    if state == .selected {
+                        Circle()
+                            .inset(by: 0.5)
                             .stroke(.container(.border), lineWidth: 1)
                     }
                 }
