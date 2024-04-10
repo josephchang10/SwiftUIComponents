@@ -68,9 +68,7 @@ public struct ContainerDivider: View {
     }
     
     public var body: some View {
-        GeometryReader { proxy in
-            RadialGradient(colors: [color.opacity(0.2), color.opacity(0)], center: .center, startRadius: 0, endRadius: Swift.max(proxy.size.width, proxy.size.height) / 2)
-        }
+        EllipticalGradient(colors:[color.opacity(0.2), color.opacity(0)])
     }
     
     public init() {}
@@ -109,7 +107,6 @@ struct ContainerBackground: ShapeStyle {
 struct ContainerDividerShapeStyle: ShapeStyle {
     func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
         let color = environment.colorScheme == .dark ? Color.white : .black
-        // Workaround as the radius of RadialGradient is uncertain
         return AngularGradient(colors: [color.opacity(0.1)], center: .center)
     }
 }
