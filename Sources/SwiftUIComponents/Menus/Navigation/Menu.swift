@@ -17,6 +17,7 @@ public struct SegmentedMenu<Segments: View>: View {
         .padding(4)
         .background {
             RoundedRectangle(cornerRadius: 30)
+                .fill(.ultraThinMaterial)
                 .fill(.container(.background))
         }
         .overlay {
