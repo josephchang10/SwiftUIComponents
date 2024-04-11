@@ -14,10 +14,10 @@ public struct SegmentedMenu<Segments: View>: View {
         HStack(spacing: 4) {
             segments
         }
-        .padding(4)
+        .padding(6)
         .background {
             RoundedRectangle(cornerRadius: 30)
-                .fill(.ultraThinMaterial)
+                .fill(.thinMaterial)
                 .fill(.container(.background))
         }
         .overlay {
@@ -35,8 +35,8 @@ public struct SegmentedMenu<Segments: View>: View {
 
 #Preview {
     SegmentedMenu {
-        ButtonToggle("Menu", .small, showRightIcon: false) {}
-        ButtonToggle("Menu", .small, state: .selected) {}
+        ButtonToggle("Menu", .small, showRightIcon: false)
+        ButtonToggle("Menu", .small, state: .selected)
     }
     .padding()
     .background(.container(.background))

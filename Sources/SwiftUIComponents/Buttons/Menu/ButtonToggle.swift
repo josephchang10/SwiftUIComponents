@@ -56,8 +56,7 @@ public struct ButtonToggle: View {
         case normal, glass
     }
     
-    let titleKey: LocalizedStringKey
-    let action: () -> Void
+    let text: LocalizedStringKey
     let showRightIcon: Bool
     let font: Font?
     let size: Size
@@ -65,32 +64,36 @@ public struct ButtonToggle: View {
     let style: Style
     
     public var body: some View {
-        Button(action: action) {
-            HStack(spacing: 8) {
-                Text(titleKey)
-                    .foregroundStyle(.foreground(.primary))
-                if showRightIcon {
-                    Image(systemName: "chevron.down")
-                }
+        HStack(spacing: 8) {
+            Text(text)
+                .foregroundStyle(.foreground(.primary))
+            if showRightIcon {
+                Image(systemName: "chevron.down")
             }
-            .padding(.horizontal, size.horizontalPadding)
-            .padding(.vertical, size.verticalPadding)
-            .font(font ?? size.font)
         }
-        .buttonStyle(.plain)
+        .padding(.horizontal, size.horizontalPadding)
+        .padding(.vertical, size.verticalPadding)
+        .font(font ?? size.font)
+        .foregroundStyle(.foreground(.primary))
         .background {
             if state == .selected {
                 RoundedRectangle(cornerRadius: 99)
+                    .fill(.ultraThinMaterial)
                     .fill(.container(.background))
+                    .shadowBlur(.small)
+            }
+        }
+        .overlay {
+            if state == .selected {
+                RoundedRectangle(cornerRadius: 99)
+                    .inset(by: 0.5)
                     .stroke(.container(.border), lineWidth: 1)
             }
         }
-        .shadowBlur(.small)
     }
     
-    public init(_ titleKey: LocalizedStringKey, _ size: Size, state: State = .normal, style: Style = .normal, showRightIcon: Bool = true, font: Font? = nil, action: @escaping () -> Void) {
-        self.titleKey = titleKey
-        self.action = action
+    public init(_ text: LocalizedStringKey, _ size: Size, state: State = .normal, style: Style = .normal, showRightIcon: Bool = true, font: Font? = nil) {
+        self.text = text
         self.showRightIcon = showRightIcon
         self.font = font
         self.size = size
@@ -100,26 +103,23 @@ public struct ButtonToggle: View {
 }
 
 #Preview {
-    HStack(spacing: 10) {
-        VStack(spacing: 20) {
-            ButtonToggle("Menu", .small) {}
-            ButtonToggle("Menu", .small, state: .selected) {}
+    VStack(spacing: 20) {
+        HStack(spacing: 20) {
+            ButtonToggle("Menu", .small)
+            ButtonToggle("Menu", .medium)
+            ButtonToggle("Menu", .large)
+            ButtonToggle("Menu", .extraLarge)
         }
-        VStack(spacing: 20) {
-            ButtonToggle("Menu", .medium) {}
-            ButtonToggle("Menu", .medium, state: .selected) {}
-        }
-        VStack(spacing: 20) {
-            ButtonToggle("Menu", .large) {}
-            ButtonToggle("Menu", .large, state: .selected) {}
-        }
-        VStack(spacing: 20) {
-            ButtonToggle("Menu", .extraLarge) {}
-            ButtonToggle("Menu", .extraLarge, state: .selected) {}
+        HStack(spacing: 20) {
+            ButtonToggle("Menu", .small, state: .selected)
+            ButtonToggle("Menu", .medium, state: .selected)
+            ButtonToggle("Menu", .large, state: .selected)
+            ButtonToggle("Menu", .extraLarge, state: .selected)
         }
     }
     .padding(10)
     .padding(20)
+    .background(.ultraThinMaterial)
     .background(.background(.secondary))
     .background(Color(red: 30 / 255, green: 30 / 255, blue: 30 / 255))
     .preferredColorScheme(.light)
@@ -127,10 +127,22 @@ public struct ButtonToggle: View {
 
 #Preview {
     VStack(spacing: 20) {
-        ButtonToggle("Menu", .small) {}
-        ButtonToggle("Menu", .small, state: .selected) {}
+        HStack(spacing: 20) {
+            ButtonToggle("Menu", .small)
+            ButtonToggle("Menu", .medium)
+            ButtonToggle("Menu", .large)
+            ButtonToggle("Menu", .extraLarge)
+        }
+        HStack(spacing: 20) {
+            ButtonToggle("Menu", .small, state: .selected)
+            ButtonToggle("Menu", .medium, state: .selected)
+            ButtonToggle("Menu", .large, state: .selected)
+            ButtonToggle("Menu", .extraLarge, state: .selected)
+        }
     }
+    .padding(10)
     .padding(20)
+    .background(.ultraThinMaterial)
     .background(.background(.secondary))
     .background(Color(red: 30 / 255, green: 30 / 255, blue: 30 / 255))
     .preferredColorScheme(.dark)

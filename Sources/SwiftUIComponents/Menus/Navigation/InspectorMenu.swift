@@ -40,10 +40,10 @@ public struct InspectorMenu<Content: View>: View {
         } action: {}
         ZStack {
             SegmentedControl {
-                ButtonToggle("1x", .small, state: .selected, showRightIcon: false) {}
-                ButtonToggle("2x", .small, showRightIcon: false) {}
-                ButtonToggle("3x", .small, showRightIcon: false) {}
-                ButtonToggle("4x", .small, showRightIcon: false) {}
+                ButtonToggle("1x", .small, state: .selected, showRightIcon: false)
+                ButtonToggle("2x", .small, showRightIcon: false)
+                ButtonToggle("3x", .small, showRightIcon: false)
+                ButtonToggle("4x", .small, showRightIcon: false)
             }
         }
         .padding(10)
@@ -55,9 +55,9 @@ public struct InspectorMenu<Content: View>: View {
         } action: {}
         ZStack {
             SegmentedControl {
-                ButtonToggle("PNG", .small, state: .selected, showRightIcon: false) {}
-                ButtonToggle("JPG", .small, showRightIcon: false) {}
-                ButtonToggle("WebP", .small, showRightIcon: false) {}
+                ButtonToggle("PNG", .small, state: .selected, showRightIcon: false)
+                ButtonToggle("JPG", .small, showRightIcon: false)
+                ButtonToggle("WebP", .small, showRightIcon: false)
             }
         }
         .padding(10)

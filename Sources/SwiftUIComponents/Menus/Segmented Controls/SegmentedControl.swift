@@ -37,8 +37,8 @@ public struct SegmentedControl<Content: View>: View {
 
 #Preview {
     SegmentedControl {
-        ButtonToggle("Label", .small, state: .selected, showRightIcon: false) {}
-        ButtonToggle("Label", .small, showRightIcon: false) {}
+        ButtonToggle("Label", .small, state: .selected, showRightIcon: false)
+        ButtonToggle("Label", .small, showRightIcon: false)
     }
     .padding()
     .background(.container(.background))
