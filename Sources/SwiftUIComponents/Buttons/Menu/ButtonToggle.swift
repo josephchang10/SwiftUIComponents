@@ -85,6 +85,7 @@ public struct ButtonToggle: View {
                     .stroke(.container(.border), lineWidth: 1)
             }
         }
+        .shadowBlur(.small)
     }
     
     public init(_ titleKey: LocalizedStringKey, _ size: Size, state: State = .normal, style: Style = .normal, showRightIcon: Bool = true, font: Font? = nil, action: @escaping () -> Void) {

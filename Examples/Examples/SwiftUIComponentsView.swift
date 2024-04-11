@@ -59,14 +59,14 @@ struct HeroView: View {
                 }
                 Spacer()
                 Toggle(isVertical: true) {
-                    ButtonCircle {
+                    ButtonCircle(.small) {
                         Image(systemName: "moon")
                     } action: {}
-                    ButtonCircle(state: .selected) {
+                    ButtonCircle(.small, state: .selected) {
                         Image(systemName: "display")
                             .symbolRenderingMode(.monochrome)
                     } action: {}
-                    ButtonCircle {
+                    ButtonCircle(.small) {
                         Image(systemName: "sun.max")
                     } action: {}
                 }
