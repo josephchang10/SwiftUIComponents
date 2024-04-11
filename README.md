@@ -5,24 +5,20 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 ## Buttons
 ### Menu
 #### Button Toggle
-<img width="453" alt="Screenshot 2024-04-11 at 4 00 23 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/c228656b-2c84-4d00-9405-7f3adc0d23c7">
-<img width="431" alt="Screenshot 2024-04-11 at 4 02 10 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/75321625-24d2-4c79-9d99-d520a7798227">
+<img width="476" alt="Screenshot 2024-04-11 at 4 06 38 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/0da95188-5888-4988-9567-77284bce49e5">
+<img width="476" alt="Screenshot 2024-04-11 at 4 06 46 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/e7979df2-2cca-46bd-968c-6e418c85676e">
 
 ```swift
-VStack(spacing: 20) {
+HStack(spacing: 20) {
     ButtonToggle("Menu", .small)
-    ButtonToggle("Menu", .small, state: .selected)
-}
-VStack(spacing: 20) {
     ButtonToggle("Menu", .medium)
-    ButtonToggle("Menu", .medium, state: .selected)
-}
-VStack(spacing: 20) {
     ButtonToggle("Menu", .large)
-    ButtonToggle("Menu", .large, state: .selected)
-}
-VStack(spacing: 20) {
     ButtonToggle("Menu", .extraLarge)
+}
+HStack(spacing: 20) {
+    ButtonToggle("Menu", .small, state: .selected)
+    ButtonToggle("Menu", .medium, state: .selected)
+    ButtonToggle("Menu", .large, state: .selected)
     ButtonToggle("Menu", .extraLarge, state: .selected)
 }
 ```
