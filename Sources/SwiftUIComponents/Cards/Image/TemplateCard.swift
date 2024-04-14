@@ -120,7 +120,7 @@ public struct TemplateCard<Image: View, Content: View>: View {
             DividerLine()
             ButtonGlow("Browse templates") {
                 Image(systemName: "circle.hexagongrid")
-            } action: {}
+            }
         }
         .padding(10)
     }

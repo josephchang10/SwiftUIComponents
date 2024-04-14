@@ -65,7 +65,7 @@ public struct InspectorMenu<Content: View>: View {
         ZStack {
             ButtonGlow("Download") {
                 Image(systemName: "square.and.arrow.down")
-            } action: {}
+            }
         }
         .padding(10)
     }

@@ -182,7 +182,7 @@ struct ComponentsView: View {
                 DividerLine()
                 ButtonGlow("Browse templates") {
                     Image(systemName: "circle.hexagongrid")
-                } action: {}
+                }
             }
             .padding(10)
         }
@@ -338,7 +338,7 @@ struct ComponentsView: View {
                 DividerLine()
                 ButtonGlow("Browse templates") {
                     Image(systemName: "circle.hexagongrid")
-                } action: {}
+                }
             }
             .padding(10)
         }
