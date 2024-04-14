@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct ButtonMenu<Icon: View>: View {
+public struct ButtonMenu: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var isHovering = false
     
@@ -66,7 +66,7 @@ public struct ButtonMenu<Icon: View>: View {
     let state: _State
     let size: Size
     let text: LocalizedStringKey
-    let icon: Icon
+    let icon: AnyView?
     
     private var color: Color {
         colorScheme == .dark ? .foreground(.primary) : Color(red: 38 / 255, green: 112 / 255, blue: 233 / 255)
@@ -81,7 +81,9 @@ public struct ButtonMenu<Icon: View>: View {
                 .width(.full, alignment: .leading)
             Spacer()
                 .frame(width: size.spacing)
-            icon
+            if let icon {
+                icon
+            }
         }
         .font(size.font)
         .padding(.horizontal, size.horizontalPadding)
@@ -118,11 +120,18 @@ public struct ButtonMenu<Icon: View>: View {
             .blur(radius: 10)
     }
     
-    public init(_ text: LocalizedStringKey, state: _State = .normal, _ size: Size, @ViewBuilder icon: () -> Icon) {
+    public init(_ text: LocalizedStringKey, state: _State = .normal, _ size: Size) {
         self.state = state
         self.size = size
         self.text = text
-        self.icon = icon()
+        self.icon = nil
+    }
+    
+    public init(_ text: LocalizedStringKey, state: _State = .normal, _ size: Size, @ViewBuilder icon: () -> some View) {
+        self.state = state
+        self.size = size
+        self.text = text
+        self.icon = AnyView(icon())
     }
 }
 
