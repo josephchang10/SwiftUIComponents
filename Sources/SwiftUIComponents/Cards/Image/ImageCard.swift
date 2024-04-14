@@ -8,6 +8,7 @@
 import SwiftUI
 
 public struct ImageCard<Image: View, Content: View>: View {
+    @Environment(\.colorScheme) private var colorScheme
     let image: Image
     let content: Content
     
@@ -33,7 +34,7 @@ public struct ImageCard<Image: View, Content: View>: View {
             .background {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(.container(.background))
-                    .fill(.ultraThinMaterial)
+                    .fill(.regularMaterial)
                 glow
             }
             .overlay {
@@ -42,7 +43,9 @@ public struct ImageCard<Image: View, Content: View>: View {
                     .strokeBorder(.container(.border), lineWidth: 1)
             }
             .shadowBlur(.small)
-            outline
+            if colorScheme != .dark {
+                outline
+            }
         }
         .frame(minWidth: 240)
     }
@@ -75,28 +78,58 @@ public struct ImageCard<Image: View, Content: View>: View {
 }
 
 #Preview {
-    ImageCard {
-        Image("Image Card", bundle: .module)
-            .resizable()
-            .scaledToFill()
-    } content: {
-        VStack(spacing: 10) {
-            HStack(spacing: 8) {
-                Image(systemName: "doc.text")
-                Text("Menus")
-            }
-            .font(.bodyMedium)
-            Text("Try our free sample download to test compatibility with your design.")
-                .font(.footnoteRegular)
-                .fixedSize(horizontal: false, vertical: true)
-                .multilineTextAlignment(.center)
-            DividerLine()
-            ButtonGlow("Browse components") {
-                Image(systemName: "circle.grid.3x3.fill")
+    HStack(spacing: 20) {
+        ImageCard {
+            Image("Image Card", bundle: .module)
+                .resizable()
+                .scaledToFill()
+        } content: {
+            VStack(spacing: 10) {
+                HStack(spacing: 8) {
+                    Image(systemName: "doc.text")
+                    Text("Menus")
+                        .foregroundStyle(.foreground(.secondary))
+                }
+                .font(.bodyMedium)
+                Text("Try our free sample download to test compatibility with your design.")
+                    .font(.footnoteRegular)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.foreground(.secondary))
+                DividerLine()
+                ButtonGlow("Browse components") {
+                    Image(systemName: "circle.grid.3x3.fill")
+                }
             }
         }
+        .frame(width: 300)
+        .environment(\.colorScheme, .light)
+        ImageCard {
+            Image("Image Card", bundle: .module)
+                .resizable()
+                .scaledToFill()
+        } content: {
+            VStack(spacing: 10) {
+                HStack(spacing: 8) {
+                    Image(systemName: "doc.text")
+                    Text("Menus")
+                        .foregroundStyle(.foreground(.secondary))
+                }
+                .font(.bodyMedium)
+                Text("Try our free sample download to test compatibility with your design.")
+                    .font(.footnoteRegular)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.foreground(.secondary))
+                DividerLine()
+                ButtonGlow("Browse components") {
+                    Image(systemName: "circle.grid.3x3.fill")
+                }
+            }
+        }
+        .frame(width: 300)
+        .environment(\.colorScheme, .dark)
     }
-    .frame(width: 300)
     .padding(20)
     .background(.container(.background))
     .background(Color(red: 30 / 255, green: 30 / 255, blue: 30 / 255))
