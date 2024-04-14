@@ -100,3 +100,34 @@ SegmentedMenu {
     ButtonToggle("Menu", .small, state: .selected) {}
 }
 ```
+
+## Cards
+### Image
+#### Image Card
+<img width="649" alt="Screenshot 2024-04-14 at 4 27 29 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/578f419a-c741-4a5b-a839-50d38dc364e0">
+
+```swift
+ImageCard {
+    Image("Image Card", bundle: .module)
+        .resizable()
+        .scaledToFill()
+} content: {
+    VStack(spacing: 10) {
+        HStack(spacing: 8) {
+            Image(systemName: "doc.text")
+            Text("Menus")
+                .foregroundStyle(.foreground(.secondary))
+        }
+        .font(.bodyMedium)
+        Text("Try our free sample download to test compatibility with your design.")
+            .font(.footnoteRegular)
+            .fixedSize(horizontal: false, vertical: true)
+            .multilineTextAlignment(.center)
+            .foregroundStyle(.foreground(.secondary))
+        DividerLine()
+        ButtonGlow("Browse components") {
+            Image(systemName: "circle.grid.3x3.fill")
+        }
+    }
+}
+```
