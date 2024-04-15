@@ -64,13 +64,13 @@ struct SwiftUIComponentsMobileView: View {
                 Image("Xcode Logo")
                     .resizable()
                     .scaledToFit()
-            } action: {}
+            }
             ButtonShiny("SwiftUI Template", .large, showLeftIcon: true, showRightIcon: false) {
                 Image(systemName: "swift")
                     .resizable()
                     .scaledToFit()
                     .padding(2)
-            } action: {}
+            }
         }
         .padding(.top, 64)
     }

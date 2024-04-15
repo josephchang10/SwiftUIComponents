@@ -22,10 +22,14 @@ public struct DividerLine: View {
 }
 
 #Preview {
-    VStack {
-        Text("Hello, World!")
+    VStack(spacing: 20) {
         DividerLine()
-        Text("Hello, World!")
+            .environment(\.colorScheme, .light)
+        DividerLine()
+            .environment(\.colorScheme, .dark)
     }
-    .fixedSize(horizontal: true, vertical: false)
+    .frame(width: 220)
+    .padding(20)
+    .background(.container(.background))
+    .background(Color(red: 30 / 255, green: 30 / 255, blue: 30 / 255))
 }

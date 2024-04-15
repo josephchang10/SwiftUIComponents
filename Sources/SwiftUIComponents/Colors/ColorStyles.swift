@@ -14,6 +14,8 @@ public extension Color {
             named("Foreground Primary")
         case .secondary:
             named("Foreground Secondary")
+        case .tertiary:
+            named("Foreground Tertiary")
         }
     }
     
@@ -36,6 +38,7 @@ public enum ContainerColorStyle {
 public enum ForegroundColorStyle {
     case primary
     case secondary
+    case tertiary
 }
 
 public extension ShapeStyle where Self == Color {
@@ -139,47 +142,59 @@ public extension ShapeStyle where Self == AnyShapeStyle {
 struct ColorStyles: View {
     var body: some View {
         HStack(spacing: 20) {
-            Group {
-                Circle()
-                    .fill(.foreground(.primary))
-                    .stroke(.container(.divider), lineWidth: 1)
-                
-                Circle()
-                    .fill(.container(.background))
-                    .stroke(.container(.divider), lineWidth: 1)
-                
-                Circle()
-                    .stroke(.container(.divider), lineWidth: 1)
-                    .overlay {
-                        ContainerBorder()
-                            .clipShape(Circle())
-                    }
-                
-                Circle()
-                    .fill(.container(.border))
-                    .stroke(.container(.divider), lineWidth: 1)
-                
-                Circle()
-                    .stroke(.container(.divider), lineWidth: 1)
-                    .overlay {
-                        ContainerDivider()
-                            .clipShape(Circle())
-                    }
-            }
+            Circle()
+                .fill(.foreground(.primary))
+                .stroke(.container(.divider), lineWidth: 1)
+            
+            Circle()
+                .fill(.foreground(.secondary))
+                .stroke(.container(.divider), lineWidth: 1)
+            
+            Circle()
+                .fill(.foreground(.tertiary))
+                .stroke(.container(.divider), lineWidth: 1)
+            
+            Circle()
+                .fill(.container(.background))
+                .stroke(.container(.divider), lineWidth: 1)
+            
+            Circle()
+                .stroke(.container(.divider), lineWidth: 1)
+                .overlay {
+                    ContainerBorder()
+                        .clipShape(Circle())
+                }
+            
+            Circle()
+                .stroke(.container(.divider), lineWidth: 1)
+                .overlay {
+                    ContainerDivider()
+                        .clipShape(Circle())
+                }
         }
-        .padding(20)
-        .background(.background(.secondary))
+        .padding(40)
+        .background {
+            RoundedRectangle(cornerRadius: 10)
+                .fill(.container(.background))
+        }
         .frame(maxHeight: .infinity)
-        .background(Color(red: 30 / 255, green: 30 / 255, blue: 30 / 255))
     }
 }
 
 #Preview {
-    ColorStyles()
-        .preferredColorScheme(.light)
+    VStack(spacing: 20) {
+        ColorStyles()
+            .environment(\.colorScheme, .light)
+    }
+    .padding()
+    .background(Color(red: 30 / 255, green: 30 / 255, blue: 30 / 255))
 }
 
 #Preview {
-    ColorStyles()
-        .preferredColorScheme(.dark)
+    VStack(spacing: 20) {
+        ColorStyles()
+            .environment(\.colorScheme, .dark)
+    }
+    .padding()
+    .background(Color(red: 30 / 255, green: 30 / 255, blue: 30 / 255))
 }

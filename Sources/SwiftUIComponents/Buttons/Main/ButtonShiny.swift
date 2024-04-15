@@ -43,48 +43,55 @@ public struct ButtonShiny<Icon: View>: View {
                 10
             }
         }
+        
+        var font: Font {
+            switch self {
+            case .small, .medium:
+                .captionMedium
+            case .large:
+                .footnoteMedium
+            case .extraLarge:
+                .bodyMedium
+            }
+        }
     }
     
     let size: Size
-    let action: () -> Void
     let titleKey: LocalizedStringKey
     let iconContent: Icon
     let showRightIcon: Bool
     let showLeftIcon: Bool
     
     public var body: some View {
-        Button(action: action) {
-            ZStack {
-                HStack(spacing: size.spacing) {
-                    if showLeftIcon {
-                        icon
-                    }
-                    Text(titleKey)
-                    if showRightIcon {
-                        icon
-                    }
+        ZStack {
+            HStack(spacing: size.spacing) {
+                if showLeftIcon {
+                    icon
                 }
-                .font(.footnoteMedium)
-                .foregroundStyle(.foreground(.primary))
-                .padding(.horizontal, size.horizontalPadding)
-                .padding(.vertical, size.verticalSpacing)
-                .background {
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(.regularMaterial)
-                }
-                .overlay {
-                    RoundedRectangle(cornerRadius: 8)
-                        .inset(by: 1)
-                        .stroke(.container(.border), lineWidth: 2)
-                        .stroke(.white.opacity(0.07), lineWidth: 2)
-                }
-                .shadowBlur(.small)
-                .background {
-                    glow
+                Text(titleKey)
+                if showRightIcon {
+                    icon
                 }
             }
+            .font(size.font)
+            .foregroundStyle(.foreground(.primary))
+            .padding(.horizontal, size.horizontalPadding)
+            .padding(.vertical, size.verticalSpacing)
+            .background {
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(.regularMaterial)
+            }
+            .overlay {
+                RoundedRectangle(cornerRadius: 8)
+                    .inset(by: 1)
+                    .stroke(.container(.border), lineWidth: 2)
+                    .stroke(.white.opacity(0.07), lineWidth: 2)
+            }
+            .shadowBlur(.small)
+            .background {
+                glow
+            }
         }
-        .buttonStyle(.plain)
     }
     
     var icon: some View {
@@ -96,14 +103,13 @@ public struct ButtonShiny<Icon: View>: View {
         RoundedRectangle(cornerRadius: 10)
             .fill(Angular1())
             .padding(-10)
-            .blur(radius: 20)
             .opacity(0.3)
+            .blur(radius: 20)
     }
     
-    public init(_ titleKey: LocalizedStringKey, _ size: Size, showLeftIcon: Bool = false, showRightIcon: Bool = true, @ViewBuilder icon: () -> Icon, action: @escaping () -> Void) {
+    public init(_ titleKey: LocalizedStringKey, _ size: Size, showLeftIcon: Bool = false, showRightIcon: Bool = true, @ViewBuilder icon: () -> Icon) {
         self.titleKey = titleKey
         self.size = size
-        self.action = action
         self.iconContent = icon()
         self.showLeftIcon = showLeftIcon
         self.showRightIcon = showRightIcon
@@ -111,21 +117,39 @@ public struct ButtonShiny<Icon: View>: View {
 }
 
 #Preview {
-    HStack(spacing: 10) {
-        ButtonShiny("Shiny", .small) {
-            Image(systemName: "chevron.right")
-        } action: {}
-        ButtonShiny("Shiny", .medium) {
-            Image(systemName: "chevron.right")
-        } action: {}
-        ButtonShiny("Shiny", .large) {
-            Image(systemName: "chevron.right")
-        } action: {}
-        ButtonShiny("Shiny", .extraLarge) {
-            Image(systemName: "chevron.right")
-        } action: {}
+    VStack(spacing: 10) {
+        HStack(spacing: 10) {
+            ButtonShiny("Shiny", .small) {
+                Image(systemName: "chevron.right")
+            }
+            ButtonShiny("Shiny", .medium) {
+                Image(systemName: "chevron.right")
+            }
+            ButtonShiny("Shiny", .large) {
+                Image(systemName: "chevron.right")
+            }
+            ButtonShiny("Shiny", .extraLarge) {
+                Image(systemName: "chevron.right")
+            }
+        }
+        .environment(\.colorScheme, .light)
+        HStack(spacing: 10) {
+            ButtonShiny("Shiny", .small) {
+                Image(systemName: "chevron.right")
+            }
+            ButtonShiny("Shiny", .medium) {
+                Image(systemName: "chevron.right")
+            }
+            ButtonShiny("Shiny", .large) {
+                Image(systemName: "chevron.right")
+            }
+            ButtonShiny("Shiny", .extraLarge) {
+                Image(systemName: "chevron.right")
+            }
+        }
+        .environment(\.colorScheme, .dark)
     }
-    .padding()
+    .padding(40)
     .background(.background(.secondary))
-//    .background(Color(red: 30 / 255, green: 30 / 255, blue: 30 / 255))
+    .background(Color(red: 30 / 255, green: 30 / 255, blue: 30 / 255))
 }
