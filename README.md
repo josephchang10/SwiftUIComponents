@@ -93,6 +93,17 @@ Text("Small Mono - 12 Mono")
 
 <img width="376" alt="Screenshot 2024-04-15 at 4 34 35 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/09820c02-626b-4372-8ff6-91ee242835b9">
 
+### Assets
+#### Divider
+<img width="245" alt="Screenshot 2024-04-15 at 4 49 33 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/eeadb283-f0ad-4b15-8084-d9579274bd32">
+
+```swift
+DividerLine()
+    .environment(\.colorScheme, .light)
+DividerLine()
+    .environment(\.colorScheme, .dark)
+```
+
 ## Buttons
 ### Menu
 #### Button Menu
