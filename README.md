@@ -239,6 +239,25 @@ HStack(spacing: 10) {
 .environment(\.colorScheme, .dark)
 ```
 
+### Small
+#### Icon Circle
+<img width="99" alt="Screenshot 2024-04-15 at 8 35 48 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/04890b7f-b4e3-4720-ac35-666f0afe4bab">
+
+```swift
+IconCircle {
+    Image(systemName: "envelope")
+        .resizable()
+        .scaledToFit()
+}
+.environment(\.colorScheme, .light)
+IconCircle {
+    Image(systemName: "envelope")
+        .resizable()
+        .scaledToFit()
+}
+.environment(\.colorScheme, .dark)
+```
+
 ## Menus
 ### Navigation
 #### Menu
