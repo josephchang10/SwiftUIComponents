@@ -203,6 +203,26 @@ HStack(spacing: 20) {
 ```
 
 ### Main
+#### Button Primay
+<img width="499" alt="Screenshot 2024-04-16 at 7 40 45 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/f3db6fd0-0e3c-4c7e-a475-ed6dcb604e47">
+
+```swift
+HStack(alignment: .top, spacing: 10) {
+    ButtonPrimary("Primary", .small) { Image(systemName: "chevron.right") }
+    ButtonPrimary("Primary", .medium) { Image(systemName: "chevron.right") }
+    ButtonPrimary("Primary", .large) { Image(systemName: "chevron.right") }
+    ButtonPrimary("Primary", .extraLarge) { Image(systemName: "chevron.right") }
+}
+.environment(\.colorScheme, .light)
+HStack(alignment: .top) {
+    ButtonPrimary("Primary", .small) { Image(systemName: "chevron.right") }
+    ButtonPrimary("Primary", .medium) { Image(systemName: "chevron.right") }
+    ButtonPrimary("Primary", .large) { Image(systemName: "chevron.right") }
+    ButtonPrimary("Primary", .extraLarge) { Image(systemName: "chevron.right") }
+}
+.environment(\.colorScheme, .dark)
+```
+
 #### Button Shiny
 <img width="480" alt="Screenshot 2024-04-15 at 5 42 39 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/fb1b2d31-32b0-4ee3-bb92-6851a51c5491">
 
