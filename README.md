@@ -281,3 +281,41 @@ ImageCard {
     }
 }
 ```
+
+### Pricing
+#### Pricing Card
+<img width="625" alt="Screenshot 2024-04-15 at 7 36 54 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/e676439c-074f-42a5-8e30-9ed1a89f3ddf">
+
+```swift
+PricingCard {
+    VStack(spacing: 20) {
+        VStack(spacing: 0) {
+            Text("All-Access")
+                .font(.footnoteMedium)
+            HStack(spacing: 4) {
+                Text("$")
+                    .font(.heading4)
+                    .foregroundStyle(.foreground(.secondary))
+                Text("99")
+                    .font(.heading1)
+                    .foregroundStyle(.foreground(.primary))
+            }
+            Text("One-time")
+                .font(.captionRegular)
+                .foregroundStyle(.foreground(.tertiary))
+        }
+        DividerLine()
+        VStack(alignment: .leading, spacing: 8) {
+            TextCheck("All 300+ components")
+            TextCheck("2,000+ SwiftUI variants")
+            TextCheck("2,116 unique icons")
+        }
+        .frame(width: 220)
+        DividerLine()
+        ButtonShiny("Buy now", .medium) {
+            Image(systemName: "creditcard")
+        }
+    }
+    .padding(10)
+}
+```
