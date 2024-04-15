@@ -30,9 +30,9 @@ public struct TextCheck: View {
         self.icon = nil
     }
     
-    public init(_ key: LocalizedStringKey, icon: some View) {
+    public init(_ key: LocalizedStringKey, @ViewBuilder icon: () -> some View) {
         self.key = key
-        self.icon = AnyView(icon)
+        self.icon = AnyView(icon())
     }
 }
 
