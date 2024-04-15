@@ -104,6 +104,16 @@ DividerLine()
     .environment(\.colorScheme, .dark)
 ```
 
+### Lists
+#### Text Check
+<img width="197" alt="Screenshot 2024-04-15 at 5 25 31 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/61d807da-73c6-469b-ace0-717881793cc6">
+```swift
+TextCheck("All 200+ components")
+    .environment(\.colorScheme, .light)
+TextCheck("All 200+ components")
+    .environment(\.colorScheme, .dark)
+```
+
 ## Buttons
 ### Menu
 #### Button Menu
