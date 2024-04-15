@@ -338,3 +338,52 @@ PricingCard {
     .padding(10)
 }
 ```
+
+#### Payment Modal
+<img width="686" alt="Screenshot 2024-04-15 at 9 14 38 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/ca0cebb1-e6d2-44d4-9111-45c1615c8867">
+
+```swift
+PaymentModal {
+    VStack(spacing: 12) {
+        VStack(spacing: 0) {
+            Text("Pro Plan")
+                .font(.footnoteMedium)
+                .foregroundStyle(.foreground(.secondary))
+            HStack(spacing: 0) {
+                Text("$")
+                    .font(.heading4)
+                Text("25")
+                    .font(.heading1)
+            }
+            .foregroundStyle(.foreground(.primary))
+            Text("per month, billed monthly")
+                .font(.footnoteMedium)
+                .foregroundStyle(.foreground(.secondary))
+        }
+        Input("Email address", text: .constant(""), showLeftIcon: true) {
+            Image(systemName: "envelope")
+                .resizable()
+                .scaledToFit()
+        }
+        Text("You will be charged $120 for a one year access. When you click on \"Subscribe\", your subscription will begin and you will be charged $120 immediately. It will renew automatically. You are also agreeing to our Terms of Service and our Privacy Policy.")
+            .font(.captionRegular)
+            .foregroundStyle(.foreground(.primary))
+            .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+        ButtonShiny("Subscribe", .medium) {
+            Image(systemName: "chevron.right")
+        }
+        DividerLine()
+        Text("OR, PAY WITH PAYPAL")
+            .font(.footnoteMedium)
+            .foregroundStyle(.foreground(.primary))
+        ButtonShiny("Pay with PayPal", .medium) {
+            Image(systemName: "chevron.right")
+        }
+        Text("This purchase will not auto-review. You will be taken to PayPal to complete the payment.")
+            .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+            .font(.captionRegular)
+            .foregroundStyle(.foreground(.primary))
+    }
+    .padding(12)
+}
+```
