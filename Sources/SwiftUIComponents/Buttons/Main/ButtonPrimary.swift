@@ -61,20 +61,16 @@ public struct ButtonPrimary<Icon: View>: View {
     let size: Size
     let titleKey: LocalizedStringKey
     let icon: Icon
-    let action: () -> Void
     
     private var base: some View {
-        Button(action: action) {
-            HStack(spacing: size.spacing) {
-                Text(titleKey)
-                icon
-            }
-            .foregroundStyle(.foreground(.primary))
-            .font(size.font)
+        HStack(spacing: size.spacing) {
+            Text(titleKey)
+            icon
         }
+        .foregroundStyle(.foreground(.primary))
+        .font(size.font)
         .padding(.horizontal, size.horizontalPadding)
         .padding(.vertical, size.verticalPadding)
-        .buttonStyle(.plain)
     }
     
     public var body: some View {
@@ -107,22 +103,32 @@ public struct ButtonPrimary<Icon: View>: View {
         
     }
     
-    public init(_ titleKey: LocalizedStringKey, _ size: Size, @ViewBuilder icon: () -> Icon, action: @escaping () -> Void) {
+    public init(_ titleKey: LocalizedStringKey, _ size: Size, @ViewBuilder icon: () -> Icon) {
         self.titleKey = titleKey
         self.size = size
         self.icon = icon()
-        self.action = action
     }
 }
 
 #Preview {
-    VStack(spacing: 20) {
-        ButtonPrimary("Primary", .small) { Image(systemName: "chevron.right") } action: {}
-            .environment(\.colorScheme, .light)
-        ButtonPrimary("Primary", .small) { Image(systemName: "chevron.right") } action: {}
-            .environment(\.colorScheme, .dark)
+    VStack(spacing: 10) {
+        HStack(alignment: .top, spacing: 10) {
+            ButtonPrimary("Primary", .small) { Image(systemName: "chevron.right") }
+            ButtonPrimary("Primary", .medium) { Image(systemName: "chevron.right") }
+            ButtonPrimary("Primary", .large) { Image(systemName: "chevron.right") }
+            ButtonPrimary("Primary", .extraLarge) { Image(systemName: "chevron.right") }
+        }
+        .environment(\.colorScheme, .light)
+        HStack(alignment: .top) {
+            ButtonPrimary("Primary", .small) { Image(systemName: "chevron.right") }
+            ButtonPrimary("Primary", .medium) { Image(systemName: "chevron.right") }
+            ButtonPrimary("Primary", .large) { Image(systemName: "chevron.right") }
+            ButtonPrimary("Primary", .extraLarge) { Image(systemName: "chevron.right") }
+        }
+        .environment(\.colorScheme, .dark)
     }
-    .padding()
-    .background(.background(.secondary))
+    .padding(30)
+    .background(.container(.background))
     .background(Color(red: 30 / 255, green: 30 / 255, blue: 30 / 255))
 }
+    

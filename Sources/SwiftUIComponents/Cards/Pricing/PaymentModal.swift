@@ -19,6 +19,7 @@ public struct PaymentModal<Content: View>: View {
         .background {
             RoundedRectangle(cornerRadius: 10)
                 .fill(.container(.background))
+                .fill(.ultraThinMaterial)
         }
         .overlay {
             RoundedRectangle(cornerRadius: 10)
