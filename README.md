@@ -41,6 +41,56 @@ Circle()
     }
 ```
 
+# Typography & Content
+![Typography](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/749563be-1af2-445f-a645-6a3fa8a81bba)
+
+```swift
+Text(("Heading 1 - 60 Semibold")
+    .font(.heading1)
+Text(("Heading 2 - 50 Semibold")
+    .font(.heading2)
+Text(("Heading 3 - 40 Semibold")
+    .font(.heading3)
+Text(("Heading 4 - 30 Semibold")
+    .font(.heading4)
+Text("Heading 5 - 24 Semibold")
+    .font(.heading5)
+Text("Headline Regular - 20 Regular")
+    .font(.headlineRegular)
+Text("Headline Medium - 20 Medium")
+    .font(.headlineMedium)
+Text("Body Large Regular - 18 Regular")
+    .font(.bodyLargeRegular)
+Text("Body Large Medium - 18 Medium")
+    .font(.bodyLargeMedium)
+Text("Body Regular - 16 Regular")
+    .font(.bodyRegular)
+Text("Body Medium - 16 Medium")
+    .font(.bodyMedium)
+Text("Footnote Regular - 14 Regular")
+    .font(.footnoteRegular)
+Text("Footnote Medium - 14 Medium")
+    .font(.footnoteMedium)
+Text("Caption Regular - 13 Regular")
+    .font(.captionRegular)
+Text("Caption Medium - 13 Medium")
+    .font(.captionMedium)
+Text("Small Regular - 12 Regular")
+    .font(.smallRegular)
+Text("Small Medium - 12 Medium")
+    .font(.smallMedium)
+Text("Body Large Mono - 18 Mono")
+    .font(.bodyLargeMono)
+Text("Body Mono - 16 Mono")
+    .font(.bodyMono)
+Text("Footnote Mono - 14 Mono")
+    .font(.footnoteMono)
+Text("Caption Mono - 13 Mono")
+    .font(.captionMono)
+Text("Small Mono - 12 Mono")
+    .font(.smallMono)
+```
+
 ## Buttons
 ### Menu
 #### Button Menu
