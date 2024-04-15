@@ -6,6 +6,9 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 ### Color Styles Light Mode
 <img width="553" alt="Screenshot 2024-04-15 at 4 14 38 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/290cc54b-3343-4641-a622-f841ef8ce3d9">
 
+### Color Styles Dark Mode
+<img width="547" alt="Screenshot 2024-04-15 at 4 14 48 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/2f21ad2d-88bc-4361-a9ec-a7ceb6ec937d">
+
 ```swift
 Circle()
     .fill(.foreground(.primary))
@@ -37,9 +40,6 @@ Circle()
             .clipShape(Circle())
     }
 ```
-
-### Color Styles Dark Mode
-<img width="547" alt="Screenshot 2024-04-15 at 4 14 48 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/2f21ad2d-88bc-4361-a9ec-a7ceb6ec937d">
 
 ## Buttons
 ### Menu
