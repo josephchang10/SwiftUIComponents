@@ -91,6 +91,8 @@ Text("Small Mono - 12 Mono")
     .font(.smallMono)
 ```
 
+<img width="376" alt="Screenshot 2024-04-15 at 4 34 35 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/09820c02-626b-4372-8ff6-91ee242835b9">
+
 ## Buttons
 ### Menu
 #### Button Menu
