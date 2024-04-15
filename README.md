@@ -202,6 +202,43 @@ HStack(spacing: 20) {
 }
 ```
 
+### Main
+#### Button Shiny
+<img width="478" alt="Screenshot 2024-04-15 at 5 38 03 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/354d0bfc-162e-4db7-9099-11d958f14c62">
+
+```swift
+HStack(spacing: 10) {
+    ButtonShiny("Shiny", .small) {
+        Image(systemName: "chevron.right")
+    }
+    ButtonShiny("Shiny", .medium) {
+        Image(systemName: "chevron.right")
+    }
+    ButtonShiny("Shiny", .large) {
+        Image(systemName: "chevron.right")
+    }
+    ButtonShiny("Shiny", .extraLarge) {
+        Image(systemName: "chevron.right")
+    }
+}
+.environment(\.colorScheme, .light)
+HStack(spacing: 10) {
+    ButtonShiny("Shiny", .small) {
+        Image(systemName: "chevron.right")
+    }
+    ButtonShiny("Shiny", .medium) {
+        Image(systemName: "chevron.right")
+    }
+    ButtonShiny("Shiny", .large) {
+        Image(systemName: "chevron.right")
+    }
+    ButtonShiny("Shiny", .extraLarge) {
+        Image(systemName: "chevron.right")
+    }
+}
+.environment(\.colorScheme, .dark)
+```
+
 ## Menus
 ### Navigation
 #### Menu
