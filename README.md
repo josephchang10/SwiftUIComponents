@@ -204,7 +204,7 @@ HStack(spacing: 20) {
 
 ### Main
 #### Button Shiny
-<img width="478" alt="Screenshot 2024-04-15 at 5 38 03 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/354d0bfc-162e-4db7-9099-11d958f14c62">
+<img width="480" alt="Screenshot 2024-04-15 at 5 42 39 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/fb1b2d31-32b0-4ee3-bb92-6851a51c5491">
 
 ```swift
 HStack(spacing: 10) {
