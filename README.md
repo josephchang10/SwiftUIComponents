@@ -183,6 +183,36 @@ HStack(spacing: 10) {
 .environment(\.colorScheme, .dark)
 ```
 
+### Activity
+<img width="487" alt="Screenshot 2024-04-26 at 2 18 05 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/a5275733-a5df-4942-a172-b066061cf8da">
+
+```swift
+Activity(title: "Dawyne Joe", text: "prepared a report", time: .now.addingTimeInterval(-60 * 2)) {
+    AsyncImage(url: .init(string: "https://images.unsplash.com/photo-1713747637487-0fbc89f8a4c8?w=100&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNTZ8fHxlbnwwfHx8fHw%3D")) { image in
+        image
+            .resizable()
+            .scaledToFill()
+            .clipShape(Circle())
+    } placeholder: {
+        ProgressView()
+    }
+    .frame(width: 32, height: 32)
+}
+.frame(width: 220)
+Activity(.selected, title: "Dawyne Joe", text: "prepared a report", time: .now.addingTimeInterval(-60 * 2)) {
+    AsyncImage(url: .init(string: "https://images.unsplash.com/photo-1713747637487-0fbc89f8a4c8?w=100&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNTZ8fHxlbnwwfHx8fHw%3D")) { image in
+        image
+            .resizable()
+            .scaledToFill()
+            .clipShape(Circle())
+    } placeholder: {
+        ProgressView()
+    }
+    .frame(width: 32, height: 32)
+}
+.frame(width: 220)
+```
+
 #### Button Toggle
 <img width="476" alt="Screenshot 2024-04-11 at 4 06 38 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/0da95188-5888-4988-9567-77284bce49e5">
 <img width="476" alt="Screenshot 2024-04-11 at 4 06 46 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/e7979df2-2cca-46bd-968c-6e418c85676e">
