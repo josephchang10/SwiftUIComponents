@@ -53,7 +53,7 @@ struct HeroView: View {
         VStack(alignment: .leading, spacing: 20) {
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 20) {
-                    ButtonPrimary("Buy at 50% off", .small) { Image(systemName: "chevron.right") } action: {}
+                    ButtonPrimary("Buy at 50% off", .small) { Image(systemName: "chevron.right") }
                     Text("Build a beautiful, funcitonal app with SwiftUI components")
                         .font(.heading3)
                 }
