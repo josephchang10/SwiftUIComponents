@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-public struct Input<Icon: View>: View {
+public struct Input: View {
     @Environment(\.colorScheme) private var colorScheme
     let prompt: LocalizedStringKey
     let text: Binding<String>
-    let icon: Icon
+    let icon: AnyView?
     let showLeftIcon: Bool
     let showRightIcon: Bool
     
@@ -20,12 +20,13 @@ public struct Input<Icon: View>: View {
             if showLeftIcon {
                 iconCircle
             }
-            TextField("", text: text)
+            TextField("", text: text, axis: .vertical)
                 .textFieldStyle(.plain)
                 .overlay(alignment: .leading) {
                     if text.wrappedValue.isEmpty {
                         Text(prompt)
                             .font(.captionRegular)
+                            .allowsHitTesting(false)
                     }
                 }
             if showRightIcon {
@@ -35,6 +36,7 @@ public struct Input<Icon: View>: View {
         .padding(.leading, 12)
         .padding(.vertical, 4)
         .padding(.trailing, 8)
+        .frame(minHeight: 32) // TODO: Make this dynamic
         .background {
             RoundedRectangle(cornerRadius: 8)
                 .fill(LinearGradient(colors: [
@@ -57,26 +59,35 @@ public struct Input<Icon: View>: View {
     
     var iconCircle: some View {
         IconCircle {
-            icon
+            if let icon {
+                icon
+            }
         }
     }
     
-    public init(_ prompt: LocalizedStringKey, text: Binding<String>, showLeftIcon: Bool = false, showRightIcon: Bool = true, @ViewBuilder icon: () -> Icon) {
+    public init(_ prompt: LocalizedStringKey, text: Binding<String>, showLeftIcon: Bool = false, showRightIcon: Bool = true, @ViewBuilder icon: () -> some View) {
         self.prompt = prompt
         self.text = text
-        self.icon = icon()
+        self.icon = AnyView(icon())
         self.showLeftIcon = showLeftIcon
         self.showRightIcon = showRightIcon
     }
     
-    public init(_ prompt: LocalizedStringKey, text: Binding<String>, showLeftIcon: Bool, @ViewBuilder icon: () -> Icon) {
+    public init(_ prompt: LocalizedStringKey, text: Binding<String>, showLeftIcon: Bool, @ViewBuilder icon: () -> some View) {
         self.prompt = prompt
         self.text = text
-        self.icon = icon()
+        self.icon = AnyView(icon())
         self.showLeftIcon = showLeftIcon
         self.showRightIcon = false
     }
     
+    public init(_ prompt: LocalizedStringKey, text: Binding<String>) {
+        self.prompt = prompt
+        self.text = text
+        self.icon = nil
+        self.showLeftIcon = false
+        self.showRightIcon = false
+    }
 }
 
 #Preview {
@@ -93,6 +104,9 @@ public struct Input<Icon: View>: View {
                 .resizable()
                 .scaledToFit()
         }
+            .frame(width: 200)
+            .environment(\.colorScheme, .dark)
+        Input("Email address", text: .constant(""))
             .frame(width: 200)
             .environment(\.colorScheme, .dark)
     }
