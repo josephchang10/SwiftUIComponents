@@ -439,3 +439,11 @@ PaymentModal {
     .padding(12)
 }
 ```
+
+## Patterns
+### Pattern 1
+<img width="445" alt="Screenshot 2024-05-12 at 4 54 35 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/2f21cc84-27ee-4f38-8a37-8c7da70b76ea">
+
+```swift
+Pattern1()
+```
