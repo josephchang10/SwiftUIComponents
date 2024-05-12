@@ -51,6 +51,7 @@ public struct Activity<Avatar: View>: View {
             if state == .selected {
                 RoundedRectangle(cornerRadius: 8)
                     .fill(.container(.background))
+                    .shadowBlur(.small)
             }
             if isHovering {
                 RoundedRectangle(cornerRadius: 8)

@@ -48,6 +48,7 @@ public extension ShapeStyle where Self == Color {
 }
 
 public enum BackgroundColorStyle {
+    case primary
     case secondary
     case blue
 }
@@ -55,6 +56,8 @@ public enum BackgroundColorStyle {
 public extension ShapeStyle where Self == Color {
     static func background(_ colorStyle: BackgroundColorStyle) -> Self {
         switch colorStyle {
+        case .primary:
+            .black
         case .secondary:
             Color("Background Secondary", bundle: .module)
         case .blue:
@@ -197,4 +200,17 @@ struct ColorStyles: View {
     }
     .padding()
     .background(Color(red: 30 / 255, green: 30 / 255, blue: 30 / 255))
+}
+
+public enum Gradients {
+    case blue1
+}
+
+public extension ShapeStyle where Self == LinearGradient {
+    static func gradients(_ gradients: Gradients) -> Self {
+        switch gradients {
+        case .blue1:
+            LinearGradient(colors: [.init(red: 68 / 255, green: 0, blue: 155 / 255), .init(red: 35 / 255, green: 112 / 255, blue: 202 / 255)], startPoint: .topLeading, endPoint: .bottomTrailing)
+        }
+    }
 }

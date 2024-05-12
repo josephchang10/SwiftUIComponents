@@ -8,24 +8,47 @@
 import SwiftUI
 
 public struct ButtonIcon<Icon: View>: View {
+    public enum Size {
+        case small
+        case medium
+        
+        var padding: EdgeInsets {
+            switch self {
+            case .small:
+                return EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12)
+            case .medium:
+                return EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16)
+            }
+        }
+    }
+    
     @Environment(\.isEnabled) private var isEnabled
-    let icon: Icon
+    private let icon: Icon
+    private let size: Size
     
     public var body: some View {
         icon
             .font(.captionMedium)
-            .padding(.horizontal, 12)
-            .padding(.vertical, 4)
+            .padding(size.padding)
             .opacity(isEnabled ? 1 : 0.2)
     }
     
-    public init(@ViewBuilder _ icon: () -> Icon) {
+    public init(_ size: Size, @ViewBuilder _ icon: () -> Icon) {
         self.icon = icon()
+        self.size = size
     }
 }
 
 #Preview {
-    ButtonIcon {
-        Image(systemName: "arrow.right")
+    Grid {
+        GridRow(alignment: .top) {
+            ButtonIcon(.small) {
+                Image(systemName: "arrow.right")
+            }
+            ButtonIcon(.medium) {
+                Image(systemName: "arrow.right")
+            }
+        }
     }
+    .padding(10)
 }

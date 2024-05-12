@@ -94,12 +94,12 @@ public struct TemplateCard<Image: View, Content: View>: View {
                     .foregroundStyle(.foreground(.secondary))
                 Spacer()
                 HStack(spacing: 0) {
-                    ButtonIcon {
+                    ButtonIcon(.small) {
                         Image(systemName: "arrow.left")
                     }
                     .disabled(true)
                     Separator()
-                    ButtonIcon {
+                    ButtonIcon(.small) {
                         Image(systemName: "arrow.right")
                     }
                 }

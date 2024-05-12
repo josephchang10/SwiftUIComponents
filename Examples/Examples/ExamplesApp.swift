@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import SwiftUIComponents
 
 @main
 struct ExamplesApp: App {
     var body: some Scene {
         WindowGroup {
-            SwiftUIComponentsMobileView()
+//            SwiftUIComponentsMobileView()
+            ScrollView {
+                InspectorDetailView()
+            }
         }
         .windowResizability(.contentSize)
     }

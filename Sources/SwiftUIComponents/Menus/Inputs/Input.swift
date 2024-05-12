@@ -20,15 +20,16 @@ public struct Input: View {
             if showLeftIcon {
                 iconCircle
             }
-            TextField("", text: text, axis: .vertical)
+            TextField("", text: text, prompt: Text(prompt).font(.captionRegular).foregroundStyle(.red), axis: .vertical)
+//            TextField(prompt, text: text, axis: .vertical)
                 .textFieldStyle(.plain)
-                .overlay(alignment: .leading) {
-                    if text.wrappedValue.isEmpty {
-                        Text(prompt)
-                            .font(.captionRegular)
-                            .allowsHitTesting(false)
-                    }
-                }
+//                .overlay(alignment: .leading) {
+//                    if text.wrappedValue.isEmpty {
+//                        Text(prompt)
+//                            .font(.captionRegular)
+//                            .allowsHitTesting(false)
+//                    }
+//                }
             if showRightIcon {
                 iconCircle
             }

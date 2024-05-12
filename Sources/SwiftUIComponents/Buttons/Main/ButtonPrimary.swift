@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct ButtonPrimary<Icon: View>: View {
+public struct ButtonPrimary: View {
     public enum Size {
         case small, medium, large, extraLarge
         
@@ -60,7 +60,7 @@ public struct ButtonPrimary<Icon: View>: View {
     
     let size: Size
     let titleKey: LocalizedStringKey
-    let icon: Icon
+    var icon: AnyView?
     
     private var base: some View {
         HStack(spacing: size.spacing) {
@@ -103,10 +103,15 @@ public struct ButtonPrimary<Icon: View>: View {
         
     }
     
-    public init(_ titleKey: LocalizedStringKey, _ size: Size, @ViewBuilder icon: () -> Icon) {
+    public init(_ titleKey: LocalizedStringKey, _ size: Size, @ViewBuilder icon: () -> some View) {
         self.titleKey = titleKey
         self.size = size
-        self.icon = icon()
+        self.icon = AnyView(icon())
+    }
+    
+    public init(_ titleKey: LocalizedStringKey, _ size: Size) {
+        self.titleKey = titleKey
+        self.size = size
     }
 }
 
