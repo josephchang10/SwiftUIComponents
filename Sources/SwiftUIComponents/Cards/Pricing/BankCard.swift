@@ -62,16 +62,16 @@ public struct BankCard<CompanyLogo: View>: View {
             }
             notch
                 .height(.full, alignment: .top)
-            Image("Chip", bundle: .module)
-                .clipShape(RoundedRectangle(cornerRadius: 2.95))
-                .background {
-                    RoundedRectangle(cornerRadius: 2.95)
-                        .fill(.ultraThinMaterial)
-                }
-                .overlay {
-                    RoundedRectangle(cornerRadius: 2.95)
-                        .stroke(.white.opacity(0.5), lineWidth: 0.5)
-                }
+            Image("Chip\(type.rawValue)", bundle: .module)
+//                .clipShape(RoundedRectangle(cornerRadius: 2.95))
+//                .background {
+//                    RoundedRectangle(cornerRadius: 2.95)
+//                        .fill(.ultraThinMaterial)
+//                }
+//                .overlay {
+//                    RoundedRectangle(cornerRadius: 2.95)
+//                        .stroke(.white.opacity(0.5), lineWidth: 0.5)
+//                }
                 .padding(22)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
         }
@@ -134,23 +134,32 @@ public struct BankCard<CompanyLogo: View>: View {
     }
 }
 
-#Preview {
-    ZStack {
-        Color(red: 30 / 255, green: 30 / 255, blue: 30 / 255)
-        Grid(horizontalSpacing: 20) {
-            GridRow {
-                BankCard(.card1, number: "****   ****   ****   2859", validThru: "Valid thru 06/24", notchLabel: "DEBIT CARD") {
-                    CompanyLogo(.visa)
-                        .frame(width: 80, height: 24)
-                }
-                BankCard(.card2, number: "****   ****   ****   2859", validThru: "Valid thru 06/24", notchLabel: "CREDIT CARD") {
-                    CompanyLogo(.mastercard)
-                        .frame(width: 80, height: 24)
+public struct BankCardView: View {
+    public var body: some View {
+        ZStack {
+            Color(red: 30 / 255, green: 30 / 255, blue: 30 / 255)
+            Grid(horizontalSpacing: 20) {
+                GridRow {
+                    BankCard(.card1, number: "****   ****   ****   2859", validThru: "Valid thru 06/24", notchLabel: "DEBIT CARD") {
+                        CompanyLogo(.visa)
+                            .frame(width: 80, height: 24)
+                    }
+                    BankCard(.card2, number: "****   ****   ****   2859", validThru: "Valid thru 06/24", notchLabel: "CREDIT CARD") {
+                        CompanyLogo(.mastercard)
+                            .frame(width: 80, height: 24)
+                    }
                 }
             }
+            .padding(20)
+            .background(.background(.secondary))
         }
-        .padding(20)
-        .background(.background(.secondary))
+        .frame(width: 1000)
+        .preferredColorScheme(.dark)
     }
-    .preferredColorScheme(.dark)
+    
+    public init() {}
+}
+
+#Preview {
+    BankCardView()
 }

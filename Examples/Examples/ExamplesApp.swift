@@ -14,7 +14,7 @@ struct ExamplesApp: App {
         WindowGroup {
 //            SwiftUIComponentsMobileView()
             ScrollView {
-                InspectorDetailView()
+                BankCardView()
             }
         }
         .windowResizability(.contentSize)
