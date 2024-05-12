@@ -94,6 +94,14 @@ Text("Small Mono - 12 Mono")
 <img width="376" alt="Screenshot 2024-04-15 at 4 34 35 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/09820c02-626b-4372-8ff6-91ee242835b9">
 
 ### Assets
+#### Company Logo
+<img width="277" alt="Screenshot 2024-05-12 at 6 42 06 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/d8006df3-2d97-4291-8ea2-2b56257099d1">
+
+```swift
+CompanyLogo(.visa)
+CompanyLogo(.mastercard)
+```
+
 #### Divider
 <img width="245" alt="Screenshot 2024-04-15 at 4 49 33 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/eeadb283-f0ad-4b15-8084-d9579274bd32">
 
@@ -354,6 +362,20 @@ ImageCard {
 ```
 
 ### Pricing
+#### Bank Card
+<img width="651" alt="Screenshot 2024-05-12 at 6 38 32 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/fe4ef7ec-92ab-4b30-8d9a-8c98b637c306">
+
+```swift
+BankCard(.card1, number: "****   ****   ****   2859", validThru: "Valid thru 06/24", notchLabel: "DEBIT CARD") {
+    CompanyLogo(.visa)
+        .frame(width: 80, height: 24)
+}
+BankCard(.card2, number: "****   ****   ****   2859", validThru: "Valid thru 06/24", notchLabel: "CREDIT CARD") {
+    CompanyLogo(.mastercard)
+        .frame(width: 80, height: 24)
+}
+```
+
 #### Pricing Card
 <img width="625" alt="Screenshot 2024-04-15 at 7 36 54 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/e676439c-074f-42a5-8e30-9ed1a89f3ddf">
 
@@ -438,4 +460,12 @@ PaymentModal {
     }
     .padding(12)
 }
+```
+
+## Patterns
+### Pattern 1
+<img width="445" alt="Screenshot 2024-05-12 at 4 54 35 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/2f21cc84-27ee-4f38-8a37-8c7da70b76ea">
+
+```swift
+Pattern1()
 ```
