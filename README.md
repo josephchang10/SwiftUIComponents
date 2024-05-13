@@ -395,7 +395,6 @@ InspectorDetail {
                 Text("****")
                     .font(.captionRegular)
             }
-            .foregroundStyle(.foreground(.secondary))
             HStack {
                 Text("Balance")
                     .font(.captionMedium)
@@ -403,7 +402,6 @@ InspectorDetail {
                 Text("$28,678.65")
                     .font(.captionRegular)
             }
-            .foregroundStyle(.foreground(.secondary))
             HStack {
                 Text("Currency")
                     .font(.captionMedium)
@@ -411,7 +409,6 @@ InspectorDetail {
                 Text("USD")
                     .font(.captionRegular)
             }
-            .foregroundStyle(.foreground(.secondary))
             HStack {
                 Text("Status card")
                     .font(.captionMedium)
@@ -419,8 +416,8 @@ InspectorDetail {
                 Text("06/24 (Active)")
                     .font(.captionRegular)
             }
-            .foregroundStyle(.foreground(.secondary))
         }
+        .foregroundStyle(.foreground(.secondary))
         HStack {
             ButtonIcon(.medium) {
                 Image(systemName: "chevron.left")
