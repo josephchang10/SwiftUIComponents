@@ -13,6 +13,7 @@ public struct Activity<Avatar: View>: View {
         case selected
     }
     
+    @Environment(\.colorScheme) private var colorScheme
     @State private var isHovering = false
     let state: _State
     let avatar: Avatar
@@ -55,7 +56,7 @@ public struct Activity<Avatar: View>: View {
             }
             if isHovering {
                 RoundedRectangle(cornerRadius: 8)
-                    .fill(LinearGradient(colors: [.white.opacity(0.02), .white.opacity(0.5)], startPoint: .top, endPoint: .bottom))
+                    .fill(LinearGradient(colors: colorScheme == .dark ? [.black.opacity(0.5), .black.opacity(0.02)] :  [.white.opacity(0.02), .white.opacity(0.5)], startPoint: .top, endPoint: .bottom))
             }
         }
         .onHover { hovering in
@@ -81,33 +82,61 @@ public struct Activity<Avatar: View>: View {
 }
 
 #Preview {
-    HStack(spacing: 20) {
-        Activity(title: "Dawyne Joe", text: "prepared a report", time: .now.addingTimeInterval(-60 * 2)) {
-            AsyncImage(url: .init(string: "https://images.unsplash.com/photo-1713747637487-0fbc89f8a4c8?w=100&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNTZ8fHxlbnwwfHx8fHw%3D")) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .clipShape(Circle())
-            } placeholder: {
-                ProgressView()
+    VStack(spacing: 20) {
+        HStack(spacing: 20) {
+            Activity(title: "Dawyne Joe", text: "prepared a report", time: .now.addingTimeInterval(-60 * 2)) {
+                AsyncImage(url: .init(string: "https://images.unsplash.com/photo-1713747637487-0fbc89f8a4c8?w=100&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNTZ8fHxlbnwwfHx8fHw%3D")) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .clipShape(Circle())
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(width: 32, height: 32)
             }
-            .frame(width: 32, height: 32)
-        }
-        .frame(width: 220)
-        Activity(.selected, title: "Dawyne Joe", text: "prepared a report", time: .now.addingTimeInterval(-60 * 2)) {
-            AsyncImage(url: .init(string: "https://images.unsplash.com/photo-1713747637487-0fbc89f8a4c8?w=100&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNTZ8fHxlbnwwfHx8fHw%3D")) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-                    .clipShape(Circle())
-            } placeholder: {
-                ProgressView()
+            .frame(width: 220)
+            Activity(.selected, title: "Dawyne Joe", text: "prepared a report", time: .now.addingTimeInterval(-60 * 2)) {
+                AsyncImage(url: .init(string: "https://images.unsplash.com/photo-1713747637487-0fbc89f8a4c8?w=100&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNTZ8fHxlbnwwfHx8fHw%3D")) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .clipShape(Circle())
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(width: 32, height: 32)
             }
-            .frame(width: 32, height: 32)
+            .frame(width: 220)
         }
-        .frame(width: 220)
+        .environment(\.colorScheme, .light)
+        HStack(spacing: 20) {
+            Activity(title: "Dawyne Joe", text: "prepared a report", time: .now.addingTimeInterval(-60 * 2)) {
+                AsyncImage(url: .init(string: "https://images.unsplash.com/photo-1713747637487-0fbc89f8a4c8?w=100&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNTZ8fHxlbnwwfHx8fHw%3D")) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .clipShape(Circle())
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(width: 32, height: 32)
+            }
+            .frame(width: 220)
+            Activity(.selected, title: "Dawyne Joe", text: "prepared a report", time: .now.addingTimeInterval(-60 * 2)) {
+                AsyncImage(url: .init(string: "https://images.unsplash.com/photo-1713747637487-0fbc89f8a4c8?w=100&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNTZ8fHxlbnwwfHx8fHw%3D")) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .clipShape(Circle())
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(width: 32, height: 32)
+            }
+            .frame(width: 220)
+        }
     }
     .padding(20)
-    .background(.container(.background))
-    .background(Color(red: 30/255, green: 30/255, blue: 30/255))
+    .background(Color(red: 53/255, green: 53/255, blue: 53/255))
 }
