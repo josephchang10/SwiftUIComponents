@@ -192,7 +192,7 @@ HStack(spacing: 10) {
 ```
 
 ### Activity
-<img width="487" alt="Screenshot 2024-04-26 at 2 18 05 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/a5275733-a5df-4942-a172-b066061cf8da">
+<img width="488" alt="Screenshot 2024-05-13 at 8 10 09 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/54b8c0fc-708e-458b-89a4-ba321d52ee76">
 
 ![Activity](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/9718d168-1a45-4fee-9cba-6765f00322e1)
 
