@@ -61,14 +61,14 @@ struct HeroView: View {
                 Toggle(isVertical: true) {
                     ButtonCircle(.small) {
                         Image(systemName: "moon")
-                    } action: {}
+                    }
                     ButtonCircle(.small, state: .selected) {
                         Image(systemName: "display")
                             .symbolRenderingMode(.monochrome)
-                    } action: {}
+                    }
                     ButtonCircle(.small) {
                         Image(systemName: "sun.max")
-                    } action: {}
+                    }
                 }
             }
             Text("A vast, dynamic design system with hundreds of customizable UI components and templates, ready for SwiftUI deployment and meticulously organized with parameters, variants and adaptive layouts. Made from decades of pushing pixels.")

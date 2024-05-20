@@ -36,82 +36,147 @@ public struct ButtonCircle<Icon: View>: View {
         }
     }
     
-    public enum State {
+    public enum _State {
         case normal
         case selected
     }
     
-    let action: () -> Void
+    @State private var isHovering = false
+    
     let size: Size
-    let state: State
+    let state: _State
     let icon: Icon
     
     public var body: some View {
-        Button(action: action) {
-            icon
-                .font(.captionMedium)
-                .foregroundStyle(.foreground(.primary))
-                .padding(size.padding)
-                .frame(width: size.size, height: size.size)
-                .background {
-                    if state == .selected {
-                        Circle()
-                            .fill(.ultraThinMaterial)
-                            .fill(.container(.background))
-                    }
+        icon
+            .fontWeight(.medium)
+            .foregroundStyle(.foreground(.primary))
+            .padding(size.padding)
+            .frame(width: size.size, height: size.size)
+            .background {
+                if state == .selected {
+                    Circle()
+                        .fill(.ultraThinMaterial)
+                        .fill(.container(.background))
                 }
-                .overlay {
-                    if state == .selected {
-                        Circle()
-                            .inset(by: 0.5)
-                            .stroke(.container(.border), lineWidth: 1)
-                    }
+            }
+            .overlay {
+                if state == .selected {
+                    Circle()
+//                        .inset(by: 0.5)
+                        .stroke(.container(.border), lineWidth: 1)
+                } else if isHovering {
+                    Circle()
+                        .inset(by: 0.5)
+                        .stroke(.foreground(.tertiary), lineWidth: 1)
                 }
-                .shadowBlur(.small)
-        }
-        .buttonStyle(.plain)
+            }
+            .shadowBlur(.small)
+            .onHover { hovering in
+                withAnimation {
+                    isHovering = hovering
+                }
+            }
     }
     
-    public init(_ size: Size, state: State = .normal, @ViewBuilder icon: () -> Icon, action: @escaping () -> Void) {
+    public init(_ size: Size, state: _State = .normal, @ViewBuilder icon: () -> Icon) {
         self.size = size
         self.state = state
         self.icon = icon()
-        self.action = action
     }
 }
 
 #Preview {
-    VStack {
-        HStack {
+    VStack(spacing: 10) {
+        HStack(alignment: .top, spacing: 10) {
             ButtonCircle(.small) {
                 Image(systemName: "moon")
-            } action: {}
+                    .resizable()
+                    .padding(2.665)
+            }
+            ButtonCircle(.medium) {
+                Image(systemName: "moon")
+                    .resizable()
+                    .padding(2.665)
+            }
+            ButtonCircle(.large) {
+                Image(systemName: "moon")
+                    .resizable()
+                    .padding(2.665)
+            }
+            ButtonCircle(.extraLarge) {
+                Image(systemName: "moon")
+                    .resizable()
+                    .padding(4)
+            }
             ButtonCircle(.small, state: .selected) {
                 Image(systemName: "moon")
-            } action: {}
+                    .resizable()
+                    .padding(2.665)
+            }
             ButtonCircle(.medium, state: .selected) {
                 Image(systemName: "moon")
                     .resizable()
-            } action: {}
+                    .padding(2.665)
+            }
             ButtonCircle(.large, state: .selected) {
                 Image(systemName: "moon")
                     .resizable()
-            } action: {}
+                    .padding(2.665)
+            }
             ButtonCircle(.extraLarge, state: .selected) {
                 Image(systemName: "moon")
                     .resizable()
-            } action: {}
+                    .padding(4)
+            }
         }
         .environment(\.colorScheme, .light)
-        HStack {
+        HStack(alignment: .top, spacing: 10) {
             ButtonCircle(.small) {
                 Image(systemName: "moon")
-            } action: {}
+                    .resizable()
+                    .padding(2.665)
+            }
+            ButtonCircle(.medium) {
+                Image(systemName: "moon")
+                    .resizable()
+                    .padding(2.665)
+            }
+            ButtonCircle(.large) {
+                Image(systemName: "moon")
+                    .resizable()
+                    .padding(2.665)
+            }
+            ButtonCircle(.extraLarge) {
+                Image(systemName: "moon")
+                    .resizable()
+                    .padding(4)
+            }
             ButtonCircle(.small, state: .selected) {
                 Image(systemName: "moon")
-            } action: {}
+                    .resizable()
+                    .padding(2.665)
+            }
+            ButtonCircle(.medium, state: .selected) {
+                Image(systemName: "moon")
+                    .resizable()
+                    .padding(2.665)
+            }
+            ButtonCircle(.large, state: .selected) {
+                Image(systemName: "moon")
+                    .resizable()
+                    .padding(2.665)
+            }
+            ButtonCircle(.extraLarge, state: .selected) {
+                Image(systemName: "moon")
+                    .resizable()
+                    .padding(4)
+            }
         }
         .environment(\.colorScheme, .dark)
     }
-    .padding()
+    .padding(10)
+    .padding(60)
+    .background(.background(.secondary))
+    .background(Color(red: 30/255, green: 30/255, blue: 30/255))
 }

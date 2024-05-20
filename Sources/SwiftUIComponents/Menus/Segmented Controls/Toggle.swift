@@ -43,11 +43,11 @@ public struct Toggle<ButtonsContent: View>: View {
     Toggle {
         ButtonCircle(.small, state: .selected) {
             Image(systemName: "moon")
-        } action: {}
+        }
         ButtonCircle(.small) {
             Image(systemName: "display")
                 .symbolRenderingMode(.monochrome)
-        } action: {}
+        }
     }
     .padding()
     .environment(\.colorScheme, .light)
@@ -57,11 +57,11 @@ public struct Toggle<ButtonsContent: View>: View {
     Toggle(isVertical: true) {
         ButtonCircle(.small, state: .selected) {
             Image(systemName: "moon")
-        } action: {}
+        }
         ButtonCircle(.small) {
             Image(systemName: "display")
                 .symbolRenderingMode(.monochrome)
-        } action: {}
+        }
     }
     .padding()
     .environment(\.colorScheme, .light)
