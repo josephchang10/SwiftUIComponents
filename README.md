@@ -9,6 +9,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Button Toggle](#Button-Toggle)
 ### Small
 * [Button Circle](#Button-Circle)
+* [Avatar Small](#Avatar-Small)
 * [Icon Circle](#Icon-Circle)
 ### Main
 * [Button Primary](#Button-Primary)
@@ -308,6 +309,17 @@ ButtonCircle(.extraLarge, state: .selected) {
     Image(systemName: "moon")
         .resizable()
         .padding(4)
+}
+```
+
+#### Avatar Small
+<img width="98" alt="Screenshot 2024-05-20 at 10 44 34 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/946d1db2-0321-4e23-bc6a-52869d73ce84">
+
+```swift
+AvatarSmall {
+    Text("M")
+        .font(.captionMedium)
+        .frame(width: 24, height: 24)
 }
 ```
 
