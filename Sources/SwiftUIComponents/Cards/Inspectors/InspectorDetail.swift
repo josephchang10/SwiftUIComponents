@@ -16,6 +16,7 @@ public struct InspectorDetail<Content: View>: View {
         }
         .padding(20)
         .background(.container(.background))
+        .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .overlay {
             RoundedRectangle(cornerRadius: 10)
