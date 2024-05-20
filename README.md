@@ -8,6 +8,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Activity](#Activity)
 * [Button Toggle](#Button-Toggle)
 ### Small
+* [Button Circle](#Button-Cricle)
 * [Icon Circle](#Icon-Circle)
 ### Main
 * [Button Primary](#Button-Primary)
@@ -254,6 +255,53 @@ HStack(spacing: 20) {
 ```
 
 ### Small
+#### Button Circle
+![Button Circle](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/b9be8074-e57f-4e47-bc29-d4568ef89acb)
+![Hover](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/df939822-cec9-4957-9c06-fea9cf76cf24)
+
+```swift  
+ButtonCircle(.small) {
+    Image(systemName: "moon")
+        .resizable()
+        .padding(2.665)
+}
+ButtonCircle(.medium) {
+    Image(systemName: "moon")
+        .resizable()
+        .padding(2.665)
+}
+ButtonCircle(.large) {
+    Image(systemName: "moon")
+        .resizable()
+        .padding(2.665)
+}
+ButtonCircle(.extraLarge) {
+    Image(systemName: "moon")
+        .resizable()
+        .padding(4)
+}
+ButtonCircle(.small, state: .selected) {
+    Image(systemName: "moon")
+        .resizable()
+        .padding(2.665)
+}
+ButtonCircle(.medium, state: .selected) {
+    Image(systemName: "moon")
+        .resizable()
+        .padding(2.665)
+}
+ButtonCircle(.large, state: .selected) {
+    Image(systemName: "moon")
+        .resizable()
+        .padding(2.665)
+}
+ButtonCircle(.extraLarge, state: .selected) {
+    Image(systemName: "moon")
+        .resizable()
+        .padding(4)
+}
+```
+
 #### Icon Circle
 <img width="99" alt="Screenshot 2024-04-15 at 8 35 48 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/04890b7f-b4e3-4720-ac35-666f0afe4bab">
 
