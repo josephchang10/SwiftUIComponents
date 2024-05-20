@@ -8,6 +8,8 @@
 import SwiftUI
 
 public struct Toggle<ButtonsContent: View>: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     let isVertical: Bool
     let buttonsContent: ButtonsContent
     
@@ -28,7 +30,7 @@ public struct Toggle<ButtonsContent: View>: View {
         .padding(4)
         .background {
             RoundedRectangle(cornerRadius: 99)
-                .fill(.container(.background))
+                .fill(.container(.background).opacity(colorScheme == .dark ? 0.8 : 1)) // Workaround to increase contrast in dark mode
                 .stroke(.container(.border), lineWidth: 1)
         }
     }
@@ -39,18 +41,234 @@ public struct Toggle<ButtonsContent: View>: View {
     }
 }
 
-#Preview {
-    Toggle {
-        ButtonCircle(.small, state: .selected) {
-            Image(systemName: "moon")
-        }
-        ButtonCircle(.small) {
-            Image(systemName: "display")
-                .symbolRenderingMode(.monochrome)
+struct ToggleView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 20) {
+            HStack(spacing: 20) {
+                Toggle {
+                    ButtonCircle(.small, state: .selected) {
+                        Image(systemName: "moon")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "display")
+                            .symbolRenderingMode(.monochrome)
+                    }
+                }
+                Toggle {
+                    ButtonCircle(.small) {
+                        Image(systemName: "moon")
+                    }
+                    ButtonCircle(.small, state: .selected) {
+                        Image(systemName: "display")
+                            .symbolRenderingMode(.monochrome)
+                    }
+                }
+                Toggle {
+                    ButtonCircle(.small, state: .selected) {
+                        Image(systemName: "moon")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "display")
+                            .symbolRenderingMode(.monochrome)
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "sun.max")
+                    }
+                }
+                Toggle {
+                    ButtonCircle(.small) {
+                        Image(systemName: "moon")
+                    }
+                    ButtonCircle(.small, state: .selected) {
+                        Image(systemName: "display")
+                            .symbolRenderingMode(.monochrome)
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "sun.max")
+                    }
+                }
+                Toggle {
+                    ButtonCircle(.small) {
+                        Image(systemName: "moon")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "display")
+                            .symbolRenderingMode(.monochrome)
+                    }
+                    ButtonCircle(.small, state: .selected) {
+                        Image(systemName: "sun.max")
+                    }
+                }
+            }
+            HStack(spacing: 20) {
+                Toggle {
+                    ButtonCircle(.small, state: .selected) {
+                        Image(systemName: "moon")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "display")
+                            .symbolRenderingMode(.monochrome)
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "sun.max")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "wand.and.rays.inverse")
+                    }
+                }
+                Toggle {
+                    ButtonCircle(.small) {
+                        Image(systemName: "moon")
+                    }
+                    ButtonCircle(.small, state: .selected) {
+                        Image(systemName: "display")
+                            .symbolRenderingMode(.monochrome)
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "sun.max")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "wand.and.rays.inverse")
+                    }
+                }
+                Toggle {
+                    ButtonCircle(.small) {
+                        Image(systemName: "moon")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "display")
+                            .symbolRenderingMode(.monochrome)
+                    }
+                    ButtonCircle(.small, state: .selected) {
+                        Image(systemName: "sun.max")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "wand.and.rays.inverse")
+                    }
+                }
+            }
+            HStack(spacing: 20) {
+                Toggle {
+                    ButtonCircle(.small) {
+                        Image(systemName: "moon")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "display")
+                            .symbolRenderingMode(.monochrome)
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "sun.max")
+                    }
+                    ButtonCircle(.small, state: .selected) {
+                        Image(systemName: "wand.and.rays.inverse")
+                    }
+                }
+                Toggle {
+                    ButtonCircle(.small, state: .selected) {
+                        Image(systemName: "moon")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "display")
+                            .symbolRenderingMode(.monochrome)
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "sun.max")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "wand.and.rays.inverse")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "person")
+                    }
+                }
+                Toggle {
+                    ButtonCircle(.small) {
+                        Image(systemName: "moon")
+                    }
+                    ButtonCircle(.small, state: .selected) {
+                        Image(systemName: "display")
+                            .symbolRenderingMode(.monochrome)
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "sun.max")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "wand.and.rays.inverse")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "person")
+                    }
+                }
+            }
+            HStack(spacing: 20) {
+                Toggle {
+                    ButtonCircle(.small) {
+                        Image(systemName: "moon")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "display")
+                            .symbolRenderingMode(.monochrome)
+                    }
+                    ButtonCircle(.small, state: .selected) {
+                        Image(systemName: "sun.max")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "wand.and.rays.inverse")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "person")
+                    }
+                }
+                Toggle {
+                    ButtonCircle(.small) {
+                        Image(systemName: "moon")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "display")
+                            .symbolRenderingMode(.monochrome)
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "sun.max")
+                    }
+                    ButtonCircle(.small, state: .selected) {
+                        Image(systemName: "wand.and.rays.inverse")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "person")
+                    }
+                }
+                Toggle {
+                    ButtonCircle(.small) {
+                        Image(systemName: "moon")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "display")
+                            .symbolRenderingMode(.monochrome)
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "sun.max")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "wand.and.rays.inverse")
+                    }
+                    ButtonCircle(.small, state: .selected) {
+                        Image(systemName: "person")
+                    }
+                }
+            }
         }
     }
-    .padding()
-    .environment(\.colorScheme, .light)
+}
+
+#Preview {
+    VStack(spacing: 20) {
+        ToggleView()
+            .environment(\.colorScheme, .light)
+        ToggleView()
+            .environment(\.colorScheme, .dark)
+    }
+    .padding(20)
+    .background(Color(red: 53/255, green: 53/255, blue: 53/255))
 }
 
 #Preview {
