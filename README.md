@@ -11,6 +11,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Icon Circle](#Icon-Circle)
 ### Main
 * [Button Primary](#Button-Primary)
+* [Button Shiny](#Button-Shiny)
 
 ## Colors
 ### Color Styles Light Mode
@@ -272,7 +273,7 @@ IconCircle {
 ```
 
 ### Main
-#### Button Primay
+#### Button Primary
 <img width="499" alt="Screenshot 2024-04-16 at 7 40 45 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/f3db6fd0-0e3c-4c7e-a475-ed6dcb604e47">
 
 ```swift
