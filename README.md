@@ -7,6 +7,8 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Button Menu](#Button-Menu)
 * [Activity](#Activity)
 * [Button Toggle](#Button-Toggle)
+### Small
+* [Icon Circle](#Icon-Circle)
 
 ## Colors
 ### Color Styles Light Mode
@@ -248,6 +250,25 @@ HStack(spacing: 20) {
 }
 ```
 
+### Small
+#### Icon Circle
+<img width="99" alt="Screenshot 2024-04-15 at 8 35 48 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/04890b7f-b4e3-4720-ac35-666f0afe4bab">
+
+```swift
+IconCircle {
+    Image(systemName: "envelope")
+        .resizable()
+        .scaledToFit()
+}
+.environment(\.colorScheme, .light)
+IconCircle {
+    Image(systemName: "envelope")
+        .resizable()
+        .scaledToFit()
+}
+.environment(\.colorScheme, .dark)
+```
+
 ### Main
 #### Button Primay
 <img width="499" alt="Screenshot 2024-04-16 at 7 40 45 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/f3db6fd0-0e3c-4c7e-a475-ed6dcb604e47">
@@ -301,25 +322,6 @@ HStack(spacing: 10) {
     ButtonShiny("Shiny", .extraLarge) {
         Image(systemName: "chevron.right")
     }
-}
-.environment(\.colorScheme, .dark)
-```
-
-### Small
-#### Icon Circle
-<img width="99" alt="Screenshot 2024-04-15 at 8 35 48 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/04890b7f-b4e3-4720-ac35-666f0afe4bab">
-
-```swift
-IconCircle {
-    Image(systemName: "envelope")
-        .resizable()
-        .scaledToFit()
-}
-.environment(\.colorScheme, .light)
-IconCircle {
-    Image(systemName: "envelope")
-        .resizable()
-        .scaledToFit()
 }
 .environment(\.colorScheme, .dark)
 ```
