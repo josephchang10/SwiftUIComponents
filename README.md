@@ -5,6 +5,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 ## Buttons
 ### Menu
 * [Button Menu](#Button-Menu)
+* [Activity](#Activity)
 
 ## Colors
 ### Color Styles Light Mode
@@ -195,7 +196,7 @@ HStack(spacing: 10) {
 .environment(\.colorScheme, .dark)
 ```
 
-### Activity
+#### Activity
 <img width="488" alt="Screenshot 2024-05-13 at 8 10 09 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/54b8c0fc-708e-458b-89a4-ba321d52ee76">
 
 ![Hover](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/fe36713d-d59f-4f84-9aba-4eee6ec28f50)
