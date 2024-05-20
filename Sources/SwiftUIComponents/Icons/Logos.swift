@@ -32,5 +32,5 @@ public struct Logo: View {
         .frame(width: 24, height: 24)
         .padding(60)
         .background(.background(.primary))
-        .preferredColorScheme(.dark)
+        .preferredColorScheme(.light)
 }
