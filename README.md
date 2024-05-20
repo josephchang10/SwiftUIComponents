@@ -20,6 +20,8 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 ### Insepctors
 * [Notification](#Notification)
 * [Insepctor Detail](#Insepctor-Detail)
+## Icons
+* [Logos](#Logos)
 
 ## Colors
 ### Color Styles Light Mode
@@ -741,6 +743,14 @@ PaymentModal {
     }
     .padding(12)
 }
+```
+
+## Icons
+### Logos
+<img width="129" alt="Screenshot 2024-05-20 at 10 40 56 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/1d285a74-8bbe-4412-9203-444fef373b6e">
+
+```swift
+Logo(.x)
 ```
 
 ## Patterns
