@@ -21,6 +21,8 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 ### Insepctors
 * [Notification](#Notification)
 * [Insepctor Detail](#Insepctor-Detail)
+### Content
+* [Testimonial](#Testimonial)
 ## Icons
 * [Logos](#Logos)
 
@@ -653,6 +655,68 @@ InspectorDetail {
         Spacer()
         ButtonPrimary("Mark all as read", .small)
     }
+}
+```
+
+### Content
+#### Testimonial
+<img width="651" alt="Screenshot 2024-05-20 at 10 47 01 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/eddb820d-128e-416f-9583-2fd4c6f93402">
+
+```swift
+Testimonial {
+    VStack(alignment: .leading, spacing: 20) {
+        Toggle {
+            ButtonCircle(.small, state: .selected) {
+                Image(systemName: "moon")
+            }
+            ButtonCircle(.small) {
+                Image(systemName: "sun.max")
+            }
+        }
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Mobbin")
+                .font(.bodyMedium)
+            Text("Mobile & web design references")
+                .font(.footnoteMedium)
+                .foregroundStyle(.foreground(.secondary))
+            DividerLine()
+            Text("Built with the latest Figma and Framer features, the meticulously crafted, fully customisable components will turbocharge your design workflow, ensuring seamless consistency and efficiency in all your projects.")
+                .font(.footnoteRegular)
+                .foregroundStyle(.foreground(.secondary))
+            DividerLine()
+            HStack(spacing: 8) {
+                AvatarSmall {
+                    Text("J")
+                        .font(.captionMedium)
+                        .frame(width: 24, height: 24)
+                }
+                Text("Jiho Lim, Creator of Mobbin")
+                    .font(.footnoteMedium)
+                    .foregroundStyle(.foreground(.secondary))
+            }
+        }
+    }
+} logo: {
+    ZStack {
+        RoundedRectangle(cornerRadius: 10)
+            .fill(LinearGradient(colors: [.white.opacity(0), .white.opacity(0.52)], startPoint: .top, endPoint: .bottom).opacity(0.5))
+            .padding(7)
+            .rotationEffect(.degrees(45))
+            .shadowBlur(.small)
+        RoundedRectangle(cornerRadius: 10)
+            .stroke(LinearGradient(colors: [.white.opacity(0), .white], startPoint: .bottomTrailing, endPoint: .topLeading), lineWidth: 1)
+            .padding(7)
+            .rotationEffect(.degrees(45))
+            .blendMode(.overlay)
+        RoundedRectangle(cornerRadius: 10)
+            .stroke(.white.opacity(0.1), lineWidth: 1)
+            .padding(7)
+            .rotationEffect(.degrees(45))
+            .blendMode(.overlay)
+        Logo(.x)
+            .frame(width: 24, height: 24)
+    }
+    .frame(width: 44, height: 44)
 }
 ```
 
