@@ -4,7 +4,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 
 ## Buttons
 ### Menu
-[Button Menu](#Button Menu)
+[Button Menu](#Button-Menu)
 
 ## Colors
 ### Color Styles Light Mode
