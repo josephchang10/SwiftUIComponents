@@ -660,7 +660,7 @@ InspectorDetail {
 
 ### Content
 #### Testimonial
-<img width="651" alt="Screenshot 2024-05-20 at 10 47 01 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/eddb820d-128e-416f-9583-2fd4c6f93402">
+<img width="652" alt="Screenshot 2024-05-21 at 9 21 28 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/7ffea5c7-890b-45eb-9915-d12d7ce18b8b">
 
 ```swift
 Testimonial {
