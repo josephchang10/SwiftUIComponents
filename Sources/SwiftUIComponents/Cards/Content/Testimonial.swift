@@ -75,6 +75,7 @@ struct TestimonialView: View {
                     Text("Built with the latest Figma and Framer features, the meticulously crafted, fully customisable components will turbocharge your design workflow, ensuring seamless consistency and efficiency in all your projects.")
                         .font(.footnoteRegular)
                         .foregroundStyle(.foreground(.secondary))
+                        .fixedSize(horizontal: false, vertical: true)
                     DividerLine()
                     HStack(spacing: 8) {
                         AvatarSmall {
@@ -122,4 +123,6 @@ struct TestimonialView: View {
             .environment(\.colorScheme, .dark)
     }
     .padding(20)
+//    .background(.container(.background))
+    .background(Color(red: 53 / 255, green: 53 / 255, blue: 53 / 255))
 }
