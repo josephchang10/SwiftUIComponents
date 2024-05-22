@@ -15,6 +15,8 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Button Primary](#Button-Primary)
 * [Button Shiny](#Button-Shiny)
 ## Menus
+### Inputs
+* [Input](#Input)
 ### Navigation
 * [Menu](#Menu-2)
 ## Cards
@@ -403,6 +405,19 @@ HStack(spacing: 10) {
 ```
 
 ## Menus
+### Inputs
+#### Input
+<img width="229" alt="Screenshot 2024-05-23 at 12 10 22 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/42fe138d-a0bc-46e1-a696-57668f1d9760">
+
+```swift
+Input("Email address", text: .constant("Email address")) {
+    Image(systemName: "envelope")
+        .resizable()
+        .scaledToFit()
+        .fontWeight(.bold)
+}
+```
+
 ### Navigation
 #### Menu
 <img width="178" alt="Screenshot 2024-04-11 at 3 08 22 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/ccc4d9cd-bd5c-4789-adc8-f3eb84bb4780">
