@@ -10,6 +10,7 @@ import TailwindSwiftUI
 
 public struct BackgroundWeb4: View {
     @Environment(\.colorScheme) private var colorScheme
+    private let particles: AnyView?
     
     public var body: some View {
         GeometryReader { proxy in
@@ -33,13 +34,17 @@ public struct BackgroundWeb4: View {
                     .clipped()
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                     .blendMode(.screen)
-                Image("Particles 1", bundle: .module)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 1440 * horizontalRatio, height: 900 * verticalRatio)
-                    .clipped()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .blendMode(.screen)
+                if let particles {
+                    particles
+                } else {
+                    Image("Particles 1", bundle: .module)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 1440 * horizontalRatio, height: 900 * verticalRatio)
+                        .clipped()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .blendMode(.screen)
+                }
             default :
                 let horizontalRatio = proxy.size.width / 2400
                 let verticalRatio = proxy.size.height / 1440
@@ -72,7 +77,13 @@ public struct BackgroundWeb4: View {
         .background(colorScheme == .dark ? Color(red: 6 / 255, green: 7 / 255, blue: 21 / 255) : Color(red: 242 / 255, green: 243 / 255, blue: 250 / 255))
     }
     
-    public init() {}
+    public init() {
+        self.particles = nil
+    }
+    
+    public init(@ViewBuilder particles: () -> some View) {
+        self.particles = AnyView(particles())
+    }
 }
 
 #Preview {
@@ -80,7 +91,7 @@ public struct BackgroundWeb4: View {
         BackgroundWeb4()
             .frame(width: .point(2400 / 2), height: .point(1440 / 2))
             .environment(\.colorScheme, .light)
-        BackgroundWeb4()
+        BackgroundWeb4() {}
             .frame(width: .point(1440 / 2), height: .point(1440 / 2))
             .environment(\.colorScheme, .dark)
     }
