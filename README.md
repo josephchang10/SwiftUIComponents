@@ -410,7 +410,7 @@ HStack(spacing: 10) {
 <img width="229" alt="Screenshot 2024-05-23 at 12 10 22 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/42fe138d-a0bc-46e1-a696-57668f1d9760">
 
 ```swift
-Input("Email address", text: .constant("Email address")) {
+Input("Email address", text: $email) {
     Image(systemName: "envelope")
         .resizable()
         .scaledToFit()
