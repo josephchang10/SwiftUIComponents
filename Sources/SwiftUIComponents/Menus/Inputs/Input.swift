@@ -56,7 +56,7 @@ public struct Input: View {
                 .strokeBorder(.white.opacity(0.1), lineWidth: 1)
         }
         .shadowBlur(.small)
-        .frame(minWidth: 140, maxWidth: 500)
+//        .frame(minWidth: 140, maxWidth: 500)
     }
     
     var iconCircle: some View {
