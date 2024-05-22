@@ -97,20 +97,22 @@ public struct Input: View {
 
 #Preview {
     VStack(spacing: 20) {
-        Input("Email address", text: .constant("")) {
+        Input("Email address", text: .constant("Email address")) {
             Image(systemName: "envelope")
                 .resizable()
                 .scaledToFit()
+                .fontWeight(.bold)
         }
-            .frame(width: 200)
-            .environment(\.colorScheme, .light)
-        Input("Email address", text: .constant("")) {
+        .frame(width: 200)
+        .environment(\.colorScheme, .light)
+        Input("Email address", text: .constant("Email address")) {
             Image(systemName: "envelope")
                 .resizable()
                 .scaledToFit()
+                .fontWeight(.bold)
         }
-            .frame(width: 200)
-            .environment(\.colorScheme, .dark)
+        .frame(width: 200)
+        .environment(\.colorScheme, .dark)
         Input("Email address", text: .constant(""))
             .frame(width: 200)
             .environment(\.colorScheme, .dark)
