@@ -14,13 +14,14 @@ public struct Input: View {
     let icon: AnyView?
     let showLeftIcon: Bool
     let showRightIcon: Bool
+    let axis: Axis
     
     public var body: some View {
         HStack(spacing: 8) {
             if showLeftIcon {
                 iconCircle
             }
-            TextField("", text: text, prompt: Text(prompt).font(.captionRegular).foregroundStyle(.red), axis: .vertical)
+            TextField("", text: text, prompt: Text(prompt).font(.captionRegular).foregroundStyle(.red), axis: axis)
 //            TextField(prompt, text: text, axis: .vertical)
                 .textFieldStyle(.plain)
 //                .overlay(alignment: .leading) {
@@ -72,6 +73,7 @@ public struct Input: View {
         self.icon = AnyView(icon())
         self.showLeftIcon = showLeftIcon
         self.showRightIcon = showRightIcon
+        self.axis = .horizontal
     }
     
     public init(_ prompt: LocalizedStringKey, text: Binding<String>, showLeftIcon: Bool, @ViewBuilder icon: () -> some View) {
@@ -80,14 +82,16 @@ public struct Input: View {
         self.icon = AnyView(icon())
         self.showLeftIcon = showLeftIcon
         self.showRightIcon = false
+        self.axis = .horizontal
     }
     
-    public init(_ prompt: LocalizedStringKey, text: Binding<String>) {
+    public init(_ prompt: LocalizedStringKey, text: Binding<String>, axis: Axis = .horizontal) {
         self.prompt = prompt
         self.text = text
         self.icon = nil
         self.showLeftIcon = false
         self.showRightIcon = false
+        self.axis = axis
     }
 }
 
