@@ -26,7 +26,7 @@ public struct BackgroundWeb4: View {
                     .rotationEffect(.degrees(180))
                     .scaleEffect(x: 1, y: -1)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .blur(radius: .point(50))
+                    .blur(radius: .point(100))
                 Image("Background Web 4 Grid", bundle: .module)
                     .resizable()
                     .scaledToFill()
