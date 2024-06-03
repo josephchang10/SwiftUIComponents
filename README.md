@@ -428,8 +428,8 @@ Input("Email address", text: $email) {
 
 ```swift
 SegmentedMenu {
-    ButtonToggle("Menu", .small, showRightIcon: false) {}
-    ButtonToggle("Menu", .small, state: .selected) {}
+    ButtonToggle("Menu", .small, showRightIcon: false)
+    ButtonToggle("Menu", .small, state: .selected)
 }
 ```
 
