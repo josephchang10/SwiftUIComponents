@@ -21,8 +21,7 @@ public struct Input: View {
             if showLeftIcon {
                 iconCircle
             }
-            TextField("", text: text, prompt: Text(prompt).font(.captionRegular).foregroundStyle(.red), axis: axis)
-//            TextField(prompt, text: text, axis: .vertical)
+            TextField("", text: text, prompt: Text(prompt).font(.captionRegular), axis: axis)
                 .textFieldStyle(.plain)
 //                .overlay(alignment: .leading) {
 //                    if text.wrappedValue.isEmpty {
@@ -73,7 +72,7 @@ public struct Input: View {
         self.icon = AnyView(icon())
         self.showLeftIcon = showLeftIcon
         self.showRightIcon = showRightIcon
-        self.axis = .horizontal
+        axis = .horizontal
     }
     
     public init(_ prompt: LocalizedStringKey, text: Binding<String>, showLeftIcon: Bool, @ViewBuilder icon: () -> some View) {
@@ -81,8 +80,8 @@ public struct Input: View {
         self.text = text
         self.icon = AnyView(icon())
         self.showLeftIcon = showLeftIcon
-        self.showRightIcon = false
-        self.axis = .horizontal
+        showRightIcon = false
+        axis = .horizontal
     }
     
     public init(_ prompt: LocalizedStringKey, text: Binding<String>, axis: Axis = .horizontal) {
