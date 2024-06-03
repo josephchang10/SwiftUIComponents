@@ -11,6 +11,7 @@ public struct ReplyCard<Header: View>: View {
     private let buttonTitle: LocalizedStringKey
     private let header: Header
     private let text: Binding<String>
+    private let textFieldTitleKey: LocalizedStringKey
     
     public var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -32,7 +33,7 @@ public struct ReplyCard<Header: View>: View {
     }
     
     private var textField: some View {
-        TextField("", text: text, axis: .vertical)
+        TextField(textFieldTitleKey, text: text, axis: .vertical)
             .font(.footnoteRegular)
             .foregroundStyle(.foreground(.primary))
             .textFieldStyle(.plain)
@@ -46,7 +47,8 @@ public struct ReplyCard<Header: View>: View {
             }
     }
     
-    public init(text: Binding<String>, buttonTitle: LocalizedStringKey, @ViewBuilder header: () -> Header) {
+    public init(textFieldTitleKey: LocalizedStringKey, text: Binding<String>, buttonTitle: LocalizedStringKey, @ViewBuilder header: () -> Header) {
+        self.textFieldTitleKey = textFieldTitleKey
         self.text = text
         self.buttonTitle = buttonTitle
         self.header = header()
@@ -55,7 +57,7 @@ public struct ReplyCard<Header: View>: View {
 
 struct ReplyCardView: View {
     var body: some View {
-        ReplyCard(text: .constant("Yes, if you’re new to SwiftUI, I recommend taking the iOS course first since it covers more the basics and is more complete with 60 videos."), buttonTitle: "Reply to comment") {
+        ReplyCard(textFieldTitleKey: "", text: .constant("Yes, if you’re new to SwiftUI, I recommend taking the iOS course first since it covers more the basics and is more complete with 60 videos."), buttonTitle: "Reply to comment") {
             HStack(spacing: 12) {
                 AsyncImage(url: .init(string: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")) { image in
                     image
