@@ -20,6 +20,10 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 ### Navigation
 * [Menu](#Menu-2)
 ## Cards
+### Social
+* [Reply Card](#Reply-Card)
+### Image
+* [Image Card](#Image-Card)
 ### Insepctors
 * [Notification](#Notification)
 * [Insepctor Detail](#Insepctor-Detail)
@@ -430,6 +434,34 @@ SegmentedMenu {
 ```
 
 ## Cards
+### Social
+#### Reply Card
+<img width="687" alt="Screenshot 2024-06-03 at 5 46 03 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/a9f5b32b-ac23-46d2-99e1-1ecbe51a25d3">
+
+```swift
+ReplyCard(text: .constant("Yes, if you’re new to SwiftUI, I recommend taking the iOS course first since it covers more the basics and is more complete with 60 videos."), buttonTitle: "Reply to comment") {
+    HStack(spacing: 12) {
+        AsyncImage(url: .init(string: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=2680&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")) { image in
+            image
+                .resizable()
+                .scaledToFill()
+                .frame(width: 32, height: 32)
+                .clipShape(Circle())
+        } placeholder: {
+            ProgressView()
+        }
+        VStack(alignment: .leading) {
+            Text("Alexander Hipp, Designer")
+                .font(.footnoteMedium)
+                .foregroundStyle(.foreground(.primary))
+            Text("Designer at a tech startup")
+                .font(.smallMedium)
+                .foregroundStyle(.foreground(.secondary))
+        }
+    }
+}
+```
+
 ### Image
 #### Image Card
 <img width="649" alt="Screenshot 2024-04-14 at 4 27 29 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/578f419a-c741-4a5b-a839-50d38dc364e0">
