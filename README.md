@@ -13,6 +13,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Icon Circle](#Icon-Circle)
 ### Main
 * [Button Primary](#Button-Primary)
+* [Button Ghost](#Button-Ghost)
 * [Button Shiny](#Button-Shiny)
 ## Menus
 ### Inputs
@@ -370,6 +371,28 @@ HStack(alignment: .top) {
     ButtonPrimary("Primary", .extraLarge) { Image(systemName: "chevron.right") }
 }
 .environment(\.colorScheme, .dark)
+```
+
+#### Button Ghost
+<img width="463" alt="Screenshot 2024-06-07 at 1 54 45 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/d3de3e83-be3f-4837-ae48-6791b5aff200">
+
+```swift
+ButtonGhost(.small, text: "Ghost") {
+    Image(systemName: "play")
+        .fontWeight(.bold)
+}
+ButtonGhost(.medium, text: "Ghost") {
+    Image(systemName: "play")
+        .fontWeight(.bold)
+}
+ButtonGhost(.large, text: "Ghost") {
+    Image(systemName: "play")
+        .fontWeight(.bold)
+}
+ButtonGhost(.extraLarge, text: "Ghost") {
+    Image(systemName: "play")
+        .fontWeight(.bold)
+}
 ```
 
 #### Button Shiny
