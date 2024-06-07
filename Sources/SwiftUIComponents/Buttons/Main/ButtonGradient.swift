@@ -57,7 +57,6 @@ public struct ButtonGradient<RightIcon: View>: View {
     }
     
     let text: LocalizedStringKey
-    let action: () -> Void
     let size: Size
     let rightIcon: RightIcon
     
@@ -112,11 +111,10 @@ public struct ButtonGradient<RightIcon: View>: View {
             .offset(y: 10)
     }
     
-    public init(_ text: LocalizedStringKey, _ size: Size, @ViewBuilder rightIcon: () -> RightIcon, action: @escaping () -> Void) {
+    public init(_ text: LocalizedStringKey, _ size: Size, @ViewBuilder rightIcon: () -> RightIcon) {
         self.text = text
         self.rightIcon = rightIcon()
         self.size = size
-        self.action = action
     }
 }
 
@@ -124,16 +122,16 @@ public struct ButtonGradient<RightIcon: View>: View {
     HStack(spacing: 10) {
         ButtonGradient("Get Started", .small) {
             Image(systemName: "chevron.right")
-        } action: {}
+        }
         ButtonGradient("Get Started", .medium) {
             Image(systemName: "chevron.right")
-        } action: {}
+        }
         ButtonGradient("Get Started", .large) {
             Image(systemName: "chevron.right")
-        } action: {}
+        }
         ButtonGradient("Get Started", .extraLarge) {
             Image(systemName: "chevron.right")
-        } action: {}
+        }
     }
     .preferredColorScheme(.dark)
     .padding(10)
