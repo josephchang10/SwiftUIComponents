@@ -82,7 +82,34 @@ public struct ButtonGradient<RightIcon: View>: View {
                     .strokeBorder(LinearGradient(colors: [.white, .white.opacity(0.4)], startPoint: .top, endPoint: .bottom), lineWidth: 1)
                     .blendMode(.overlay)
             }
+            .background {
+                outlineGlow
+                bottomGlow
+            }
         }
+    }
+    
+    var outlineGlow: some View {
+        Image("Angular", bundle: .module)
+            .resizable()
+            .clipShape(RoundedRectangle(cornerRadius: 100))
+            .blur(radius: .point(10))
+    }
+    
+    var bottomGlow: some View {
+        Image("Angular", bundle: .module)
+            .resizable()
+            .clipShape(
+                .rect(
+                    topLeadingRadius: 0,
+                    bottomLeadingRadius: 100,
+                    bottomTrailingRadius: 100,
+                    topTrailingRadius: 0
+                )
+            )
+            .opacity(0.6)
+            .blur(radius: .point(40))
+            .offset(y: 10)
     }
     
     public init(_ text: LocalizedStringKey, _ size: Size, @ViewBuilder rightIcon: () -> RightIcon, action: @escaping () -> Void) {
@@ -108,5 +135,9 @@ public struct ButtonGradient<RightIcon: View>: View {
             Image(systemName: "chevron.right")
         } action: {}
     }
+    .preferredColorScheme(.dark)
     .padding(10)
+    .padding(10)
+//    .background(.container(.background))
+    .background(Color(red: 53 / 255, green: 53 / 255, blue: 53 / 255))
 }
