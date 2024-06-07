@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct ButtonGhost<Icon: View>: View {
+public struct ButtonGhost<Icon: View, TextView: View>: View {
     public enum Size {
         case small
         case medium
@@ -51,14 +51,26 @@ public struct ButtonGhost<Icon: View>: View {
     }
     
     private let icon: Icon
-    private let text: LocalizedStringKey
+    private var key: LocalizedStringKey?
+    private var text: String?
+    private var textView: TextView?
     private let size: Size
     
     public var body: some View {
         HStack(spacing: 8) {
             icon
-            Text(text)
-                .font(size.font)
+            Group {
+                if let key {
+                    Text(key)
+                }
+                if let text {
+                    Text(text)
+                }
+                if let textView {
+                    textView
+                }
+            }
+            .font(size.font)
         }
         .padding(.horizontal, size.horizontalPadding)
         .padding(.vertical, size.verticalPadding)
@@ -69,9 +81,21 @@ public struct ButtonGhost<Icon: View>: View {
         }
     }
     
-    public init(_ size: Size, text: LocalizedStringKey, @ViewBuilder icon: () -> Icon) {
+    public init(_ size: Size, text: LocalizedStringKey, @ViewBuilder icon: () -> Icon) where TextView == EmptyView {
+        self.size = size
+        self.key = text
+        self.icon = icon()
+    }
+    
+    public init(_ size: Size, text: String, @ViewBuilder icon: () -> Icon) where TextView == EmptyView {
         self.size = size
         self.text = text
+        self.icon = icon()
+    }
+    
+    public init(_ size: Size, @ViewBuilder text: () -> TextView, @ViewBuilder icon: () -> Icon) {
+        self.size = size
+        self.textView = text()
         self.icon = icon()
     }
 }
