@@ -15,12 +15,12 @@ struct SwiftUIComponentsView: View {
                 HeroView()
             }
             NavigationMenu("SwiftUI Components", logo: Image(systemName: "square.on.square.intersection.dashed")) {
-                ButtonToggle("Components", .medium, showRightIcon: false, font: .footnoteMedium)
-                ButtonToggle("Pricing", .medium, showRightIcon: false, font: .footnoteMedium)
-                ButtonToggle("Changelog", .medium, showRightIcon: false, font: .footnoteMedium)
+                ButtonToggle(.medium, text: "Components", showRightIcon: false, font: .footnoteMedium)
+                ButtonToggle(.medium, text: "Pricing", showRightIcon: false, font: .footnoteMedium)
+                ButtonToggle(.medium, text: "Changelog", showRightIcon: false, font: .footnoteMedium)
             } buttons: {
-                ButtonToggle("Log in", .medium, showRightIcon: false, font: .footnoteMedium)
-                ButtonToggle("Buy now", .medium, style: .glass, showRightIcon: false, font: .footnoteMedium)
+                ButtonToggle(.medium, text: "Log in", showRightIcon: false, font: .footnoteMedium)
+                ButtonToggle(.medium, text: "Buy now", style: .glass, showRightIcon: false, font: .footnoteMedium)
                     .shadowBlur(.small)
             }
             .frame(minWidth: 720, maxWidth: 860)
@@ -216,9 +216,9 @@ struct ComponentsView: View {
                     Image(systemName: "eye")
                 } action: {}
                 SegmentedControl {
-                    ButtonToggle("Glass", .small, state: .selected, showRightIcon: false)
-                    ButtonToggle("Outline", .small, showRightIcon: false)
-                    ButtonToggle("Flat", .small, showRightIcon: false)
+                    ButtonToggle(.small, text: "Glass", state: .selected, showRightIcon: false)
+                    ButtonToggle(.small, text: "Outline", showRightIcon: false)
+                    ButtonToggle(.small, text: "Flat", showRightIcon: false)
                 }
                 .padding(10)
                 .width(.full)
@@ -259,9 +259,9 @@ struct ComponentsView: View {
                 .padding(10)
                 .width(.full)
                 SegmentedControl {
-                    ButtonToggle("sm", .small, state: .selected, showRightIcon: false)
-                    ButtonToggle("md", .small, showRightIcon: false)
-                    ButtonToggle("lg", .small, showRightIcon: false)
+                    ButtonToggle(.small, text: "sm", state: .selected, showRightIcon: false)
+                    ButtonToggle(.small, text: "md", showRightIcon: false)
+                    ButtonToggle(.small, text: "lg", showRightIcon: false)
                 }
                 .padding(10)
                 .width(.full)
