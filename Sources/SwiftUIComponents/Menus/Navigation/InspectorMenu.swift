@@ -63,7 +63,7 @@ public struct InspectorMenu<Content: View>: View {
         .padding(10)
         DividerLine()
         ZStack {
-            ButtonGlow("Download") {
+            ButtonGlow(.small, text: "Download") {
                 Image(systemName: "square.and.arrow.down")
             }
         }

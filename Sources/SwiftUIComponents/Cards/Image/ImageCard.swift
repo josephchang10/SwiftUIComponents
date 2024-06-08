@@ -97,7 +97,7 @@ public struct ImageCard<Image: View, Content: View>: View {
                     .multilineTextAlignment(.center)
                     .foregroundStyle(.foreground(.secondary))
                 DividerLine()
-                ButtonGlow("Browse components") {
+                ButtonGlow(.medium, text: "Browse components") {
                     Image(systemName: "circle.grid.3x3.fill")
                 }
             }
@@ -122,7 +122,7 @@ public struct ImageCard<Image: View, Content: View>: View {
                     .multilineTextAlignment(.center)
                     .foregroundStyle(.foreground(.secondary))
                 DividerLine()
-                ButtonGlow("Browse components") {
+                ButtonGlow(.medium, text: "Browse components") {
                     Image(systemName: "circle.grid.3x3.fill")
                 }
             }

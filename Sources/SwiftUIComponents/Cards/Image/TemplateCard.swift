@@ -118,7 +118,7 @@ public struct TemplateCard<Image: View, Content: View>: View {
                 .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 .width(.full, alignment: .leading)
             DividerLine()
-            ButtonGlow("Browse templates") {
+            ButtonGlow(.medium, text: "Browse templates") {
                 Image(systemName: "circle.hexagongrid")
             }
         }
