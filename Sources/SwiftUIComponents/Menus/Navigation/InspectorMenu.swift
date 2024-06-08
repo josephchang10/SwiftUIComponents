@@ -31,46 +31,58 @@ public struct InspectorMenu<Content: View>: View {
     }
 }
 
-#Preview {
-    InspectorMenu {
-        ButtonTooltip("Pixel Density") {
-            Image(systemName: "arrow.up.backward.and.arrow.down.forward")
-        } rightIcon: {
-            Image(systemName: "chevron.down")
-        } action: {}
-        ZStack {
-            SegmentedControl {
-                ButtonToggle("1x", .small, state: .selected, showRightIcon: false)
-                ButtonToggle("2x", .small, showRightIcon: false)
-                ButtonToggle("3x", .small, showRightIcon: false)
-                ButtonToggle("4x", .small, showRightIcon: false)
+struct InsepctorMenuView: View {
+    var body: some View {
+        InspectorMenu {
+            ButtonTooltip("Pixel Density") {
+                Image(systemName: "arrow.up.backward.and.arrow.down.forward")
+            } rightIcon: {
+                Image(systemName: "chevron.down")
+            } action: {}
+            ZStack {
+                SegmentedControl {
+                    ButtonToggle("1x", .small, state: .selected, showRightIcon: false)
+                    ButtonToggle("2x", .small, showRightIcon: false)
+                    ButtonToggle("3x", .small, showRightIcon: false)
+                    ButtonToggle("4x", .small, showRightIcon: false)
+                }
             }
-        }
-        .padding(10)
-        DividerLine()
-        ButtonTooltip("Format") {
-            Image(systemName: "doc.text")
-        } rightIcon: {
-            Image(systemName: "chevron.down")
-        } action: {}
-        ZStack {
-            SegmentedControl {
-                ButtonToggle("PNG", .small, state: .selected, showRightIcon: false)
-                ButtonToggle("JPG", .small, showRightIcon: false)
-                ButtonToggle("WebP", .small, showRightIcon: false)
+            .padding(10)
+            DividerLine()
+            ButtonTooltip("Format") {
+                Image(systemName: "doc.text")
+            } rightIcon: {
+                Image(systemName: "chevron.down")
+            } action: {}
+            ZStack {
+                SegmentedControl {
+                    ButtonToggle("PNG", .small, state: .selected, showRightIcon: false)
+                    ButtonToggle("JPG", .small, showRightIcon: false)
+                    ButtonToggle("WebP", .small, showRightIcon: false)
+                }
             }
-        }
-        .padding(10)
-        DividerLine()
-        ZStack {
-            ButtonGlow(.small, text: "Download") {
-                Image(systemName: "square.and.arrow.down")
+            .padding(10)
+            DividerLine()
+            ZStack {
+                ButtonGlow(.small, text: "Download", showGlow: false) {
+                    Image(systemName: "square.and.arrow.down")
+                }
             }
+            .padding(10)
         }
-        .padding(10)
+        .frame(width: 220)
     }
-        .padding()
-        .frame(width: 250)
-        .background(.background(.secondary))
-        .background(Color(red: 30 / 255, green: 30 / 255, blue: 30 / 255))
+}
+
+#Preview {
+    HStack(spacing: 20) {
+        InsepctorMenuView()
+            .environment(\.colorScheme, .light)
+        InsepctorMenuView()
+            .environment(\.colorScheme, .dark)
+    }
+    .padding(20)
+    .padding(60)
+//    .background(.background(.secondary))
+    .background(Color(red: 53 / 255, green: 53 / 255, blue: 53 / 255))
 }
