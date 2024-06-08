@@ -35,12 +35,24 @@ public struct SegmentedControl<Content: View>: View {
     }
 }
 
-#Preview {
-    SegmentedControl {
-        ButtonToggle("Label", .small, state: .selected, showRightIcon: false)
-        ButtonToggle("Label", .small, showRightIcon: false)
+struct SegmentedControlView: View {
+    var body: some View {
+        VStack(spacing: 20) {
+            SegmentedControl {
+                ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+            }
+            SegmentedControl {
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+            }
+        }
     }
-    .padding()
-    .background(.container(.background))
-    .background(Color(red: 30/255, green: 30/255, blue: 30/255))
+}
+
+#Preview {
+    SegmentedControlView()
+        .padding(20)
+        .background(.container(.background))
+        .background(Color(red: 30/255, green: 30/255, blue: 30/255))
 }

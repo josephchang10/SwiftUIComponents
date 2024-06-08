@@ -67,9 +67,9 @@ public struct LayersMenu<Content: View>: View {
             Image(systemName: "eye")
         } action: {}
         SegmentedControl {
-            ButtonToggle("Glass", .small, state: .selected, showRightIcon: false)
-            ButtonToggle("Outline", .small, showRightIcon: false)
-            ButtonToggle("Flat", .small, showRightIcon: false)
+            ButtonToggle(.small, text: "Glass", state: .selected, showRightIcon: false)
+            ButtonToggle(.small, text: "Outline", showRightIcon: false)
+            ButtonToggle(.small, text: "Flat", showRightIcon: false)
         }
         .padding(10)
         .width(.full)
@@ -110,9 +110,9 @@ public struct LayersMenu<Content: View>: View {
         .padding(10)
         .width(.full)
         SegmentedControl {
-            ButtonToggle("sm", .small, state: .selected, showRightIcon: false)
-            ButtonToggle("md", .small, showRightIcon: false)
-            ButtonToggle("lg", .small, showRightIcon: false)
+            ButtonToggle(.small, text: "sm", state: .selected, showRightIcon: false)
+            ButtonToggle(.small, text: "md", showRightIcon: false)
+            ButtonToggle(.small, text: "lg", showRightIcon: false)
         }
         .padding(10)
         .width(.full)

@@ -35,8 +35,8 @@ public struct SegmentedMenu<Segments: View>: View {
 
 #Preview {
     SegmentedMenu {
-        ButtonToggle("Menu", .small, showRightIcon: false)
-        ButtonToggle("Menu", .small, state: .selected)
+        ButtonToggle(.small, text: "Menu", showRightIcon: false)
+        ButtonToggle(.small, text: "Menu", state: .selected)
     }
     .padding()
     .background(.container(.background))

@@ -72,12 +72,12 @@ public struct NavigationMenu<MenuContent: View, ButtonsContent: View>: View {
 
 #Preview {
     NavigationMenu("Company", logo: Image(systemName: "rays")) {
-        ButtonToggle("Product", .medium, showRightIcon: false, font: .footnoteMedium)
-        ButtonToggle("Pricing", .medium, showRightIcon: false, font: .footnoteMedium)
-        ButtonToggle("Changelog", .medium, showRightIcon: false, font: .footnoteMedium)
+        ButtonToggle(.medium, text: "Product", showRightIcon: false, font: .footnoteMedium)
+        ButtonToggle(.medium, text: "Pricing", showRightIcon: false, font: .footnoteMedium)
+        ButtonToggle(.medium, text: "Changelog", showRightIcon: false, font: .footnoteMedium)
     } buttons: {
-        ButtonToggle("Log in", .medium, showRightIcon: false, font: .footnoteMedium)
-        ButtonToggle("Sign up", .medium, style: .glass, showRightIcon: false)
+        ButtonToggle(.medium, text: "Log in", showRightIcon: false, font: .footnoteMedium)
+        ButtonToggle(.medium, text: "Sign up", style: .glass, showRightIcon: false)
             .shadowBlur(.small)
     }
     .padding(20)

@@ -92,7 +92,7 @@ public struct ButtonToggle: View {
         }
     }
     
-    public init(_ text: LocalizedStringKey, _ size: Size, state: State = .normal, style: Style = .normal, showRightIcon: Bool = true, font: Font? = nil) {
+    public init(_ size: Size, text: LocalizedStringKey, state: State = .normal, style: Style = .normal, showRightIcon: Bool = true, font: Font? = nil) {
         self.text = text
         self.showRightIcon = showRightIcon
         self.font = font
@@ -105,16 +105,16 @@ public struct ButtonToggle: View {
 #Preview {
     VStack(spacing: 20) {
         HStack(spacing: 20) {
-            ButtonToggle("Menu", .small)
-            ButtonToggle("Menu", .medium)
-            ButtonToggle("Menu", .large)
-            ButtonToggle("Menu", .extraLarge)
+            ButtonToggle(.small, text: "Menu")
+            ButtonToggle(.medium, text: "Menu")
+            ButtonToggle(.large, text: "Menu")
+            ButtonToggle(.extraLarge, text: "Menu")
         }
         HStack(spacing: 20) {
-            ButtonToggle("Menu", .small, state: .selected)
-            ButtonToggle("Menu", .medium, state: .selected)
-            ButtonToggle("Menu", .large, state: .selected)
-            ButtonToggle("Menu", .extraLarge, state: .selected)
+            ButtonToggle(.small, text: "Menu", state: .selected)
+            ButtonToggle(.medium, text: "Menu", state: .selected)
+            ButtonToggle(.large, text: "Menu", state: .selected)
+            ButtonToggle(.extraLarge, text: "Menu", state: .selected)
         }
     }
     .padding(10)
@@ -128,16 +128,16 @@ public struct ButtonToggle: View {
 #Preview {
     VStack(spacing: 20) {
         HStack(spacing: 20) {
-            ButtonToggle("Menu", .small)
-            ButtonToggle("Menu", .medium)
-            ButtonToggle("Menu", .large)
-            ButtonToggle("Menu", .extraLarge)
+            ButtonToggle(.small, text: "Menu")
+            ButtonToggle(.medium, text: "Menu")
+            ButtonToggle(.large, text: "Menu")
+            ButtonToggle(.extraLarge, text: "Menu")
         }
         HStack(spacing: 20) {
-            ButtonToggle("Menu", .small, state: .selected)
-            ButtonToggle("Menu", .medium, state: .selected)
-            ButtonToggle("Menu", .large, state: .selected)
-            ButtonToggle("Menu", .extraLarge, state: .selected)
+            ButtonToggle(.small, text: "Menu", state: .selected)
+            ButtonToggle(.medium, text: "Menu", state: .selected)
+            ButtonToggle(.large, text: "Menu", state: .selected)
+            ButtonToggle(.extraLarge, text: "Menu", state: .selected)
         }
     }
     .padding(10)
