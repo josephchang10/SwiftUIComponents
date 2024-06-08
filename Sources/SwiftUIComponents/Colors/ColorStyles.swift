@@ -32,6 +32,7 @@ public extension Color {
 public enum ContainerColorStyle {
     case background
     case border
+    case borderSecondary
     case divider
 }
 
@@ -136,8 +137,23 @@ public extension ShapeStyle where Self == AnyShapeStyle {
             AnyShapeStyle(ContainerBackground())
         case .border:
             AnyShapeStyle(ContainerBorderShapeStyle())
+        case .borderSecondary:
+            AnyShapeStyle(.white.opacity(0.2))
         case .divider:
             AnyShapeStyle(ContainerDividerShapeStyle())
+        }
+    }
+}
+
+public enum ButtonColorStyle {
+    case inactive
+}
+
+public extension ShapeStyle where Self == Color {
+    static func button(_ colorStyle: ButtonColorStyle) -> Self {
+        switch colorStyle {
+        case .inactive:
+            .black.opacity(0.2)
         }
     }
 }
