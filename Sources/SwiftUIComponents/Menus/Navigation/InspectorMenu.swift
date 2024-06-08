@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import TailwindSwiftUI
 
 public struct InspectorMenu<Content: View>: View {
     let content: Content
+    let shadow: AnyViewModifier
     
     public var body: some View {
         VStack(spacing: 4) {
@@ -23,11 +25,12 @@ public struct InspectorMenu<Content: View>: View {
                 .inset(by: 0.5)
                 .stroke(.container(.border), lineWidth: /*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
         }
-        .shadowBlurStrong(.extraLarge)
+        .modifier(shadow)
     }
     
-    public init(@ViewBuilder content: () -> Content) {
+    public init(shadow: some ViewModifier = .shadowBlurStrong(.extraLarge), @ViewBuilder content: () -> Content) {
         self.content = content()
+        self.shadow = AnyViewModifier(shadow)
     }
 }
 

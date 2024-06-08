@@ -69,11 +69,21 @@ public struct ShadowBlur: ViewModifier {
 //                }
         }
     }
+    
+    public init(_ size: Size) {
+        self.size = size
+    }
+}
+
+public extension ViewModifier where Self == ShadowBlur {
+    static func shadowBlur(_ size: ShadowBlur.Size) -> Self {
+        .init(size)
+    }
 }
 
 public extension View {
     func shadowBlur(_ size: ShadowBlur.Size) -> some View {
-        modifier(ShadowBlur(size: size))
+        modifier(ShadowBlur(size))
     }
 }
 
@@ -139,11 +149,21 @@ public struct ShadowBlurStrong: ViewModifier {
 //                }
         }
     }
+    
+    public init(_ size: Size) {
+        self.size = size
+    }
+}
+
+public extension ViewModifier where Self == ShadowBlurStrong {
+    static func shadowBlurStrong(_ size: ShadowBlurStrong.Size) -> Self {
+        .init(size)
+    }
 }
 
 public extension View {
     func shadowBlurStrong(_ size: ShadowBlurStrong.Size) -> some View {
-        modifier(ShadowBlurStrong(size: size))
+        modifier(ShadowBlurStrong(size))
     }
 }
 
