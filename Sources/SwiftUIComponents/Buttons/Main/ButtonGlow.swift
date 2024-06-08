@@ -53,6 +53,7 @@ public struct ButtonGlow<Icon: View>: View {
     private let borderWidth: CGFloat
     private let icon: Icon
     private let text: LocalizedStringKey
+    private let showGlow: Bool
     private let size: Size
     
     public var body: some View {
@@ -63,7 +64,11 @@ public struct ButtonGlow<Icon: View>: View {
         .font(size.font)
         .padding(.horizontal, size.horizontalPadding)
         .padding(.vertical, size.verticalPadding)
-        .background(glow)
+        .background {
+            if showGlow {
+                glow
+            }
+        }
         .background {
             RoundedRectangle(cornerRadius: 8)
                 .fill(.container(.background))
@@ -75,8 +80,16 @@ public struct ButtonGlow<Icon: View>: View {
                 .strokeBorder(.container(.border), lineWidth: borderWidth)
         }
         .shadowBlur(.small)
-        .background(backgroundGlow)
-        .overlay(outline)
+        .background {
+            if showGlow {
+                backgroundGlow
+            }
+        }
+        .overlay {
+            if showGlow {
+                outline
+            }
+        }
     }
     
     var backgroundGlow: some View {
@@ -103,9 +116,10 @@ public struct ButtonGlow<Icon: View>: View {
             .blendMode(.overlay)
     }
     
-    public init(_ size: Size, text: LocalizedStringKey, borderWidth: CGFloat = 1, @ViewBuilder icon: () -> Icon) {
+    public init(_ size: Size, text: LocalizedStringKey, showGlow: Bool = true, borderWidth: CGFloat = 1, @ViewBuilder icon: () -> Icon) {
         self.size = size
         self.text = text
+        self.showGlow = showGlow
         self.icon = icon()
         self.borderWidth = borderWidth
     }
