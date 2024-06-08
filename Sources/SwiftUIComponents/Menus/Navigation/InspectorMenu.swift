@@ -18,7 +18,7 @@ public struct InspectorMenu<Content: View>: View {
         }
         .padding(10)
         .frame(maxWidth: 560)
-        .background(.thinMaterial)
+        .background(.thickMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .overlay {
             RoundedRectangle(cornerRadius: 10)
