@@ -14,6 +14,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 ### Main
 * [Button Primary](#Button-Primary)
 * [Button Ghost](#Button-Ghost)
+* [Button Glow](#Button-Glow)
 * [Button Shiny](#Button-Shiny)
 * [Button Gradient](#Button-Gradient)
 ## Menus
@@ -395,6 +396,25 @@ ButtonGhost(.extraLarge, text: "Ghost") {
         .fontWeight(.bold)
 }
 ```
+
+#### Button Glow
+<img width="449" alt="Screenshot 2024-06-08 at 11 36 20 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/a761b91a-7e45-4852-9d65-a109664a769d">
+
+```swift
+ButtonGlow(.small, text: "Glow") {
+    Image(systemName: "chevron.right")
+}
+ButtonGlow(.medium, text: "Glow") {
+    Image(systemName: "chevron.right")
+}
+ButtonGlow(.large, text: "Glow") {
+    Image(systemName: "chevron.right")
+}
+ButtonGlow(.extraLarge, text: "Glow") {
+    Image(systemName: "chevron.right")
+}
+```
+
 
 #### Button Shiny
 <img width="480" alt="Screenshot 2024-04-15 at 5 42 39 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/fb1b2d31-32b0-4ee3-bb92-6851a51c5491">
