@@ -22,6 +22,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Input](#Input)
 ### Navigation
 * [Menu](#Menu-2)
+* [Inspector Menu](#Inspector-Menu)
 ## Cards
 ### Social
 * [Reply Card](#Reply-Card)
@@ -492,6 +493,49 @@ Input("Email address", text: $email) {
 SegmentedMenu {
     ButtonToggle("Menu", .small, showRightIcon: false)
     ButtonToggle("Menu", .small, state: .selected)
+}
+```
+
+#### Inspector Menu
+<img width="548" alt="Screenshot 2024-06-08 at 12 52 12 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/5096a49b-b6f0-48c3-a59e-4994a35d0166">
+
+```swift
+InspectorMenu {
+    ButtonTooltip("Pixel Density") {
+        Image(systemName: "arrow.up.backward.and.arrow.down.forward")
+    } rightIcon: {
+        Image(systemName: "chevron.down")
+    } action: {}
+    ZStack {
+        SegmentedControl {
+            ButtonToggle("1x", .small, state: .selected, showRightIcon: false)
+            ButtonToggle("2x", .small, showRightIcon: false)
+            ButtonToggle("3x", .small, showRightIcon: false)
+            ButtonToggle("4x", .small, showRightIcon: false)
+        }
+    }
+    .padding(10)
+    DividerLine()
+    ButtonTooltip("Format") {
+        Image(systemName: "doc.text")
+    } rightIcon: {
+        Image(systemName: "chevron.down")
+    } action: {}
+    ZStack {
+        SegmentedControl {
+            ButtonToggle("PNG", .small, state: .selected, showRightIcon: false)
+            ButtonToggle("JPG", .small, showRightIcon: false)
+            ButtonToggle("WebP", .small, showRightIcon: false)
+        }
+    }
+    .padding(10)
+    DividerLine()
+    ZStack {
+        ButtonGlow(.small, text: "Download", showGlow: false) {
+            Image(systemName: "square.and.arrow.down")
+        }
+    }
+    .padding(10)
 }
 ```
 
