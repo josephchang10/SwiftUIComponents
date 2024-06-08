@@ -18,6 +18,8 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Button Shiny](#Button-Shiny)
 * [Button Gradient](#Button-Gradient)
 ## Menus
+### New
+* [Slider](#Slider)
 ### Inputs
 * [Input](#Input)
 ### Navigation
@@ -474,6 +476,32 @@ ButtonGradient("Get Started", .extraLarge) {
 ```
 
 ## Menus
+### New
+#### Slider
+<img width="390" alt="Screenshot 2024-06-09 at 12 15 31 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/a9ff7391-5156-443b-8ed8-db92c0330582">
+
+```swift
+struct SliderPreview: View {
+    @State private var value = 0.5
+    
+    var body: some View {
+        SliderView(value: $value, label: "CA$ \(Int(value * 6000))") {
+            HStack {
+                Text("Up to CA$6000")
+                Spacer()
+                Button("Clear") {
+                    value = 0.5
+                }
+                .buttonStyle(.plain)
+            }
+            .font(.captionMedium)
+            .foregroundStyle(.foreground(.primary))
+        }
+        .frame(width: 320)
+    }
+}
+```
+
 ### Inputs
 #### Input
 <img width="229" alt="Screenshot 2024-05-23 at 12 10 22 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/42fe138d-a0bc-46e1-a696-57668f1d9760">
