@@ -37,12 +37,86 @@ public struct SegmentedControl<Content: View>: View {
 
 struct SegmentedControlView: View {
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(alignment: .leading, spacing: 20) {
             SegmentedControl {
                 ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
                 ButtonToggle(.small, text: "Label", showRightIcon: false)
             }
             SegmentedControl {
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+            }
+            SegmentedControl {
+                ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+            }
+            SegmentedControl {
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+            }
+            SegmentedControl {
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+            }
+            SegmentedControl {
+                ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+            }
+            SegmentedControl {
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+            }
+            SegmentedControl {
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+            }
+            SegmentedControl {
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+            }
+            SegmentedControl {
+                ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+            }
+            SegmentedControl {
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+            }
+            SegmentedControl {
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+            }
+            SegmentedControl {
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+            }
+            SegmentedControl {
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
+                ButtonToggle(.small, text: "Label", showRightIcon: false)
                 ButtonToggle(.small, text: "Label", showRightIcon: false)
                 ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
             }
@@ -51,8 +125,14 @@ struct SegmentedControlView: View {
 }
 
 #Preview {
-    SegmentedControlView()
-        .padding(20)
-        .background(.container(.background))
-        .background(Color(red: 30/255, green: 30/255, blue: 30/255))
+    HStack(spacing: 20) {
+        SegmentedControlView()
+            .environment(\.colorScheme, .light)
+        SegmentedControlView()
+            .environment(\.colorScheme, .dark)
+    }
+    .frame(width: 700, height: 700)
+    .padding(20)
+//    .background(.container(.background))
+    .background(Color(red: 53/255, green: 53/255, blue: 53/255))
 }
