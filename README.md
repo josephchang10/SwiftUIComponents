@@ -23,6 +23,8 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 ### Navigation
 * [Menu](#Menu-2)
 * [Inspector Menu](#Inspector-Menu)
+### Segmented Controls
+* [Segmented Control](#Segmented-Control)
 ## Cards
 ### Social
 * [Reply Card](#Reply-Card)
@@ -538,6 +540,95 @@ InspectorMenu {
     .padding(10)
 }
 ```
+
+### Segmented Controls
+<img width="692" alt="Screenshot 2024-06-08 at 2 39 25 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/39b0df9b-3eca-4291-b09d-16e02fb2e602">
+
+```swift
+SegmentedControl {
+    ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+}
+SegmentedControl {
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+}
+SegmentedControl {
+    ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+}
+SegmentedControl {
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+}
+SegmentedControl {
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+}
+SegmentedControl {
+    ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+}
+SegmentedControl {
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+}
+SegmentedControl {
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+}
+SegmentedControl {
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+}
+SegmentedControl {
+    ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+}
+SegmentedControl {
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+}
+SegmentedControl {
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+}
+SegmentedControl {
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+}
+SegmentedControl {
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", showRightIcon: false)
+    ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+}
+```
+
 
 ## Cards
 ### Social
