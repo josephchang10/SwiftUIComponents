@@ -542,6 +542,7 @@ InspectorMenu {
 ```
 
 ### Segmented Controls
+#### Segmented Control
 <img width="692" alt="Screenshot 2024-06-08 at 2 39 25 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/39b0df9b-3eca-4291-b09d-16e02fb2e602">
 
 ```swift
