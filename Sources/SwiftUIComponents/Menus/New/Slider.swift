@@ -7,35 +7,41 @@
 
 import SwiftUI
 
-public struct SliderView<Content: View, Value: BinaryFloatingPoint>: View where Value.Stride : BinaryFloatingPoint {
+public struct SliderView<Content: View, V: BinaryFloatingPoint>: View where V.Stride : BinaryFloatingPoint {
     private let content: Content
     private let labelText: String?
-    @Binding private var value: Value
+    @Binding private var value: V
+    private let bounds: ClosedRange<V>
     
     public var body: some View {
         VStack(spacing: 10) {
             content
-            ProgressBar(value: $value, labelText: labelText)
+            ProgressBar(value: $value, in: bounds, labelText: labelText)
                 .frame(height: 12)
         }
         .padding(.vertical, 10)
     }
     
-    public init(value: Binding<Value>, label: String? = nil, @ViewBuilder content: () -> Content) {
+    public init(value: Binding<V>, in bounds: ClosedRange<V> = 0...1, label: String? = nil, @ViewBuilder content: () -> Content) {
         _value = value
+        self.bounds = bounds
         labelText = label
         self.content = content()
     }
 }
 
-struct ProgressBar<Value: BinaryFloatingPoint>: View where Value.Stride : BinaryFloatingPoint {
-    @Binding var value: Value
-    let labelText: String?
+public struct ProgressBar<V: BinaryFloatingPoint>: View where V.Stride : BinaryFloatingPoint {
+    @Binding private var value: V
+    private let bounds: ClosedRange<V>
+    private let labelText: String?
     
-    @State private var labelSize: CGSize = .zero
     @State private var lastCoordinateValue: CGFloat = 0
     
-    var body: some View {
+    private var percentageValue: CGFloat {
+        CGFloat((value - bounds.lowerBound) / (bounds.upperBound - bounds.lowerBound))
+    }
+    
+    public var body: some View {
         GeometryReader { gr in
             let thumbSize: CGFloat = 18
             let radius: CGFloat = 3
@@ -63,26 +69,26 @@ struct ProgressBar<Value: BinaryFloatingPoint>: View where Value.Stride : Binary
                                     .stroke(LinearGradient(colors: [.white.opacity(0.1), .black.opacity(0.3)], startPoint: .init(x: 0.1, y: 0.1), endPoint: .init(x: 1.1, y: 1.1)), lineWidth: 0.5)
                             }
                             .frame(width: thumbSize, height: thumbSize)
-                            .offset(x: CGFloat(value) * (maxValue - minValue) + minValue)
+                            .overlay(alignment: .bottom) {
+                                label
+                                    .fixedSize()
+                                    .offset(y: -30)
+                            }
+                            .offset(x: percentageValue * (maxValue - minValue) + minValue)
                             .gesture (
                                 DragGesture(minimumDistance: 0)
                                     .onChanged { v in
                                         if (abs(v.translation.width) < 0.1) {
-                                            self.lastCoordinateValue = (maxValue - minValue) * CGFloat(value) + minValue
+                                            self.lastCoordinateValue = (maxValue - minValue) * percentageValue + minValue
                                         }
                                         if v.translation.width > 0 {
-                                            value = Value((min(maxValue, lastCoordinateValue + v.translation.width) - minValue) / (maxValue - minValue))
+                                            value = V((min(maxValue, lastCoordinateValue + v.translation.width) - minValue) / (maxValue - minValue)) * (bounds.upperBound - bounds.lowerBound) + bounds.lowerBound
                                         } else {
-                                            value = Value((Swift.max(minValue, lastCoordinateValue + v.translation.width) - minValue) / (maxValue - minValue))
+                                            value = V((Swift.max(minValue, lastCoordinateValue + v.translation.width) - minValue) / (maxValue - minValue)) * (bounds.upperBound - bounds.lowerBound) + bounds.lowerBound
                                         }
                                         
                                     }
                             )
-                    }
-                    .overlay(alignment: .bottomLeading) {
-                        label
-                            .offset(y: -23)
-                            .offset(x: CGFloat(value) * (maxValue - minValue) + minValue - labelSize.width / 2 + thumbSize / 2)
                     }
             }
         }
@@ -95,38 +101,46 @@ struct ProgressBar<Value: BinaryFloatingPoint>: View where Value.Stride : Binary
                     .font(.smallMedium)
                     .foregroundStyle(.white)
                     .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
+                    .padding(.vertical, 5)
                     .background {
                         GeometryReader { proxy in
                             Capsule()
                                 .fill(Color(red: 76 / 255, green: 137 / 255, blue: 1))
-                                .onAppear { labelSize = proxy.size }
                         }
                     }
-                    .overlay(alignment: .bottom) {
-                        Triangle()
-                            .fill(Color(red: 76 / 255, green: 137 / 255, blue: 1))
-                            .frame(width: labelSize.width / 4, height: 10)
-                            .rotationEffect(.degrees(180))
-                            .offset(y: 8)
+                    .overlay {
+                        GeometryReader { proxy in
+                            Triangle()
+                                .fill(Color(red: 76 / 255, green: 137 / 255, blue: 1))
+                                .frame(width: proxy.size.width / 4, height: 10)
+                                .rotationEffect(.degrees(180))
+                                .offset(y: 8)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                        }
                     }
             } else {
                 EmptyView()
             }
         }
     }
+    
+    public init(value: Binding<V>, in bounds: ClosedRange<V>, labelText: String?) {
+        _value = value
+        self.bounds = bounds
+        self.labelText = labelText
+    }
 }
 
 struct SliderPreview: View {
-    @State private var value = 0.5
+    @State private var value = 3000.0
     
     var body: some View {
-        SliderView(value: $value, label: "CA$ \(Int(value * 6000))") {
+        SliderView(value: $value, in: 0...6000, label: "CA$ \(Int(value))") {
             HStack {
                 Text("Up to CA$6000")
                 Spacer()
                 Button("Clear") {
-                    value = 0.5
+                    value = 3000
                 }
                 .buttonStyle(.plain)
             }

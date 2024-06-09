@@ -27,36 +27,125 @@ public struct FiltersCard<Content: View>: View {
     }
 }
 
-#Preview {
-    FiltersCard {
-        HStack(alignment: .firstTextBaseline) {
-            Text("Filters")
-                .font(.headlineMedium)
-                .width(.full, alignment: .leading)
-            Text("Reset")
-                .font(.bodyMedium)
+struct FiltersCardView: View {
+    @State private var price = 4000.0
+    
+    var body: some View {
+        FiltersCard {
+            HStack(alignment: .firstTextBaseline) {
+                Text("Filters")
+                    .font(.headlineMedium)
+                    .width(.full, alignment: .leading)
+                Text("Reset")
+                    .font(.bodyMedium)
+            }
+            .foregroundStyle(.foreground(.primary))
+            .padding(.horizontal, 10)
+            .padding(.vertical, 20)
+            Separator()
+            HStack {
+                Text("Sort by")
+                    .width(.full, alignment: .leading)
+                Image(systemName: "chevron.down")
+            }
+            .font(.bodyLargeMedium)
+            .foregroundStyle(.foreground(.primary))
+            .padding(10)
+            Separator()
+            VStack(spacing: 10) {
+                Text("Stops")
+                    .font(.bodyLargeMedium)
+                    .foregroundStyle(.foreground(.primary))
+                    .width(.full, alignment: .leading)
+                VStack(spacing: 0) {
+                    HStack(spacing: 10) {
+                        ZStack {
+                            Circle()
+                                .fill(Color(red: 76 / 255, green: 137 / 255, blue: 1))
+                                .frame(width: 10)
+                            Circle()
+                                .inset(by: 0.5)
+                                .stroke(.foreground(.secondary), lineWidth: 1)
+                        }
+                        .frame(width: 16, height: 16)
+                        .padding(4)
+                        Text("Any number of stops")
+                            .font(.bodyRegular)
+                            .foregroundStyle(.foreground(.secondary))
+                            .width(.full, alignment: .leading)
+                    }
+                    .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
+                    HStack(spacing: 10) {
+                        ZStack {
+                            Circle()
+                                .inset(by: 0.5)
+                                .stroke(.foreground(.secondary), lineWidth: 1)
+                        }
+                        .frame(width: 16, height: 16)
+                        .padding(4)
+                        Text("Nonstop only")
+                            .font(.bodyRegular)
+                            .foregroundStyle(.foreground(.secondary))
+                            .width(.full, alignment: .leading)
+                    }
+                    .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
+                    HStack(spacing: 10) {
+                        ZStack {
+                            Circle()
+                                .inset(by: 0.5)
+                                .stroke(.foreground(.secondary), lineWidth: 1)
+                        }
+                        .frame(width: 16, height: 16)
+                        .padding(4)
+                        Text("1 stop or fewer")
+                            .font(.bodyRegular)
+                            .foregroundStyle(.foreground(.secondary))
+                            .width(.full, alignment: .leading)
+                    }
+                    .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
+                    HStack(spacing: 10) {
+                        ZStack {
+                            Circle()
+                                .inset(by: 0.5)
+                                .stroke(.foreground(.secondary), lineWidth: 1)
+                        }
+                        .frame(width: 16, height: 16)
+                        .padding(4)
+                        Text("2 stops or fewer")
+                            .font(.bodyRegular)
+                            .foregroundStyle(.foreground(.secondary))
+                            .width(.full, alignment: .leading)
+                    }
+                    .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
+                }
+            }
+            .padding(10)
+            Separator()
+            VStack(spacing: 10) {
+                Text("Price")
+                    .font(.bodyLargeMedium)
+                    .foregroundStyle(.foreground(.primary))
+                    .width(.full, alignment: .leading)
+                SliderView(value: $price, in: 0...6000, label: "CA$ \(Int(price))") {
+                    HStack {
+                        Text("Up to CA$6000")
+                        Spacer()
+                        Button("Clear") {
+                            price = 4000
+                        }
+                        .buttonStyle(.plain)
+                    }
+                    .font(.captionMedium)
+                    .foregroundStyle(.foreground(.primary))
+                }
+            }
+            .padding(10)
         }
-        .foregroundStyle(.foreground(.primary))
-        .padding(.horizontal, 10)
-        .padding(.vertical, 20)
-        Separator()
-        HStack {
-            Text("Sort by")
-                .width(.full, alignment: .leading)
-            Image(systemName: "chevron.down")
-        }
-        .font(.bodyLargeMedium)
-        .foregroundStyle(.foreground(.primary))
-        .padding(10)
-        Separator()
-        VStack(spacing: 10) {
-            Text("Stops")
-                .font(.bodyLargeMedium)
-                .foregroundStyle(.foreground(.primary))
-                .width(.full, alignment: .leading)
-        }
-        .padding(10)
+        .frame(width: 360)
     }
-    .frame(width: 360)
-    .padding(60)
+}
+
+#Preview {
+    FiltersCardView()
+        .padding(60)
 }
