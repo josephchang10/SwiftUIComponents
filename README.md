@@ -482,15 +482,15 @@ ButtonGradient("Get Started", .extraLarge) {
 
 ```swift
 struct SliderPreview: View {
-    @State private var value = 0.5
+    @State private var value = 3000.0
     
     var body: some View {
-        SliderView(value: $value, label: "CA$ \(Int(value * 6000))") {
+        SliderView(value: $value, in: 0...6000, label: "CA$ \(Int(value))") {
             HStack {
                 Text("Up to CA$6000")
                 Spacer()
                 Button("Clear") {
-                    value = 0.5
+                    value = 3000
                 }
                 .buttonStyle(.plain)
             }
