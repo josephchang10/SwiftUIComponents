@@ -23,7 +23,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Stepper](#Stepper)
 ### Inputs
 * [Input](#Input)
-* [Switch[(#Switch)
+* [Switch](#Switch)
 ### Navigation
 * [Menu](#Menu-2)
 * [Inspector Menu](#Inspector-Menu)
