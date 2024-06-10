@@ -23,6 +23,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Stepper](#Stepper)
 ### Inputs
 * [Input](#Input)
+* [Switch[(#Switch)
 ### Navigation
 * [Menu](#Menu-2)
 * [Inspector Menu](#Inspector-Menu)
@@ -527,6 +528,20 @@ Input("Email address", text: $email) {
         .resizable()
         .scaledToFit()
         .fontWeight(.bold)
+}
+```
+
+#### Switch
+![](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/831c2abc-65c2-4b74-bfd1-69b2dbeca336)
+![](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/79d17274-65a2-4805-b4a7-f0478d168d81)
+
+```swift
+struct SwitchView: View {
+    @State private var isOn = false
+    
+    var body: some View {
+        Switch(isOn: $isOn)
+    }
 }
 ```
 
