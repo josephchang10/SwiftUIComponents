@@ -20,6 +20,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 ## Menus
 ### New
 * [Slider](#Slider)
+* [Stepper](#Stepper)
 ### Inputs
 * [Input](#Input)
 ### Navigation
@@ -477,6 +478,19 @@ ButtonGradient("Get Started", .extraLarge) {
 
 ## Menus
 ### New
+#### Stepper
+<img width="157" alt="Screenshot 2024-06-10 at 11 27 02 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/a21e5297-9cef-4ff6-b2d6-9e3fd6f6c99b">
+
+```swift
+struct StepperPreview: View {
+    @State private var value = 1
+    
+    var body: some View {
+        StepperView(value: $value)
+    }
+}
+```
+
 #### Slider
 <img width="390" alt="Screenshot 2024-06-09 at 12 15 31 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/a9ff7391-5156-443b-8ed8-db92c0330582">
 
