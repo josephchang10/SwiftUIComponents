@@ -17,7 +17,7 @@ public struct SegmentedControl<Content: View>: View {
             Group {
                 content
             }
-            .shadowBlur(.small)
+            .shadowBlurSubtle(.small)
         }
         .padding(3)
         .background {
