@@ -28,6 +28,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Inspector Menu](#Inspector-Menu)
 ### Segmented Controls
 * [Segmented Control](#Segmented-Control)
+* [Toggle](#Toggle)
 ## Cards
 ### Social
 * [Reply Card](#Reply-Card)
@@ -672,6 +673,223 @@ SegmentedControl {
 }
 ```
 
+#### Toggle
+<img width="559" alt="Screenshot 2024-06-10 at 11 51 14 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/29707456-fb7b-4846-87d5-8106a2069800">
+
+```swift
+HStack(spacing: 20) {
+    ToggleView {
+        ButtonCircle(.small, state: .selected) {
+            Image(systemName: "moon")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "display")
+                .symbolRenderingMode(.monochrome)
+        }
+    }
+    ToggleView {
+        ButtonCircle(.small) {
+            Image(systemName: "moon")
+        }
+        ButtonCircle(.small, state: .selected) {
+            Image(systemName: "display")
+                .symbolRenderingMode(.monochrome)
+        }
+    }
+    ToggleView {
+        ButtonCircle(.small, state: .selected) {
+            Image(systemName: "moon")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "display")
+                .symbolRenderingMode(.monochrome)
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "sun.max")
+        }
+    }
+    ToggleView {
+        ButtonCircle(.small) {
+            Image(systemName: "moon")
+        }
+        ButtonCircle(.small, state: .selected) {
+            Image(systemName: "display")
+                .symbolRenderingMode(.monochrome)
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "sun.max")
+        }
+    }
+    ToggleView {
+        ButtonCircle(.small) {
+            Image(systemName: "moon")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "display")
+                .symbolRenderingMode(.monochrome)
+        }
+        ButtonCircle(.small, state: .selected) {
+            Image(systemName: "sun.max")
+        }
+    }
+}
+HStack(spacing: 20) {
+    ToggleView {
+        ButtonCircle(.small, state: .selected) {
+            Image(systemName: "moon")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "display")
+                .symbolRenderingMode(.monochrome)
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "sun.max")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "wand.and.rays.inverse")
+        }
+    }
+    ToggleView {
+        ButtonCircle(.small) {
+            Image(systemName: "moon")
+        }
+        ButtonCircle(.small, state: .selected) {
+            Image(systemName: "display")
+                .symbolRenderingMode(.monochrome)
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "sun.max")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "wand.and.rays.inverse")
+        }
+    }
+    ToggleView {
+        ButtonCircle(.small) {
+            Image(systemName: "moon")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "display")
+                .symbolRenderingMode(.monochrome)
+        }
+        ButtonCircle(.small, state: .selected) {
+            Image(systemName: "sun.max")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "wand.and.rays.inverse")
+        }
+    }
+}
+HStack(spacing: 20) {
+    ToggleView {
+        ButtonCircle(.small) {
+            Image(systemName: "moon")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "display")
+                .symbolRenderingMode(.monochrome)
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "sun.max")
+        }
+        ButtonCircle(.small, state: .selected) {
+            Image(systemName: "wand.and.rays.inverse")
+        }
+    }
+    ToggleView {
+        ButtonCircle(.small, state: .selected) {
+            Image(systemName: "moon")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "display")
+                .symbolRenderingMode(.monochrome)
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "sun.max")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "wand.and.rays.inverse")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "person")
+        }
+    }
+    ToggleView {
+        ButtonCircle(.small) {
+            Image(systemName: "moon")
+        }
+        ButtonCircle(.small, state: .selected) {
+            Image(systemName: "display")
+                .symbolRenderingMode(.monochrome)
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "sun.max")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "wand.and.rays.inverse")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "person")
+        }
+    }
+}
+HStack(spacing: 20) {
+    ToggleView {
+        ButtonCircle(.small) {
+            Image(systemName: "moon")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "display")
+                .symbolRenderingMode(.monochrome)
+        }
+        ButtonCircle(.small, state: .selected) {
+            Image(systemName: "sun.max")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "wand.and.rays.inverse")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "person")
+        }
+    }
+    ToggleView {
+        ButtonCircle(.small) {
+            Image(systemName: "moon")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "display")
+                .symbolRenderingMode(.monochrome)
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "sun.max")
+        }
+        ButtonCircle(.small, state: .selected) {
+            Image(systemName: "wand.and.rays.inverse")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "person")
+        }
+    }
+    ToggleView {
+        ButtonCircle(.small) {
+            Image(systemName: "moon")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "display")
+                .symbolRenderingMode(.monochrome)
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "sun.max")
+        }
+        ButtonCircle(.small) {
+            Image(systemName: "wand.and.rays.inverse")
+        }
+        ButtonCircle(.small, state: .selected) {
+            Image(systemName: "person")
+        }
+    }
+}
+```
 
 ## Cards
 ### Social
