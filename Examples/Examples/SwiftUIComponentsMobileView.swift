@@ -41,7 +41,7 @@ struct SwiftUIComponentsMobileView: View {
     
     var textBlock: some View {
         VStack(alignment: .leading, spacing: 20) {
-            ButtonPrimary("Buy at 50% off", .small) { Image(systemName: "chevron.right") }
+            ButtonPrimary(.small, title: "Buy at 50% off") { Image(systemName: "chevron.right") }
             Text("Build a beautiful, funcitonal app with SwiftUI components")
                 .font(.heading3)
             Text("A vast, dynamic design system with hundreds of customizable UI components and templates, ready for SwiftUI deployment and meticulously organized with parameters, variants and adaptive layouts. Made from decades of pushing pixels.")

@@ -116,7 +116,7 @@ struct NotificationView: View {
                     .font(.captionRegular)
                     .foregroundStyle(.foreground(.secondary))
                 Spacer()
-                ButtonPrimary("Mark all as read", .small)
+                ButtonPrimary(.small, title: "Mark all as read")
             }
         }
         .frame(width: 300)

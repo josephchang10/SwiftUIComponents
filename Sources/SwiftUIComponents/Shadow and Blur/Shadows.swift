@@ -167,11 +167,101 @@ public extension View {
     }
 }
 
+public struct ShadowBlurSubtle: ViewModifier {
+    public enum Size {
+        case small
+        case medium
+        case large
+        case extraLarge
+    }
+    
+    let size: Size
+    
+    public func body(content: Content) -> some View {
+        switch size {
+        case .small:
+            content
+                .compositingGroup()
+                .shadow(color: .black.opacity(0.03), radius: 1, y: 1)
+                .shadow(color: .black.opacity(0.1), radius: 2)
+                .shadow(color: .black.opacity(0.03), radius: 5, y: 5)
+                // Workaround: Background blur not supported in SwiftUI
+                .background {
+                    Rectangle()
+                        .fill(.ultraThinMaterial)
+                        .blur(radius: 20)
+                }
+        case .medium:
+            content
+                .compositingGroup()
+                .shadow(color: .black.opacity(0.03), radius: 2, y: 1)
+                .shadow(color: .black.opacity(0.05), radius: 4, y: 4)
+                .shadow(color: .black.opacity(0.05), radius: 8, y: 8)
+                // Workaround: Background blur not supported in SwiftUI
+                .background {
+                    Rectangle()
+                        .fill(.ultraThinMaterial)
+                        .blur(radius: 20)
+                }
+        case .large:
+            content
+                .compositingGroup()
+                .shadow(color: .black.opacity(0.03), radius: 0, y: 1)
+                .shadow(color: .black.opacity(0.05), radius: 6, y: 6)
+                .shadow(color: .black.opacity(0.05), radius: 10, y: 10)
+                // Workaround: Background blur not supported in SwiftUI
+                .background {
+                    Rectangle()
+                        .fill(.ultraThinMaterial)
+                        .blur(radius: 20)
+                }
+        case .extraLarge:
+            content
+                .compositingGroup()
+                .shadow(color: .black.opacity(0.03), radius: 0, y: 1)
+                .shadow(color: .black.opacity(0.05), radius: 8, y: 8)
+                .shadow(color: .black.opacity(0.06), radius: 12, y: 12)
+                // Workaround: Background blur not supported in SwiftUI
+                .background {
+                    Rectangle()
+                        .fill(.ultraThinMaterial)
+                        .blur(radius: 20)
+                }
+        }
+    }
+    
+    public init(_ size: Size) {
+        self.size = size
+    }
+}
+
+public extension ViewModifier where Self == ShadowBlurSubtle {
+    static func shadowBlurSubtle(_ size: ShadowBlurSubtle.Size) -> Self {
+        .init(size)
+    }
+}
+
+public extension View {
+    func shadowBlurSubtle(_ size: ShadowBlurSubtle.Size) -> some View {
+        modifier(ShadowBlurSubtle(size))
+    }
+}
+
 struct ShadowsView: View {
     var body: some View {
-        VStack {
-            ButtonPrimary("regular sm", .small) { Image(systemName: "chevron.right") }
+        HStack(spacing: 30) {
+            VStack(spacing: 30) {
+                ButtonPrimary(.medium, title: "subtle sm") {
+                    Image(systemName: "chevron.right")
+                }
+                .shadowBlurSubtle(.small)
+            }
+             VStack(spacing: 30) {
+                 ButtonPrimary(.small, title: "regular sm") {
+                     Image(systemName: "chevron.right")
+                 }
                 .shadowBlur(.small)
+            }
         }
     }
 }

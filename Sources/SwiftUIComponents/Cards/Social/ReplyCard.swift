@@ -17,7 +17,7 @@ public struct ReplyCard<Header: View>: View {
         VStack(alignment: .leading, spacing: 12) {
             header
             textField
-            ButtonPrimary(buttonTitle, .medium) {
+            ButtonPrimary(.medium, title: buttonTitle) {
                 Image(systemName: "chevron.right")
             }
         }

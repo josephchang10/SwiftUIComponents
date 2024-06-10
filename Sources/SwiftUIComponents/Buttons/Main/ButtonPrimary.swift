@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TailwindSwiftUI
 
 public struct ButtonPrimary: View {
     public enum Size {
@@ -61,6 +62,7 @@ public struct ButtonPrimary: View {
     let size: Size
     let titleKey: LocalizedStringKey
     var icon: AnyView?
+    private let shadow: AnyViewModifier
     
     private var base: some View {
         HStack(spacing: size.spacing) {
@@ -84,7 +86,7 @@ public struct ButtonPrimary: View {
                         .inset(by: 0.5)
                         .stroke(.container(.border), lineWidth: 1)
                 }
-                .shadowBlur(.small)
+                .modifier(shadow)
         default:
             base
                 .background(LinearGradient(colors: [.white, .white.opacity(0)], startPoint: .top, endPoint: .bottom).opacity(0.5)) // highlight
@@ -98,37 +100,39 @@ public struct ButtonPrimary: View {
                         .inset(by: 0.5)
                         .stroke(.white.opacity(0.05), lineWidth: 1)
                 }
-                .shadowBlur(.small)
+                .modifier(shadow)
         }
         
     }
     
-    public init(_ titleKey: LocalizedStringKey, _ size: Size, @ViewBuilder icon: () -> some View) {
-        self.titleKey = titleKey
+    public init(_ size: Size, title: LocalizedStringKey, shadow: some ViewModifier = .shadowBlur(.small), @ViewBuilder icon: () -> some View) {
         self.size = size
+        self.titleKey = title
+        self.shadow = AnyViewModifier(shadow)
         self.icon = AnyView(icon())
     }
     
-    public init(_ titleKey: LocalizedStringKey, _ size: Size) {
-        self.titleKey = titleKey
+    public init(_ size: Size, title: LocalizedStringKey, shadow: some ViewModifier = .shadowBlur(.small)) {
+        self.titleKey = title
         self.size = size
+        self.shadow = AnyViewModifier(shadow)
     }
 }
 
 #Preview {
     VStack(spacing: 10) {
         HStack(alignment: .top, spacing: 10) {
-            ButtonPrimary("Primary", .small) { Image(systemName: "chevron.right") }
-            ButtonPrimary("Primary", .medium) { Image(systemName: "chevron.right") }
-            ButtonPrimary("Primary", .large) { Image(systemName: "chevron.right") }
-            ButtonPrimary("Primary", .extraLarge) { Image(systemName: "chevron.right") }
+            ButtonPrimary(.small, title: "Primary") { Image(systemName: "chevron.right") }
+            ButtonPrimary(.medium, title: "Primary") { Image(systemName: "chevron.right") }
+            ButtonPrimary(.large, title: "Primary") { Image(systemName: "chevron.right") }
+            ButtonPrimary(.extraLarge, title: "Primary") { Image(systemName: "chevron.right") }
         }
         .environment(\.colorScheme, .light)
         HStack(alignment: .top) {
-            ButtonPrimary("Primary", .small) { Image(systemName: "chevron.right") }
-            ButtonPrimary("Primary", .medium) { Image(systemName: "chevron.right") }
-            ButtonPrimary("Primary", .large) { Image(systemName: "chevron.right") }
-            ButtonPrimary("Primary", .extraLarge) { Image(systemName: "chevron.right") }
+            ButtonPrimary(.small, title: "Primary") { Image(systemName: "chevron.right") }
+            ButtonPrimary(.medium, title: "Primary") { Image(systemName: "chevron.right") }
+            ButtonPrimary(.large, title: "Primary") { Image(systemName: "chevron.right") }
+            ButtonPrimary(.extraLarge, title: "Primary") { Image(systemName: "chevron.right") }
         }
         .environment(\.colorScheme, .dark)
     }
