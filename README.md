@@ -21,8 +21,12 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 ### Stepper | Slider | Controls
 * [Slider](#Slider)
 * [Stepper](#Stepper)
+### Menu
+#### Filter
+* [Filters Card](#Filters-Card)
 ### Inputs
 * [Input](#Input)
+* [Switch](#Switch)
 ### Navigation
 * [Menu](#Menu-2)
 * [Inspector Menu](#Inspector-Menu)
@@ -517,6 +521,193 @@ struct SliderPreview: View {
 }
 ```
 
+### Menu
+#### Filter
+##### Filters Card
+![Filters Card](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/e5173a83-850f-4d03-8319-bcad6c269844)
+
+```swift 
+FiltersCard {
+    HStack(alignment: .firstTextBaseline, spacing: 0) {
+        Text("Filters")
+            .font(.headlineMedium)
+            .width(.full, alignment: .leading)
+        Text("Reset")
+            .font(.bodyMedium)
+    }
+    .foregroundStyle(.foreground(.primary))
+    .padding(.horizontal, 12)
+    .padding(.vertical, 24)
+    Separator()
+    HStack(spacing: 12) {
+        Text("Sort by")
+            .width(.full, alignment: .leading)
+        Image(systemName: "chevron.down")
+    }
+    .font(.bodyLargeMedium)
+    .foregroundStyle(.foreground(.primary))
+    .padding(12)
+    Separator()
+    VStack(spacing: 10) {
+        Text("Stops")
+            .font(.bodyLargeMedium)
+            .foregroundStyle(.foreground(.primary))
+            .width(.full, alignment: .leading)
+        VStack(spacing: 0) {
+            HStack(spacing: 10) {
+                ZStack {
+                    Circle()
+                        .fill(Color(red: 76 / 255, green: 137 / 255, blue: 1))
+                        .frame(width: 10)
+                    Circle()
+                        .inset(by: 0.5)
+                        .stroke(.foreground(.secondary), lineWidth: 1)
+                }
+                .frame(width: 16, height: 16)
+                .padding(4)
+                Text("Any number of stops")
+                    .font(.bodyRegular)
+                    .foregroundStyle(.foreground(.secondary))
+                    .width(.full, alignment: .leading)
+            }
+            .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
+            HStack(spacing: 10) {
+                Circle()
+                    .inset(by: 0.5)
+                    .stroke(.foreground(.secondary), lineWidth: 1)
+                    .frame(width: 16, height: 16)
+                    .padding(4)
+                Text("Nonstop only")
+                    .font(.bodyRegular)
+                    .foregroundStyle(.foreground(.secondary))
+                    .width(.full, alignment: .leading)
+            }
+            .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
+            HStack(spacing: 10) {
+                Circle()
+                    .inset(by: 0.5)
+                    .stroke(.foreground(.secondary), lineWidth: 1)
+                    .frame(width: 16, height: 16)
+                    .padding(4)
+                Text("1 stop or fewer")
+                    .font(.bodyRegular)
+                    .foregroundStyle(.foreground(.secondary))
+                    .width(.full, alignment: .leading)
+            }
+            .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
+            HStack(spacing: 10) {
+                Circle()
+                    .inset(by: 0.5)
+                    .stroke(.foreground(.secondary), lineWidth: 1)
+                    .frame(width: 16, height: 16)
+                    .padding(4)
+                Text("2 stops or fewer")
+                    .font(.bodyRegular)
+                    .foregroundStyle(.foreground(.secondary))
+                    .width(.full, alignment: .leading)
+            }
+            .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
+        }
+    }
+    .padding(.horizontal, 12)
+    .padding(.vertical, 10)
+    Separator()
+    VStack(spacing: 12) {
+        Text("Price")
+            .font(.bodyLargeMedium)
+            .foregroundStyle(.foreground(.primary))
+            .width(.full, alignment: .leading)
+        SliderView(value: $price, in: 0...6000, label: "CA$ \(Int(price))") {
+            HStack {
+                Text("Up to CA$6000")
+                Spacer()
+                Button("Clear") {
+                    price = 4000
+                }
+                .buttonStyle(.plain)
+            }
+            .font(.captionMedium)
+            .foregroundStyle(.foreground(.primary))
+        }
+    }
+    .padding(12)
+    Separator()
+    VStack(spacing: 12) {
+        Text("Travel and baggage")
+            .font(.bodyLargeMedium)
+            .foregroundStyle(.foreground(.primary))
+            .width(.full, alignment: .leading)
+        VStack(spacing: 0) {
+            HStack(spacing: 10) {
+                Circle()
+                    .inset(by: 0.5)
+                    .stroke(.foreground(.secondary), lineWidth: 1)
+                    .frame(width: 16, height: 16)
+                    .padding(4)
+                Text("Seat choice")
+                    .font(.bodyRegular)
+                    .foregroundStyle(.foreground(.secondary))
+                    .width(.full, alignment: .leading)
+            }
+            .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
+            HStack(spacing: 10) {
+                Circle()
+                    .inset(by: 0.5)
+                    .stroke(.foreground(.secondary), lineWidth: 1)
+                    .frame(width: 16, height: 16)
+                    .padding(4)
+                Text("No cancel fee")
+                    .font(.bodyRegular)
+                    .foregroundStyle(.foreground(.secondary))
+                    .width(.full, alignment: .leading)
+            }
+            .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
+            HStack(spacing: 10) {
+                Circle()
+                    .inset(by: 0.5)
+                    .stroke(.foreground(.secondary), lineWidth: 1)
+                    .frame(width: 16, height: 16)
+                    .padding(4)
+                Text("No change fee")
+                    .font(.bodyRegular)
+                    .foregroundStyle(.foreground(.secondary))
+                    .width(.full, alignment: .leading)
+            }
+            .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
+            HStack(spacing: 10) {
+                Circle()
+                    .inset(by: 0.5)
+                    .stroke(.foreground(.secondary), lineWidth: 1)
+                    .frame(width: 16, height: 16)
+                    .padding(4)
+                Text("Carry-on bag")
+                    .font(.bodyRegular)
+                    .foregroundStyle(.foreground(.secondary))
+                    .width(.full, alignment: .leading)
+                StepperView(value: $carryOnBag)
+            }
+            .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
+        }
+    }
+    .padding(12)
+    Separator()
+    VStack(spacing: 12) {
+        Text("Airlines")
+            .font(.bodyLargeMedium)
+            .foregroundStyle(.foreground(.primary))
+            .width(.full, alignment: .leading)
+        HStack(spacing: 12) {
+            Text("Select all airlines")
+                .font(.bodyRegular)
+                .foregroundStyle(.foreground(.secondary))
+                .width(.full, alignment: .leading)
+            Switch(isOn: $selectAllAirlines)
+        }
+    }
+    .padding(12)
+}
+```
+
 ### Inputs
 #### Input
 <img width="229" alt="Screenshot 2024-05-23 at 12 10 22 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/42fe138d-a0bc-46e1-a696-57668f1d9760">
@@ -527,6 +718,20 @@ Input("Email address", text: $email) {
         .resizable()
         .scaledToFit()
         .fontWeight(.bold)
+}
+```
+
+#### Switch
+![Switch](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/831c2abc-65c2-4b74-bfd1-69b2dbeca336)
+![Switch](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/79d17274-65a2-4805-b4a7-f0478d168d81)
+
+```swift
+struct SwitchView: View {
+    @State private var isOn = false
+    
+    var body: some View {
+        Switch(isOn: $isOn)
+    }
 }
 ```
 
