@@ -19,7 +19,7 @@ public struct FiltersCard<Content: View>: View {
             RoundedRectangle(cornerRadius: 20)
                 .fill(.container(.background))
         }
-        .shadowBlur(.extraLarge)
+//        .shadowBlur(.extraLarge)
     }
     
     public init(@ViewBuilder content: () -> Content) {
@@ -30,10 +30,11 @@ public struct FiltersCard<Content: View>: View {
 struct FiltersCardView: View {
     @State private var price = 4000.0
     @State private var carryOnBag = 1
+    @State private var selectAllAirlines = false
     
     var body: some View {
         FiltersCard {
-            HStack(alignment: .firstTextBaseline) {
+            HStack(alignment: .firstTextBaseline, spacing: 0) {
                 Text("Filters")
                     .font(.headlineMedium)
                     .width(.full, alignment: .leading)
@@ -41,17 +42,17 @@ struct FiltersCardView: View {
                     .font(.bodyMedium)
             }
             .foregroundStyle(.foreground(.primary))
-            .padding(.horizontal, 10)
-            .padding(.vertical, 20)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 24)
             Separator()
-            HStack {
+            HStack(spacing: 12) {
                 Text("Sort by")
                     .width(.full, alignment: .leading)
                 Image(systemName: "chevron.down")
             }
             .font(.bodyLargeMedium)
             .foregroundStyle(.foreground(.primary))
-            .padding(10)
+            .padding(12)
             Separator()
             VStack(spacing: 10) {
                 Text("Stops")
@@ -114,9 +115,10 @@ struct FiltersCardView: View {
                     .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
                 }
             }
-            .padding(10)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 10)
             Separator()
-            VStack(spacing: 10) {
+            VStack(spacing: 12) {
                 Text("Price")
                     .font(.bodyLargeMedium)
                     .foregroundStyle(.foreground(.primary))
@@ -134,9 +136,9 @@ struct FiltersCardView: View {
                     .foregroundStyle(.foreground(.primary))
                 }
             }
-            .padding(10)
+            .padding(12)
             Separator()
-            VStack(spacing: 10) {
+            VStack(spacing: 12) {
                 Text("Travel and baggage")
                     .font(.bodyLargeMedium)
                     .foregroundStyle(.foreground(.primary))
@@ -148,7 +150,7 @@ struct FiltersCardView: View {
                             .stroke(.foreground(.secondary), lineWidth: 1)
                             .frame(width: 16, height: 16)
                             .padding(4)
-                        Text("Seat choice included")
+                        Text("Seat choice")
                             .font(.bodyRegular)
                             .foregroundStyle(.foreground(.secondary))
                             .width(.full, alignment: .leading)
@@ -184,7 +186,7 @@ struct FiltersCardView: View {
                             .stroke(.foreground(.secondary), lineWidth: 1)
                             .frame(width: 16, height: 16)
                             .padding(4)
-                        Text("Carry-on bag included")
+                        Text("Carry-on bag")
                             .font(.bodyRegular)
                             .foregroundStyle(.foreground(.secondary))
                             .width(.full, alignment: .leading)
@@ -193,9 +195,24 @@ struct FiltersCardView: View {
                     .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
                 }
             }
-            .padding(10)
+            .padding(12)
+            Separator()
+            VStack(spacing: 12) {
+                Text("Airlines")
+                    .font(.bodyLargeMedium)
+                    .foregroundStyle(.foreground(.primary))
+                    .width(.full, alignment: .leading)
+                HStack(spacing: 12) {
+                    Text("Select all airlines")
+                        .font(.bodyRegular)
+                        .foregroundStyle(.foreground(.secondary))
+                        .width(.full, alignment: .leading)
+                    Switch(isOn: $selectAllAirlines)
+                }
+            }
+            .padding(12)
         }
-        .frame(width: 360)
+        .frame(width: 480)
     }
 }
 

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct Toggle<ButtonsContent: View>: View {
+public struct ToggleView<ButtonsContent: View>: View {
     @Environment(\.colorScheme) var colorScheme
     
     let isVertical: Bool
@@ -41,11 +41,11 @@ public struct Toggle<ButtonsContent: View>: View {
     }
 }
 
-struct ToggleView: View {
+struct TogglePreview: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack(spacing: 20) {
-                Toggle {
+                ToggleView {
                     ButtonCircle(.small, state: .selected) {
                         Image(systemName: "moon")
                     }
@@ -54,7 +54,7 @@ struct ToggleView: View {
                             .symbolRenderingMode(.monochrome)
                     }
                 }
-                Toggle {
+                ToggleView {
                     ButtonCircle(.small) {
                         Image(systemName: "moon")
                     }
@@ -63,7 +63,7 @@ struct ToggleView: View {
                             .symbolRenderingMode(.monochrome)
                     }
                 }
-                Toggle {
+                ToggleView {
                     ButtonCircle(.small, state: .selected) {
                         Image(systemName: "moon")
                     }
@@ -75,7 +75,7 @@ struct ToggleView: View {
                         Image(systemName: "sun.max")
                     }
                 }
-                Toggle {
+                ToggleView {
                     ButtonCircle(.small) {
                         Image(systemName: "moon")
                     }
@@ -87,7 +87,7 @@ struct ToggleView: View {
                         Image(systemName: "sun.max")
                     }
                 }
-                Toggle {
+                ToggleView {
                     ButtonCircle(.small) {
                         Image(systemName: "moon")
                     }
@@ -101,7 +101,7 @@ struct ToggleView: View {
                 }
             }
             HStack(spacing: 20) {
-                Toggle {
+                ToggleView {
                     ButtonCircle(.small, state: .selected) {
                         Image(systemName: "moon")
                     }
@@ -116,7 +116,7 @@ struct ToggleView: View {
                         Image(systemName: "wand.and.rays.inverse")
                     }
                 }
-                Toggle {
+                ToggleView {
                     ButtonCircle(.small) {
                         Image(systemName: "moon")
                     }
@@ -131,7 +131,7 @@ struct ToggleView: View {
                         Image(systemName: "wand.and.rays.inverse")
                     }
                 }
-                Toggle {
+                ToggleView {
                     ButtonCircle(.small) {
                         Image(systemName: "moon")
                     }
@@ -144,64 +144,64 @@ struct ToggleView: View {
                     }
                     ButtonCircle(.small) {
                         Image(systemName: "wand.and.rays.inverse")
-                    }
-                }
-            }
-            HStack(spacing: 20) {
-                Toggle {
-                    ButtonCircle(.small) {
-                        Image(systemName: "moon")
-                    }
-                    ButtonCircle(.small) {
-                        Image(systemName: "display")
-                            .symbolRenderingMode(.monochrome)
-                    }
-                    ButtonCircle(.small) {
-                        Image(systemName: "sun.max")
-                    }
-                    ButtonCircle(.small, state: .selected) {
-                        Image(systemName: "wand.and.rays.inverse")
-                    }
-                }
-                Toggle {
-                    ButtonCircle(.small, state: .selected) {
-                        Image(systemName: "moon")
-                    }
-                    ButtonCircle(.small) {
-                        Image(systemName: "display")
-                            .symbolRenderingMode(.monochrome)
-                    }
-                    ButtonCircle(.small) {
-                        Image(systemName: "sun.max")
-                    }
-                    ButtonCircle(.small) {
-                        Image(systemName: "wand.and.rays.inverse")
-                    }
-                    ButtonCircle(.small) {
-                        Image(systemName: "person")
-                    }
-                }
-                Toggle {
-                    ButtonCircle(.small) {
-                        Image(systemName: "moon")
-                    }
-                    ButtonCircle(.small, state: .selected) {
-                        Image(systemName: "display")
-                            .symbolRenderingMode(.monochrome)
-                    }
-                    ButtonCircle(.small) {
-                        Image(systemName: "sun.max")
-                    }
-                    ButtonCircle(.small) {
-                        Image(systemName: "wand.and.rays.inverse")
-                    }
-                    ButtonCircle(.small) {
-                        Image(systemName: "person")
                     }
                 }
             }
             HStack(spacing: 20) {
-                Toggle {
+                ToggleView {
+                    ButtonCircle(.small) {
+                        Image(systemName: "moon")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "display")
+                            .symbolRenderingMode(.monochrome)
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "sun.max")
+                    }
+                    ButtonCircle(.small, state: .selected) {
+                        Image(systemName: "wand.and.rays.inverse")
+                    }
+                }
+                ToggleView {
+                    ButtonCircle(.small, state: .selected) {
+                        Image(systemName: "moon")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "display")
+                            .symbolRenderingMode(.monochrome)
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "sun.max")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "wand.and.rays.inverse")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "person")
+                    }
+                }
+                ToggleView {
+                    ButtonCircle(.small) {
+                        Image(systemName: "moon")
+                    }
+                    ButtonCircle(.small, state: .selected) {
+                        Image(systemName: "display")
+                            .symbolRenderingMode(.monochrome)
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "sun.max")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "wand.and.rays.inverse")
+                    }
+                    ButtonCircle(.small) {
+                        Image(systemName: "person")
+                    }
+                }
+            }
+            HStack(spacing: 20) {
+                ToggleView {
                     ButtonCircle(.small) {
                         Image(systemName: "moon")
                     }
@@ -219,7 +219,7 @@ struct ToggleView: View {
                         Image(systemName: "person")
                     }
                 }
-                Toggle {
+                ToggleView {
                     ButtonCircle(.small) {
                         Image(systemName: "moon")
                     }
@@ -237,7 +237,7 @@ struct ToggleView: View {
                         Image(systemName: "person")
                     }
                 }
-                Toggle {
+                ToggleView {
                     ButtonCircle(.small) {
                         Image(systemName: "moon")
                     }
@@ -262,9 +262,9 @@ struct ToggleView: View {
 
 #Preview {
     VStack(spacing: 20) {
-        ToggleView()
+        TogglePreview()
             .environment(\.colorScheme, .light)
-        ToggleView()
+        TogglePreview()
             .environment(\.colorScheme, .dark)
     }
     .padding(20)
@@ -272,7 +272,7 @@ struct ToggleView: View {
 }
 
 #Preview {
-    Toggle(isVertical: true) {
+    ToggleView(isVertical: true) {
         ButtonCircle(.small, state: .selected) {
             Image(systemName: "moon")
         }

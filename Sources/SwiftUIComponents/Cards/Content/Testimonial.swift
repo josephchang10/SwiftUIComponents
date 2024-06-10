@@ -57,7 +57,7 @@ struct TestimonialView: View {
     var body: some View {
         Testimonial {
             VStack(alignment: .leading, spacing: 20) {
-                Toggle {
+                ToggleView {
                     ButtonCircle(.small, state: .selected) {
                         Image(systemName: "moon")
                     }

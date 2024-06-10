@@ -12,10 +12,7 @@ import SwiftUIComponents
 struct ExamplesApp: App {
     var body: some Scene {
         WindowGroup {
-//            SwiftUIComponentsMobileView()
-            ScrollView {
-                BankCardView()
-            }
+            SwiftUIComponentsMobileView()
         }
         .windowResizability(.contentSize)
     }

@@ -58,7 +58,7 @@ struct HeroView: View {
                         .font(.heading3)
                 }
                 Spacer()
-                Toggle(isVertical: true) {
+                ToggleView(isVertical: true) {
                     ButtonCircle(.small) {
                         Image(systemName: "moon")
                     }

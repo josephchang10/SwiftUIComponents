@@ -19,7 +19,7 @@ public struct SliderView<Content: View, V: BinaryFloatingPoint>: View where V.St
             ProgressBar(value: $value, in: bounds, labelText: labelText)
                 .frame(height: 12)
         }
-        .padding(.vertical, 10)
+        .padding(.vertical, 12)
     }
     
     public init(value: Binding<V>, in bounds: ClosedRange<V> = 0...1, label: String? = nil, @ViewBuilder content: () -> Content) {
@@ -154,6 +154,4 @@ struct SliderPreview: View {
 #Preview {
     SliderPreview()
         .padding(60)
-//        .background(.container(.background))
-        .background(Color(red: 53 / 255, green: 53 / 255, blue: 53 / 255))
 }

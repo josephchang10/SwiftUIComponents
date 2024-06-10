@@ -18,21 +18,20 @@ public struct StepperView<V: Strideable>: View {
                 ZStack {
                     Circle()
                         .fill(.button(.normal))
-                    Circle()
+//                    Circle()
 //                        .inset(by: 0.5)
-                        .stroke(LinearGradient(colors: [.white.opacity(0.1), .black.opacity(0.3)], startPoint: .init(x: 0.1, y: 0.1), endPoint: .init(x: 0.9, y: 0.9)), lineWidth: 1)
+//                        .stroke(LinearGradient(colors: [.white.opacity(0.1), .black.opacity(0.3)], startPoint: .init(x: 0.1, y: 0.1), endPoint: .init(x: 0.9, y: 0.9)), lineWidth: 1)
                     Image(systemName: "plus")
                         .foregroundStyle(.white)
                         .font(.bodyMedium)
+                        .fontWeight(.bold)
                 }
                 .frame(width: 24)
-                .shadowBlur(.medium)
             }
             .buttonStyle(.plain)
             Text("\(value.wrappedValue)")
                 .font(.bodyMedium)
                 .foregroundStyle(.foreground(.primary))
-                .inverseColorScheme()
                 .fixedSize(horizontal: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/, vertical: false)
             Button {
                 value.wrappedValue = value.wrappedValue.advanced(by: -1)
@@ -44,20 +43,19 @@ public struct StepperView<V: Strideable>: View {
 //                        .inset(by: 0.5)
                         .stroke(.container(.border), lineWidth: 1)
                     Image(systemName: "minus")
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.foreground(.primary))
                         .font(.bodyMedium)
+                        .fontWeight(.bold)
                 }
                 .frame(width: 24)
-                .inverseColorScheme()
-                .shadowBlur(.medium)
             }
             .buttonStyle(.plain)
         }
-        .padding(.horizontal, 0.5)
-        .padding(.vertical, 2.5)
+        .padding(2)
+        .fixedSize()
         .background {
             RoundedRectangle(cornerRadius: 20)
-                .fill(.button(.inactive))
+                .fill(.container(.background))
         }
     }
     
@@ -77,7 +75,4 @@ struct StepperPreview: View {
 #Preview {
     StepperPreview()
         .padding(60)
-//        .background(.container(.background))
-        .background(Color(red: 53 / 255, green: 53 / 255, blue: 53 / 255))
-        .preferredColorScheme(.dark)
 }
