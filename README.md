@@ -3,7 +3,7 @@
 What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakably different and personal. The background sets the mood, the glass absorb the colors and the shadows elevate. Despite that, it's super flexible.
 
 ## Buttons
-### Menu
+### Menu Buttons
 * [Button Menu](#Button-Menu)
 * [Activity](#Activity)
 * [Button Toggle](#Button-Toggle)
@@ -221,7 +221,7 @@ TextCheck("All 200+ components")
 ```
 
 ## Buttons
-### Menu
+### Menu Buttons
 #### Button Menu
 <img width="651" alt="Screenshot 2024-04-11 at 5 58 36 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/8608d551-c5c5-4ae5-975b-5a1c0d2ff56b">
 
