@@ -47,6 +47,11 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Logos](#Logos)
 ## Backgrounds
 * [Background Web 4](#Background-Web-4)
+## Patterns
+### Patterns
+* [Pattern 1](#Pattern-1)
+### Blurs
+* [Blur 5](#Blur-5)
 
 ## Colors
 ### Color Styles Light Mode
@@ -1578,11 +1583,20 @@ Logo(.x)
 ```
 
 ## Patterns
-### Pattern 1
+### Patterns
+#### Pattern 1
 <img width="445" alt="Screenshot 2024-05-12 at 4 54 35 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/2f21cc84-27ee-4f38-8a37-8c7da70b76ea">
 
 ```swift
 Pattern1()
+```
+
+### Blurs
+#### Blur 5
+<img width="616" alt="Screenshot 2024-06-10 at 7 36 32 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/3ec957e5-e749-4340-918c-bb3258490b19">
+
+```swift
+Blur5()
 ```
 
 ## Backgrounds
