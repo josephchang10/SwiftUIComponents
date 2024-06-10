@@ -29,6 +29,7 @@ public struct FiltersCard<Content: View>: View {
 
 struct FiltersCardView: View {
     @State private var price = 4000.0
+    @State private var carryOnBag = 1
     
     var body: some View {
         FiltersCard {
@@ -76,13 +77,11 @@ struct FiltersCardView: View {
                     }
                     .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
                     HStack(spacing: 10) {
-                        ZStack {
-                            Circle()
-                                .inset(by: 0.5)
-                                .stroke(.foreground(.secondary), lineWidth: 1)
-                        }
-                        .frame(width: 16, height: 16)
-                        .padding(4)
+                        Circle()
+                            .inset(by: 0.5)
+                            .stroke(.foreground(.secondary), lineWidth: 1)
+                            .frame(width: 16, height: 16)
+                            .padding(4)
                         Text("Nonstop only")
                             .font(.bodyRegular)
                             .foregroundStyle(.foreground(.secondary))
@@ -90,13 +89,11 @@ struct FiltersCardView: View {
                     }
                     .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
                     HStack(spacing: 10) {
-                        ZStack {
-                            Circle()
-                                .inset(by: 0.5)
-                                .stroke(.foreground(.secondary), lineWidth: 1)
-                        }
-                        .frame(width: 16, height: 16)
-                        .padding(4)
+                        Circle()
+                            .inset(by: 0.5)
+                            .stroke(.foreground(.secondary), lineWidth: 1)
+                            .frame(width: 16, height: 16)
+                            .padding(4)
                         Text("1 stop or fewer")
                             .font(.bodyRegular)
                             .foregroundStyle(.foreground(.secondary))
@@ -104,13 +101,11 @@ struct FiltersCardView: View {
                     }
                     .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
                     HStack(spacing: 10) {
-                        ZStack {
-                            Circle()
-                                .inset(by: 0.5)
-                                .stroke(.foreground(.secondary), lineWidth: 1)
-                        }
-                        .frame(width: 16, height: 16)
-                        .padding(4)
+                        Circle()
+                            .inset(by: 0.5)
+                            .stroke(.foreground(.secondary), lineWidth: 1)
+                            .frame(width: 16, height: 16)
+                            .padding(4)
                         Text("2 stops or fewer")
                             .font(.bodyRegular)
                             .foregroundStyle(.foreground(.secondary))
@@ -137,6 +132,65 @@ struct FiltersCardView: View {
                     }
                     .font(.captionMedium)
                     .foregroundStyle(.foreground(.primary))
+                }
+            }
+            .padding(10)
+            Separator()
+            VStack(spacing: 10) {
+                Text("Travel and baggage")
+                    .font(.bodyLargeMedium)
+                    .foregroundStyle(.foreground(.primary))
+                    .width(.full, alignment: .leading)
+                VStack(spacing: 0) {
+                    HStack(spacing: 10) {
+                        Circle()
+                            .inset(by: 0.5)
+                            .stroke(.foreground(.secondary), lineWidth: 1)
+                            .frame(width: 16, height: 16)
+                            .padding(4)
+                        Text("Seat choice included")
+                            .font(.bodyRegular)
+                            .foregroundStyle(.foreground(.secondary))
+                            .width(.full, alignment: .leading)
+                    }
+                    .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
+                    HStack(spacing: 10) {
+                        Circle()
+                            .inset(by: 0.5)
+                            .stroke(.foreground(.secondary), lineWidth: 1)
+                            .frame(width: 16, height: 16)
+                            .padding(4)
+                        Text("No cancel fee")
+                            .font(.bodyRegular)
+                            .foregroundStyle(.foreground(.secondary))
+                            .width(.full, alignment: .leading)
+                    }
+                    .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
+                    HStack(spacing: 10) {
+                        Circle()
+                            .inset(by: 0.5)
+                            .stroke(.foreground(.secondary), lineWidth: 1)
+                            .frame(width: 16, height: 16)
+                            .padding(4)
+                        Text("No change fee")
+                            .font(.bodyRegular)
+                            .foregroundStyle(.foreground(.secondary))
+                            .width(.full, alignment: .leading)
+                    }
+                    .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
+                    HStack(spacing: 10) {
+                        Circle()
+                            .inset(by: 0.5)
+                            .stroke(.foreground(.secondary), lineWidth: 1)
+                            .frame(width: 16, height: 16)
+                            .padding(4)
+                        Text("Carry-on bag included")
+                            .font(.bodyRegular)
+                            .foregroundStyle(.foreground(.secondary))
+                            .width(.full, alignment: .leading)
+                        StepperView(value: $carryOnBag)
+                    }
+                    .padding(.init(top: 10, leading: 10, bottom: 10, trailing: 0))
                 }
             }
             .padding(10)
