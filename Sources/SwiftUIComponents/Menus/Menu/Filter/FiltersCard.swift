@@ -18,6 +18,7 @@ public struct FiltersCard<Content: View>: View {
         .background {
             RoundedRectangle(cornerRadius: 20)
                 .fill(.container(.background))
+                .fill(.ultraThinMaterial)
         }
 //        .shadowBlur(.extraLarge)
     }
