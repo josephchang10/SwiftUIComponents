@@ -954,7 +954,7 @@ InspectorDetail {
 ```swift
 Testimonial {
     VStack(alignment: .leading, spacing: 20) {
-        Toggle {
+        ToggleView {
             ButtonCircle(.small, state: .selected) {
                 Image(systemName: "moon")
             }
