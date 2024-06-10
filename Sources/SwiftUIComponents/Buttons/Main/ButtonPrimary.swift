@@ -8,7 +8,7 @@
 import SwiftUI
 import TailwindSwiftUI
 
-public struct ButtonPrimary: View {
+public struct ButtonPrimary<Label: View>: View {
     public enum Size {
         case small, medium, large, extraLarge
         
@@ -60,13 +60,19 @@ public struct ButtonPrimary: View {
     @Environment(\.colorScheme) var colorScheme
     
     let size: Size
-    let titleKey: LocalizedStringKey
+    private var label: Label?
+    private var titleKey: LocalizedStringKey?
     var icon: AnyView?
     private let shadow: AnyViewModifier
     
     private var base: some View {
         HStack(spacing: size.spacing) {
-            Text(titleKey)
+            if let titleKey {
+                Text(titleKey)
+            }
+            if let label {
+                label
+            }
             icon
         }
         .foregroundStyle(.foreground(.primary))
@@ -105,17 +111,24 @@ public struct ButtonPrimary: View {
         
     }
     
-    public init(_ size: Size, title: LocalizedStringKey, shadow: some ViewModifier = .shadowBlur(.small), @ViewBuilder icon: () -> some View) {
+    public init(_ size: Size, title: LocalizedStringKey, shadow: some ViewModifier = .shadowBlur(.small), @ViewBuilder icon: () -> some View) where Label == EmptyView {
         self.size = size
         self.titleKey = title
         self.shadow = AnyViewModifier(shadow)
         self.icon = AnyView(icon())
     }
     
-    public init(_ size: Size, title: LocalizedStringKey, shadow: some ViewModifier = .shadowBlur(.small)) {
+    public init(_ size: Size, title: LocalizedStringKey, shadow: some ViewModifier = .shadowBlur(.small)) where Label == EmptyView {
         self.titleKey = title
         self.size = size
         self.shadow = AnyViewModifier(shadow)
+    }
+    
+    public init(_ size: Size, shadow: some ViewModifier = .shadowBlur(.small), @ViewBuilder label: () -> Label, icon: () -> some View) {
+        self.size = size
+        self.shadow = AnyViewModifier(shadow)
+        self.label = label()
+        self.icon = AnyView(icon())
     }
 }
 
