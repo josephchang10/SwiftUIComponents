@@ -1593,7 +1593,7 @@ Pattern1()
 
 ### Blurs
 #### Blur 5
-<img width="616" alt="Screenshot 2024-06-10 at 7 36 32 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/3ec957e5-e749-4340-918c-bb3258490b19">
+<img width="615" alt="Screenshot 2024-06-10 at 7 50 12 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/1a610651-ebdf-44c2-9165-ebdcc43a4847">
 
 ```swift
 Blur5()
