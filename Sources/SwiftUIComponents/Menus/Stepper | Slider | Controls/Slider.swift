@@ -12,19 +12,21 @@ public struct SliderView<Content: View, V: BinaryFloatingPoint>: View where V.St
     private let labelText: String?
     @Binding private var value: V
     private let bounds: ClosedRange<V>
+    private let step: V?
     
     public var body: some View {
         VStack(spacing: 10) {
             content
-            ProgressBar(value: $value, in: bounds, labelText: labelText)
+            ProgressBar(value: $value, in: bounds, step: step, labelText: labelText)
                 .frame(height: 12)
         }
         .padding(.vertical, 12)
     }
     
-    public init(value: Binding<V>, in bounds: ClosedRange<V> = 0...1, label: String? = nil, @ViewBuilder content: () -> Content) {
+    public init(value: Binding<V>, in bounds: ClosedRange<V> = 0...1, step: V? = nil, label: String? = nil, @ViewBuilder content: () -> Content) {
         _value = value
         self.bounds = bounds
+        self.step = step
         labelText = label
         self.content = content()
     }
@@ -33,6 +35,7 @@ public struct SliderView<Content: View, V: BinaryFloatingPoint>: View where V.St
 public struct ProgressBar<V: BinaryFloatingPoint>: View where V.Stride : BinaryFloatingPoint {
     @Binding private var value: V
     private let bounds: ClosedRange<V>
+    private let step: V?
     private let labelText: String?
     
     @State private var lastCoordinateValue: CGFloat = 0
@@ -81,12 +84,14 @@ public struct ProgressBar<V: BinaryFloatingPoint>: View where V.Stride : BinaryF
                                         if (abs(v.translation.width) < 0.1) {
                                             self.lastCoordinateValue = (maxValue - minValue) * percentageValue + minValue
                                         }
-                                        if v.translation.width > 0 {
-                                            value = V((min(maxValue, lastCoordinateValue + v.translation.width) - minValue) / (maxValue - minValue)) * (bounds.upperBound - bounds.lowerBound) + bounds.lowerBound
+                                        let translation = v.translation.width
+                                        let newValue = V((translation + lastCoordinateValue - minValue) / (maxValue - minValue)) * (bounds.upperBound - bounds.lowerBound) + bounds.lowerBound
+                                        if let step {
+                                            value = round(newValue / step) * step
                                         } else {
-                                            value = V((Swift.max(minValue, lastCoordinateValue + v.translation.width) - minValue) / (maxValue - minValue)) * (bounds.upperBound - bounds.lowerBound) + bounds.lowerBound
+                                            value = newValue
                                         }
-                                        
+                                        value = min(Swift.max(value, bounds.lowerBound), bounds.upperBound)
                                     }
                             )
                     }
@@ -124,9 +129,10 @@ public struct ProgressBar<V: BinaryFloatingPoint>: View where V.Stride : BinaryF
         }
     }
     
-    public init(value: Binding<V>, in bounds: ClosedRange<V>, labelText: String?) {
+    public init(value: Binding<V>, in bounds: ClosedRange<V>, step: V? = nil, labelText: String?) {
         _value = value
         self.bounds = bounds
+        self.step = step
         self.labelText = labelText
     }
 }
