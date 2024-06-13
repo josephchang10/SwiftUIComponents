@@ -79,6 +79,7 @@ public struct ButtonGhost<Icon: View, TextView: View>: View {
                 .inset(by: 0.5)
                 .strokeBorder(.foreground(.primary), lineWidth: 1)
         }
+        .contentShape(RoundedRectangle(cornerRadius: 8))
     }
     
     public init(_ size: Size, text: LocalizedStringKey, @ViewBuilder icon: () -> Icon) where TextView == EmptyView {
