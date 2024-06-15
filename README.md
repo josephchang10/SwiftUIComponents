@@ -14,6 +14,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Icon Circle](#Icon-Circle)
 ### Main
 * [Button Primary](#Button-Primary)
+* [Button Secondary](#Button-Secondary)
 * [Button Ghost](#Button-Ghost)
 * [Button Glow](#Button-Glow)
 * [Button Shiny](#Button-Shiny)
@@ -44,6 +45,9 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Insepctor Detail](#Insepctor-Detail)
 ### Content
 * [Testimonial](#Testimonial)
+### Modal
+* [Payment Modal](#Payment-Modal)
+* [Newsletter](#Newsletter)
 ## Icons
 * [Logos](#Logos)
 ## Backgrounds
@@ -401,13 +405,14 @@ AvatarLetter {
 ```
 
 #### Icon Circle
-<img width="99" alt="Screenshot 2024-04-15 at 8 35 48 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/04890b7f-b4e3-4720-ac35-666f0afe4bab">
+<img width="98" alt="Screenshot 2024-06-15 at 8 32 26 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/6f11fe33-d729-428f-ba04-f830eeba4987">
 
 ```swift
 IconCircle {
     Image(systemName: "envelope")
         .resizable()
         .scaledToFit()
+        .fontWeight(.bold)
         .frame(width: 16, height: 16)
 }
 ```
@@ -421,6 +426,24 @@ ButtonPrimary(.small, title: "Primary") { Image(systemName: "chevron.right") }
 ButtonPrimary(.medium, title: "Primary") { Image(systemName: "chevron.right") }
 ButtonPrimary(.large, title: "Primary") { Image(systemName: "chevron.right") }
 ButtonPrimary(.extraLarge, title: "Primary") { Image(systemName: "chevron.right") }
+```
+
+#### Button Secondary
+<img width="625" alt="Screenshot 2024-06-15 at 9 55 53 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/2e3c2831-aaf0-4958-b780-cbfd84fb188c">
+
+```swift
+ButtonSecondary(.small, title: "Secondary") {
+    Image(systemName: "envelope.open")
+}
+ButtonSecondary(.medium, title: "Secondary") {
+    Image(systemName: "envelope.open")
+}
+ButtonSecondary(.large, title: "Secondary") {
+    Image(systemName: "envelope.open")
+}
+ButtonSecondary(.extraLarge, title: "Secondary") {
+    Image(systemName: "envelope.open")
+}
 ```
 
 #### Button Ghost
@@ -1531,61 +1554,120 @@ PricingCard {
 }
 ```
 
+### Modal
+
 #### Payment Modal
 <img width="686" alt="Screenshot 2024-04-15 at 9 14 38 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/ca0cebb1-e6d2-44d4-9111-45c1615c8867">
 
 ```swift
-PaymentModal {
-    VStack(spacing: 12) {
-        VStack(spacing: 0) {
-            Text("Pro Plan")
-                .font(.footnoteMedium)
-                .foregroundStyle(.foreground(.secondary))
-            HStack(spacing: 0) {
-                Text("$")
-                    .font(.heading4)
-                Text("25")
-                    .font(.heading1)
+struct PaymentModalView: View {
+    @State private var email = ""
+    
+    var body: some View {
+        PaymentModal {
+            VStack(spacing: 12) {
+                VStack(spacing: 0) {
+                    Text("Pro Plan")
+                        .font(.footnoteMedium)
+                        .foregroundStyle(.foreground(.secondary))
+                    HStack(spacing: 0) {
+                        Text("$")
+                            .font(.heading4)
+                        Text("25")
+                            .font(.heading1)
+                    }
+                    .foregroundStyle(.foreground(.primary))
+                    Text("per month, billed monthly")
+                        .font(.footnoteMedium)
+                        .foregroundStyle(.foreground(.secondary))
+                }
+                Input(.large, prompt: "Email address", text: $email, showLeftIcon: true) {
+                    Image(systemName: "envelope")
+                        .resizable()
+                        .scaledToFit()
+                }
+                Text("You will be charged $120 for a one year access. When you click on \"Subscribe\", your subscription will begin and you will be charged $120 immediately. It will renew automatically. You are also agreeing to our Terms of Service and our Privacy Policy.")
+                    .font(.captionRegular)
+                    .foregroundStyle(.foreground(.primary))
+                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                ButtonShiny("Subscribe", .medium) {
+                    Image(systemName: "chevron.right")
+                }
+                DividerLine()
+                Text("OR, PAY WITH PAYPAL")
+                    .font(.footnoteMedium)
+                    .foregroundStyle(.foreground(.primary))
+                ButtonShiny("Pay with PayPal", .medium) {
+                    Image(systemName: "chevron.right")
+                }
+                Text("This purchase will not auto-review. You will be taken to PayPal to complete the payment.")
+                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    .font(.captionRegular)
+                    .foregroundStyle(.foreground(.primary))
             }
-            .foregroundStyle(.foreground(.primary))
-            Text("per month, billed monthly")
-                .font(.footnoteMedium)
-                .foregroundStyle(.foreground(.secondary))
+            .padding(12)
         }
-        Input("Email address", text: .constant(""), showLeftIcon: true) {
-            Image(systemName: "envelope")
-                .resizable()
-                .scaledToFit()
-        }
-        Text("You will be charged $120 for a one year access. When you click on \"Subscribe\", your subscription will begin and you will be charged $120 immediately. It will renew automatically. You are also agreeing to our Terms of Service and our Privacy Policy.")
-            .font(.captionRegular)
-            .foregroundStyle(.foreground(.primary))
-            .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-        ButtonShiny("Subscribe", .medium) {
-            Image(systemName: "chevron.right")
-        }
-        DividerLine()
-        Text("OR, PAY WITH PAYPAL")
-            .font(.footnoteMedium)
-            .foregroundStyle(.foreground(.primary))
-        ButtonShiny("Pay with PayPal", .medium) {
-            Image(systemName: "chevron.right")
-        }
-        Text("This purchase will not auto-review. You will be taken to PayPal to complete the payment.")
-            .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-            .font(.captionRegular)
-            .foregroundStyle(.foreground(.primary))
+        .frame(width: 310)
     }
-    .padding(12)
+}
+```
+
+#### Newsletter
+<img width="748" alt="Screenshot 2024-06-15 at 10 18 17 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/411bad07-8859-4d60-8823-06e353bd7573">
+
+```swift 
+struct NewsletterView: View {
+    @State private var email = "Email address"
+    
+    var body: some View {
+        Newsletter {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Subscribe via Email")
+                    .font(.heading5)
+                    .width(.full, alignment: .leading)
+                    .foregroundStyle(.textGradient(.secondary))
+                    .shadow(color: .black.opacity(0.5), radius: 60, y: 30)
+                Text("We release monthly updates to the content an make regular site improvements.")
+                    .font(.footnoteMedium)
+                    .foregroundStyle(.foreground(.secondary))
+            }
+            Input(.small, text: $email) {
+                IconCircle {
+                    Image(systemName: "envelope")
+                        .resizable()
+                        .scaledToFit()
+                        .fontWeight(.bold)
+                        .frame(width: 16, height: 16)
+                }
+            }
+            ButtonPrimary(.small, title: "Subscribe to Newsletter") {
+                Image(systemName: "tray")
+            }
+            Text("No spam ever. We typically send 1 email per month for product updates, events and discounts.")
+                .font(.captionRegular)
+                .fixedSize(horizontal: false, vertical: true)
+            DividerLine()
+            ButtonSecondary(.small, title: "Subscribe to YouTube") {
+                Logo(.youtube)
+            }
+            ButtonSecondary(.small, title: "Follow on") {
+                Logo(.x)
+            }
+        }
+        .frame(width: 320)
+    }
 }
 ```
 
 ## Icons
 ### Logos
-<img width="129" alt="Screenshot 2024-05-20 at 10 40 56 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/1d285a74-8bbe-4412-9203-444fef373b6e">
+<img width="132" alt="Screenshot 2024-06-15 at 10 14 39 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/2ab72925-4be0-4d28-bd5e-ecff66d8b10b">
 
 ```swift
 Logo(.x)
+    .frame(width: 24, height: 24)
+Logo(.youtube)
+    .frame(width: 24, height: 24)
 ```
 
 ## Patterns
