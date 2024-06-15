@@ -1613,10 +1613,13 @@ struct PaymentModalView: View {
 
 ## Icons
 ### Logos
-<img width="129" alt="Screenshot 2024-05-20 at 10 40 56 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/1d285a74-8bbe-4412-9203-444fef373b6e">
+<img width="132" alt="Screenshot 2024-06-15 at 10 14 39 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/2ab72925-4be0-4d28-bd5e-ecff66d8b10b">
 
 ```swift
 Logo(.x)
+    .frame(width: 24, height: 24)
+Logo(.youtube)
+    .frame(width: 24, height: 24)
 ```
 
 ## Patterns
