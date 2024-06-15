@@ -750,11 +750,21 @@ FiltersCard {
 <img width="229" alt="Screenshot 2024-05-23 at 12 10 22 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/42fe138d-a0bc-46e1-a696-57668f1d9760">
 
 ```swift
-Input("Email address", text: $email) {
-    Image(systemName: "envelope")
-        .resizable()
-        .scaledToFit()
-        .fontWeight(.bold)
+struct InputView: View {
+    @State private var text = ""
+    
+    var body: some View {
+        Input("Email address", text: $text) {
+            IconCircle {
+                Image(systemName: "envelope")
+                    .resizable()
+                    .scaledToFit()
+                    .fontWeight(.bold)
+                    .frame(width: 16, height: 16)
+            }
+        }
+        .frame(width: 200)
+    }
 }
 ```
 
