@@ -7,9 +7,10 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Button Menu](#Button-Menu)
 * [Activity](#Activity)
 * [Button Toggle](#Button-Toggle)
-### Small
+### Symbols
+#### Icons
 * [Button Circle](#Button-Circle)
-* [Avatar Small](#Avatar-Small)
+* [Avatar Letter](#Avatar-Letter)
 * [Icon Circle](#Icon-Circle)
 ### Main
 * [Button Primary](#Button-Primary)
@@ -339,7 +340,8 @@ HStack(spacing: 20) {
 }
 ```
 
-### Small
+### Symbols
+#### Icons
 #### Button Circle
 ![Button Circle](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/b9be8074-e57f-4e47-bc29-d4568ef89acb)
 ![Hover](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/df939822-cec9-4957-9c06-fea9cf76cf24)
@@ -387,11 +389,11 @@ ButtonCircle(.extraLarge, state: .selected) {
 }
 ```
 
-#### Avatar Small
+#### Avatar Letter
 <img width="98" alt="Screenshot 2024-05-20 at 10 44 34 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/946d1db2-0321-4e23-bc6a-52869d73ce84">
 
 ```swift
-AvatarSmall {
+AvatarLetter {
     Text("M")
         .font(.captionMedium)
         .frame(width: 24, height: 24)
@@ -406,14 +408,9 @@ IconCircle {
     Image(systemName: "envelope")
         .resizable()
         .scaledToFit()
+        .frame(width: 16, height: 16)
 }
-.environment(\.colorScheme, .light)
-IconCircle {
-    Image(systemName: "envelope")
-        .resizable()
-        .scaledToFit()
-}
-.environment(\.colorScheme, .dark)
+.frame(width: 32, height: 32)
 ```
 
 ### Main
