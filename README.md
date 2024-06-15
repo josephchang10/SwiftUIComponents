@@ -12,6 +12,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Button Circle](#Button-Circle)
 * [Avatar Letter](#Avatar-Letter)
 * [Icon Circle](#Icon-Circle)
+* [Large Badge Button](#Large-Badge-Button)
 ### Main
 * [Button Primary](#Button-Primary)
 * [Button Secondary](#Button-Secondary)
@@ -414,6 +415,16 @@ IconCircle {
         .scaledToFit()
         .fontWeight(.bold)
         .frame(width: 16, height: 16)
+}
+```
+
+#### Large Badge Button
+<img width="139" alt="Screenshot 2024-06-16 at 12 09 40 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/eb394c6c-c0c2-4742-9dfb-dfc040f2bec4">
+
+```swift
+LargeBadgeButton {
+    Image(systemName: "plus")
+        .fontWeight(.bold)
 }
 ```
 
