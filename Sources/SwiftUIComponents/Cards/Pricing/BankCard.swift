@@ -134,8 +134,8 @@ public struct BankCard<CompanyLogo: View>: View {
     }
 }
 
-public struct BankCardView: View {
-    public var body: some View {
+struct BankCardView: View {
+    var body: some View {
         ZStack {
             Color(red: 30 / 255, green: 30 / 255, blue: 30 / 255)
             Grid(horizontalSpacing: 20) {
@@ -156,8 +156,6 @@ public struct BankCardView: View {
         .frame(width: 1000)
         .preferredColorScheme(.dark)
     }
-    
-    public init() {}
 }
 
 #Preview {
