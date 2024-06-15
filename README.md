@@ -401,13 +401,14 @@ AvatarLetter {
 ```
 
 #### Icon Circle
-<img width="99" alt="Screenshot 2024-04-15 at 8 35 48 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/04890b7f-b4e3-4720-ac35-666f0afe4bab">
+<img width="98" alt="Screenshot 2024-06-15 at 8 32 26 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/6f11fe33-d729-428f-ba04-f830eeba4987">
 
 ```swift
 IconCircle {
     Image(systemName: "envelope")
         .resizable()
         .scaledToFit()
+        .fontWeight(.bold)
         .frame(width: 16, height: 16)
 }
 ```
