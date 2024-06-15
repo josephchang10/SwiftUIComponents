@@ -14,6 +14,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Icon Circle](#Icon-Circle)
 ### Main
 * [Button Primary](#Button-Primary)
+* [Button Secondary](#Button-Secondary)
 * [Button Ghost](#Button-Ghost)
 * [Button Glow](#Button-Glow)
 * [Button Shiny](#Button-Shiny)
@@ -424,6 +425,24 @@ ButtonPrimary(.small, title: "Primary") { Image(systemName: "chevron.right") }
 ButtonPrimary(.medium, title: "Primary") { Image(systemName: "chevron.right") }
 ButtonPrimary(.large, title: "Primary") { Image(systemName: "chevron.right") }
 ButtonPrimary(.extraLarge, title: "Primary") { Image(systemName: "chevron.right") }
+```
+
+#### Button Secondary
+<img width="625" alt="Screenshot 2024-06-15 at 9 55 53 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/2e3c2831-aaf0-4958-b780-cbfd84fb188c">
+
+```swift
+ButtonSecondary(.small, title: "Secondary") {
+    Image(systemName: "envelope.open")
+}
+ButtonSecondary(.medium, title: "Secondary") {
+    Image(systemName: "envelope.open")
+}
+ButtonSecondary(.large, title: "Secondary") {
+    Image(systemName: "envelope.open")
+}
+ButtonSecondary(.extraLarge, title: "Secondary") {
+    Image(systemName: "envelope.open")
+}
 ```
 
 #### Button Ghost
