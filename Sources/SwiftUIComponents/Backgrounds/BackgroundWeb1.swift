@@ -8,8 +8,11 @@
 import SwiftUI
 import TailwindSwiftUI
 
-public struct BackgroundWeb1: View {
+public struct BackgroundWeb1<Exposure: View, Stars: View>: View {
     @Environment(\.colorScheme) var colorScheme
+    
+    private let exposure: Exposure?
+    private let stars: Stars?
     
     public var body: some View {
         GeometryReader { proxy in
@@ -27,12 +30,20 @@ public struct BackgroundWeb1: View {
                     .blur(radius: .point(80))
                 Grid1()
                     .frame(height: proxy.size.width * 1024 / 1440)
-                Exposure5()
-                    .frame(width: 1080 * horizontalRatio, height: 768 * verticalRatio)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                Stars2()
-                    .frame(width: 1000 * horizontalRatio)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                if let exposure {
+                    exposure
+                } else {
+                    Exposure5()
+                        .frame(width: 1080 * horizontalRatio, height: 768 * verticalRatio)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
+                if let stars {
+                    stars
+                } else {
+                    Stars2()
+                        .frame(width: 1000 * horizontalRatio)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                }
             default:
                 let width = proxy.size.width * 1040 / 1440
                 let height = width * 800 / 1040
@@ -54,7 +65,25 @@ public struct BackgroundWeb1: View {
         }
     }
     
-    public init() {}
+    public init() where Exposure == EmptyView, Stars == EmptyView {
+        self.exposure = nil
+        self.stars = nil
+    }
+    
+    public init(@ViewBuilder exposure: () -> Exposure) where Stars == EmptyView {
+        self.exposure = exposure()
+        self.stars = nil
+    }
+    
+    public init(@ViewBuilder stars: () -> Stars) where Exposure == EmptyView {
+        self.exposure = nil
+        self.stars = stars()
+    }
+    
+    public init(@ViewBuilder exposure: () -> Exposure, @ViewBuilder stars: () -> Stars) {
+        self.exposure = exposure()
+        self.stars = stars()
+    }
 }
 
 #Preview {
