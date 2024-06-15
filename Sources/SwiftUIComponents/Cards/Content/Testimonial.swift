@@ -78,7 +78,7 @@ struct TestimonialView: View {
                         .fixedSize(horizontal: false, vertical: true)
                     DividerLine()
                     HStack(spacing: 8) {
-                        AvatarSmall {
+                        AvatarLetter {
                             Text("J")
                                 .font(.captionMedium)
                                 .frame(width: 24, height: 24)

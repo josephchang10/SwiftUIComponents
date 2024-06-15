@@ -52,6 +52,7 @@ public enum BackgroundColorStyle {
     case primary
     case secondary
     case blue
+    case gray
 }
 
 public extension ShapeStyle where Self == Color {
@@ -63,6 +64,8 @@ public extension ShapeStyle where Self == Color {
             Color("Background Secondary", bundle: .module)
         case .blue:
             Color("Background Blue", bundle: .module)
+        case .gray:
+            Color("Background Gray", bundle: .module)
         }
     }
 }
@@ -158,6 +161,44 @@ public extension ShapeStyle where Self == Color {
         case .inactive:
             .black.opacity(0.2)
         }
+    }
+}
+
+public enum TextGradientStyle: Sendable {
+    case secondary
+}
+
+struct TextGradientShapeStyle: ShapeStyle {
+    private let style: TextGradientStyle
+    
+    init(style: TextGradientStyle) {
+        self.style = style
+    }
+    
+    func resolve(in environment: EnvironmentValues) -> some ShapeStyle {
+        switch style {
+        case .secondary:
+            switch environment.colorScheme {
+            case .dark:
+                LinearGradient(stops: [
+                    .init(color: Color(red: 214 / 255, green: 222 / 255, blue: 1), location: 0),
+                    .init(color: Color(red: 116 / 255, green: 126 / 255, blue: 181 / 255), location: 0.67),
+                    .init(color: Color(red: 110 / 255, green: 66 / 255, blue: 145 / 255), location: 1)
+                ], startPoint: .init(x: 0.8, y: 4), endPoint: .init(x: 0.4, y: -3.5))
+            default:
+                LinearGradient(stops: [
+                    .init(color: .black, location: 0),
+                    .init(color: Color(red: 77 / 255, green: 44 / 255, blue: 118 / 255), location: 0.45),
+                    .init(color: Color(red: 59 / 255, green: 89 / 255, blue: 183 / 255), location: 1)
+                ], startPoint: .init(x: 1.4, y: 1.2), endPoint: .init(x: 0.1, y: -0.2))
+            }
+        }
+    }
+}
+
+public extension ShapeStyle where Self == AnyShapeStyle {
+    static func textGradient(_ style: TextGradientStyle) -> Self {
+        AnyShapeStyle(TextGradientShapeStyle(style: style))
     }
 }
 

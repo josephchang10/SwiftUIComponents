@@ -69,6 +69,7 @@ public struct ButtonPrimary<Label: View>: View {
         HStack(spacing: size.spacing) {
             if let titleKey {
                 Text(titleKey)
+                    .padding(.vertical, 1)
             }
             if let label {
                 label

@@ -8,6 +8,35 @@
 import SwiftUI
 
 public struct Input: View {
+    public enum Size {
+        case small
+        case medium
+        case large
+        case extraLarge
+        
+        var horizontalSpacing: CGFloat {
+            switch self {
+            case .small, .medium:
+                8
+            case .large, .extraLarge:
+                12
+            }
+        }
+        
+        var verticalPadding: CGFloat {
+            switch self {
+            case .small:
+                4
+            case .medium:
+                6
+            case .large:
+                8
+            case .extraLarge:
+                10
+            }
+        }
+    }
+    
     @Environment(\.colorScheme) private var colorScheme
     let prompt: LocalizedStringKey
     let text: Binding<String>
@@ -15,11 +44,14 @@ public struct Input: View {
     let showLeftIcon: Bool
     let showRightIcon: Bool
     let axis: Axis
+    var background: AnyShapeStyle?
+    var border: AnyShapeStyle?
+    let size: Size
     
     public var body: some View {
-        HStack(spacing: 8) {
+        HStack(spacing: size.horizontalSpacing) {
             if showLeftIcon {
-                iconCircle
+                icon
             }
             TextField("", text: text, prompt: Text(prompt).font(.captionRegular), axis: axis)
                 .textFieldStyle(.plain)
@@ -31,42 +63,34 @@ public struct Input: View {
 //                    }
 //                }
             if showRightIcon {
-                iconCircle
+                icon
             }
         }
         .padding(.leading, 12)
-        .padding(.vertical, 4)
+        .padding(.vertical, size.verticalPadding)
         .padding(.trailing, 8)
         .frame(minHeight: 32) // TODO: Make this dynamic
         .background {
             RoundedRectangle(cornerRadius: 8)
-                .fill(LinearGradient(colors: [
+                .fill(background ?? AnyShapeStyle(LinearGradient(colors: [
                 .white.opacity(colorScheme == .dark ? 1 : 0.5),
                 .white.opacity(colorScheme == .dark ? 0.5 : 0.05)
-            ], startPoint: .bottom, endPoint: .top))
-                .opacity(colorScheme == .dark ? 0.1 : 1)
+            ], startPoint: .bottom, endPoint: .top).opacity(colorScheme == .dark ? 0.1 : 1)))
         }
         .overlay {
             RoundedRectangle(cornerRadius: 8)
-                .strokeBorder(LinearGradient(colors: [
+                .strokeBorder(border ?? AnyShapeStyle(LinearGradient(colors: [
                     .white.opacity(0.5),
                     .white.opacity(0)
-                ], startPoint: .bottom, endPoint: .top).opacity(colorScheme == .dark ? 0.1 : 1), lineWidth: 1)
+                ], startPoint: .bottom, endPoint: .top).opacity(colorScheme == .dark ? 0.1 : 1)), lineWidth: 1)
                 .strokeBorder(.white.opacity(0.1), lineWidth: 1)
         }
         .shadowBlur(.small)
 //        .frame(minWidth: 140, maxWidth: 500)
     }
     
-    var iconCircle: some View {
-        IconCircle {
-            if let icon {
-                icon
-            }
-        }
-    }
-    
-    public init(_ prompt: LocalizedStringKey, text: Binding<String>, showLeftIcon: Bool = false, showRightIcon: Bool = true, @ViewBuilder icon: () -> some View) {
+    public init(_ size: Size, prompt: LocalizedStringKey = "", text: Binding<String>, showLeftIcon: Bool = false, showRightIcon: Bool = true, @ViewBuilder icon: () -> some View) {
+        self.size = size
         self.prompt = prompt
         self.text = text
         self.icon = AnyView(icon())
@@ -75,7 +99,20 @@ public struct Input: View {
         axis = .horizontal
     }
     
-    public init(_ prompt: LocalizedStringKey, text: Binding<String>, showLeftIcon: Bool, @ViewBuilder icon: () -> some View) {
+    public init(_ size: Size, prompt: LocalizedStringKey = "", text: Binding<String>, showLeftIcon: Bool = false, showRightIcon: Bool = true, background: some ShapeStyle, border: some ShapeStyle, @ViewBuilder icon: () -> some View) {
+        self.size = size
+        self.prompt = prompt
+        self.text = text
+        self.icon = AnyView(icon())
+        self.showLeftIcon = showLeftIcon
+        self.showRightIcon = showRightIcon
+        self.background = AnyShapeStyle(background)
+        self.border = AnyShapeStyle(border)
+        axis = .horizontal
+    }
+    
+    public init(_ size: Size, prompt: LocalizedStringKey, text: Binding<String>, showLeftIcon: Bool, @ViewBuilder icon: () -> some View) {
+        self.size = size
         self.prompt = prompt
         self.text = text
         self.icon = AnyView(icon())
@@ -84,7 +121,8 @@ public struct Input: View {
         axis = .horizontal
     }
     
-    public init(_ prompt: LocalizedStringKey, text: Binding<String>, axis: Axis = .horizontal) {
+    public init(_ size: Size, prompt: LocalizedStringKey, text: Binding<String>, axis: Axis = .horizontal) {
+        self.size = size
         self.prompt = prompt
         self.text = text
         self.icon = nil
@@ -94,26 +132,57 @@ public struct Input: View {
     }
 }
 
+struct InputView: View {
+    @State private var text = ""
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            Input(.small, prompt: "Email address", text: $text) {
+                IconCircle {
+                    Image(systemName: "envelope")
+                        .resizable()
+                        .scaledToFit()
+                        .fontWeight(.bold)
+                        .frame(width: 16, height: 16)
+                }
+            }
+            Input(.medium, prompt: "Email address", text: $text) {
+                IconCircle {
+                    Image(systemName: "envelope")
+                        .resizable()
+                        .scaledToFit()
+                        .fontWeight(.bold)
+                        .frame(width: 16, height: 16)
+                }
+            }
+            Input(.large, prompt: "Email address", text: $text) {
+                IconCircle {
+                    Image(systemName: "envelope")
+                        .resizable()
+                        .scaledToFit()
+                        .fontWeight(.bold)
+                        .frame(width: 16, height: 16)
+                }
+            }
+            Input(.extraLarge, prompt: "Email address", text: $text) {
+                IconCircle {
+                    Image(systemName: "envelope")
+                        .resizable()
+                        .scaledToFit()
+                        .fontWeight(.bold)
+                        .frame(width: 16, height: 16)
+                }
+            }
+        }
+        .frame(width: 200)
+    }
+}
+
 #Preview {
     VStack(spacing: 20) {
-        Input("Email address", text: .constant("Email address")) {
-            Image(systemName: "envelope")
-                .resizable()
-                .scaledToFit()
-                .fontWeight(.bold)
-        }
-        .frame(width: 200)
-        .environment(\.colorScheme, .light)
-        Input("Email address", text: .constant("Email address")) {
-            Image(systemName: "envelope")
-                .resizable()
-                .scaledToFit()
-                .fontWeight(.bold)
-        }
-        .frame(width: 200)
-        .environment(\.colorScheme, .dark)
-        Input("Email address", text: .constant(""))
-            .frame(width: 200)
+        InputView()
+            .environment(\.colorScheme, .light)
+        InputView()
             .environment(\.colorScheme, .dark)
     }
     .padding(20)

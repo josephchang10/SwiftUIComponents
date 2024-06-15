@@ -8,8 +8,9 @@
 import SwiftUI
 
 public struct Logo: View {
-    public enum Logo: String {
+    public enum Logo: String, CaseIterable {
         case x
+        case youtube
     }
     
     private let logo: Logo
@@ -19,7 +20,6 @@ public struct Logo: View {
             .resizable()
             .foregroundStyle(.foreground(.primary))
             .scaledToFit()
-            .padding(7/2)
     }
     
     public init(_ logo: Logo) {
@@ -28,9 +28,13 @@ public struct Logo: View {
 }
 
 #Preview {
-    Logo(.x)
-        .frame(width: 24, height: 24)
-        .padding(60)
-        .background(.background(.primary))
-        .preferredColorScheme(.light)
+    VStack(spacing: 60) {
+        Logo(.x)
+            .frame(width: 24, height: 24)
+        Logo(.youtube)
+            .frame(width: 24, height: 24)
+    }
+    .padding(60)
+    .background(.background(.primary))
+    .preferredColorScheme(.light)
 }

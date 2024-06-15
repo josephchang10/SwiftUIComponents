@@ -1,5 +1,5 @@
 //
-//  AvatarSmall.swift
+//  AvatarLetter.swift
 //
 //
 //  Created by Jiafu Zhang on 5/20/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct AvatarSmall<Avatar: View>: View {
+public struct AvatarLetter<Avatar: View>: View {
     private let avatar: Avatar
     
     public var body: some View {
@@ -32,13 +32,13 @@ public struct AvatarSmall<Avatar: View>: View {
 
 #Preview {
     HStack(spacing: 20) {
-        AvatarSmall {
+        AvatarLetter {
             Text("M")
                 .font(.captionMedium)
                 .frame(width: 24, height: 24)
         }
         .environment(\.colorScheme, .light)
-        AvatarSmall {
+        AvatarLetter {
             Text("M")
                 .font(.captionMedium)
                 .frame(width: 24, height: 24)
