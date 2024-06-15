@@ -13,6 +13,10 @@ public struct LargeBadgeButton<Icon: View>: View {
     public var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: .point(16))
+                .fill(.ultraThinMaterial)
+                .frame(width: .point(64), height: .point(64))
+                .rotationEffect(.degrees(45))
+            RoundedRectangle(cornerRadius: .point(16))
                 .fill(LinearGradient(stops: [
                     .init(color: .init(red: 40 / 255, green: 46 / 255, blue: 74 / 255, opacity: 0), location: 0),
                     .init(color: .init(red: 40 / 255, green: 82 / 255, blue: 153 / 255), location: 1)
