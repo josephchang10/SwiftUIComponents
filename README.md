@@ -410,7 +410,6 @@ IconCircle {
         .scaledToFit()
         .frame(width: 16, height: 16)
 }
-.frame(width: 32, height: 32)
 ```
 
 ### Main
