@@ -44,6 +44,8 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 ### Insepctors
 * [Notification](#Notification)
 * [Insepctor Detail](#Insepctor-Detail)
+### Media / Image / Gallery
+* [Finance Card](#Finance-Card)
 ### Content
 * [Bank Card](#Bank-Card)
 * [Testimonial](#Testimonial)
@@ -1449,6 +1451,61 @@ InspectorDetail {
         Spacer()
         ButtonPrimary("Mark all as read", .small)
     }
+}
+```
+
+### Media / Image / Gallery
+#### Finance Card
+<img width="832" alt="Screenshot 2024-06-16 at 11 30 05 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/2beeb897-ce78-42c3-8024-cd27bca8a9d8">
+
+```swift
+FianceCard {
+    BankCard(.card1, number: "****   ****   ****   2859", validThru: "Valid thru 06/24", notchLabel: "DEBIT CARD") {
+        CompanyLogo(.visa)
+            .frame(width: 80, height: 24)
+    }
+    VStack(alignment: .leading, spacing: 10) {
+        HStack(spacing: 10) {
+            Image(systemName: "creditcard")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 20)
+                .foregroundStyle(.foreground(.primary))
+            Text("All your cards in one place")
+                .font(.footnoteRegular)
+                .foregroundStyle(.foreground(.secondary))
+        }
+        Text("Smart cards")
+            .font(.heading5)
+            .foregroundStyle(.foreground(.primary))
+        Text("Make your finances work for you with the power of AI. From tracking expenses to planning investments, gain insights.")
+            .font(.footnoteRegular)
+            .foregroundStyle(.foreground(.secondary))
+            .fixedSize(horizontal: false, vertical: true)
+        DividerLine()
+        HStack {
+            ButtonGlow(.small, text: "Add card") {
+                Image(systemName: "plus.circle")
+            }
+            Spacer()
+            HStack(spacing: 0) {
+                ButtonIcon(.medium) {
+                    Image(systemName: "arrow.left")
+                }
+                Separator()
+                ButtonIcon(.medium) {
+                    Image(systemName: "arrow.right")
+                }
+            }
+            .overlay {
+                RoundedRectangle(cornerRadius: 30)
+                    .inset(by: 0.5)
+                    .stroke(.container(.divider), lineWidth: 1)
+            }
+        }
+    }
+    .width(.full, alignment: .leading)
+    .padding(10)
 }
 ```
 
