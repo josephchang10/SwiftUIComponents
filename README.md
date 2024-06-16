@@ -559,7 +559,7 @@ struct SliderPreview: View {
 ```
 
 ### Menu / Filter
-##### Filters Card
+#### Filters Card
 ![Filters Card](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/e5173a83-850f-4d03-8319-bcad6c269844)
 
 ```swift 
