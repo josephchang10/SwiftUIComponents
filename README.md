@@ -232,69 +232,33 @@ TextCheck("All 200+ components")
 ## Buttons
 ### Menu Buttons
 #### Button Menu
-<img width="651" alt="Screenshot 2024-04-11 at 5 58 36 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/8608d551-c5c5-4ae5-975b-5a1c0d2ff56b">
+<img width="720" alt="Screenshot 2024-06-16 at 12 57 14 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/ce0b1f28-c0ed-4cfb-b65b-50187b77007e">
 
 ```swift
-HStack(spacing: 10) {
-    ButtonMenu("Account", .small) {
-        Image(systemName: "person")
-    }
-    ButtonMenu("Account", .medium) {
-        Image(systemName: "person")
-    }
-    ButtonMenu("Account", .large) {
-        Image(systemName: "person")
-    }
-    ButtonMenu("Account", .extraLarge) {
-        Image(systemName: "person")
-    }
+ButtonMenu(.small, text: "Account") {
+    Image(systemName: "person")
 }
-.environment(\.colorScheme, .light)
-HStack(spacing: 10) {
-    ButtonMenu("Account", .small) {
-        Image(systemName: "person")
-    }
-    ButtonMenu("Account", .medium) {
-        Image(systemName: "person")
-    }
-    ButtonMenu("Account", .large) {
-        Image(systemName: "person")
-    }
-    ButtonMenu("Account", .extraLarge) {
-        Image(systemName: "person")
-    }
+ButtonMenu(.medium, text: "Account") {
+    Image(systemName: "person")
 }
-.environment(\.colorScheme, .dark)
-HStack(spacing: 10) {
-    ButtonMenu("Account", state: .selected, .small) {
-        Image(systemName: "person")
-    }
-    ButtonMenu("Account", state: .selected, .medium) {
-        Image(systemName: "person")
-    }
-    ButtonMenu("Account", state: .selected, .large) {
-        Image(systemName: "person")
-    }
-    ButtonMenu("Account", state: .selected, .extraLarge) {
-        Image(systemName: "person")
-    }
+ButtonMenu(.large, text: "Account") {
+    Image(systemName: "person")
 }
-.environment(\.colorScheme, .light)
-HStack(spacing: 10) {
-    ButtonMenu("Account", state: .selected, .small) {
-        Image(systemName: "person")
-    }
-    ButtonMenu("Account", state: .selected, .medium) {
-        Image(systemName: "person")
-    }
-    ButtonMenu("Account", state: .selected, .large) {
-        Image(systemName: "person")
-    }
-    ButtonMenu("Account", state: .selected, .extraLarge) {
-        Image(systemName: "person")
-    }
+ButtonMenu(.extraLarge, text: "Account") {
+    Image(systemName: "person")
 }
-.environment(\.colorScheme, .dark)
+ButtonMenu(.small, text: "Account", state: .selected) {
+    Image(systemName: "person")
+}
+ButtonMenu(.medium, text: "Account", state: .selected) {
+    Image(systemName: "person")
+}
+ButtonMenu(.large, text: "Account", state: .selected) {
+    Image(systemName: "person")
+}
+ButtonMenu(.extraLarge, text: "Account", state: .selected) {
+    Image(systemName: "person")
+}
 ```
 
 #### Activity
