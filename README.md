@@ -447,7 +447,7 @@ ButtonGhost(.extraLarge, text: "Ghost") {
 ```
 
 #### Button Glow
-<img width="449" alt="Screenshot 2024-06-08 at 11 36 20 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/a761b91a-7e45-4852-9d65-a109664a769d">
+<img width="472" alt="Screenshot 2024-06-16 at 2 29 14 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/cfa0184e-3145-410e-b80a-03c9b3b2f78e">
 
 ```swift
 ButtonGlow(.small, text: "Glow") {
