@@ -45,6 +45,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Notification](#Notification)
 * [Insepctor Detail](#Insepctor-Detail)
 ### Content
+* [Bank Card](#Bank-Card)
 * [Testimonial](#Testimonial)
 ### Modal
 * [Payment Modal](#Payment-Modal)
@@ -1452,6 +1453,20 @@ InspectorDetail {
 ```
 
 ### Content
+#### Bank Card
+<img width="651" alt="Screenshot 2024-05-12 at 6 38 32 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/fe4ef7ec-92ab-4b30-8d9a-8c98b637c306">
+
+```swift
+BankCard(.card1, number: "****   ****   ****   2859", validThru: "Valid thru 06/24", notchLabel: "DEBIT CARD") {
+    CompanyLogo(.visa)
+        .frame(width: 80, height: 24)
+}
+BankCard(.card2, number: "****   ****   ****   2859", validThru: "Valid thru 06/24", notchLabel: "CREDIT CARD") {
+    CompanyLogo(.mastercard)
+        .frame(width: 80, height: 24)
+}
+```
+
 #### Testimonial
 <img width="650" alt="Screenshot 2024-05-21 at 9 22 56 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/6e7905da-29c6-454f-8596-8bf7f6b60b7c">
 
@@ -1514,19 +1529,6 @@ Testimonial {
 ```
 
 ### Pricing
-#### Bank Card
-<img width="651" alt="Screenshot 2024-05-12 at 6 38 32 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/fe4ef7ec-92ab-4b30-8d9a-8c98b637c306">
-
-```swift
-BankCard(.card1, number: "****   ****   ****   2859", validThru: "Valid thru 06/24", notchLabel: "DEBIT CARD") {
-    CompanyLogo(.visa)
-        .frame(width: 80, height: 24)
-}
-BankCard(.card2, number: "****   ****   ****   2859", validThru: "Valid thru 06/24", notchLabel: "CREDIT CARD") {
-    CompanyLogo(.mastercard)
-        .frame(width: 80, height: 24)
-}
-```
 
 #### Pricing Card
 <img width="625" alt="Screenshot 2024-04-15 at 7 36 54 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/e676439c-074f-42a5-8e30-9ed1a89f3ddf">
