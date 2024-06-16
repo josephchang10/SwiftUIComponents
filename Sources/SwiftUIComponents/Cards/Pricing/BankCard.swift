@@ -15,7 +15,7 @@ public struct BankCard<CompanyLogo: View>: View {
         var background: some ShapeStyle {
             switch self {
             case .card1:
-                AnyShapeStyle(Color.background(.primary))
+                AnyShapeStyle(Color.black)
             case.card2:
                 AnyShapeStyle(LinearGradient.gradients(.blue1))
             }

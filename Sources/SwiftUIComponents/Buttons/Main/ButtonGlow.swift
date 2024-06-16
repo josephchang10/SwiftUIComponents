@@ -1,6 +1,6 @@
 //
 //  SwiftUIView.swift
-//  
+//
 //
 //  Created by Jiafu Zhang on 4/8/24.
 //
@@ -59,6 +59,7 @@ public struct ButtonGlow<Icon: View>: View {
     public var body: some View {
         HStack(spacing: 8) {
             Text(text)
+                .padding(.vertical, 1)
             icon
         }
         .font(size.font)
@@ -72,7 +73,7 @@ public struct ButtonGlow<Icon: View>: View {
         .background {
             RoundedRectangle(cornerRadius: 8)
                 .fill(.container(.background))
-                .fill(.ultraThinMaterial)
+                .fill(.thinMaterial)
         }
         .overlay {
             RoundedRectangle(cornerRadius: 8)
@@ -95,7 +96,9 @@ public struct ButtonGlow<Icon: View>: View {
     var backgroundGlow: some View {
         RoundedRectangle(cornerRadius: 10)
             .fill(.angular1)
+//            .blur(radius: .point(20))
             .blur(radius: 20)
+            .opacity(0.8)
             .blendMode(.screen)
     }
     
@@ -103,7 +106,7 @@ public struct ButtonGlow<Icon: View>: View {
         RoundedRectangle(cornerRadius: 10)
             .fill(.angular1)
             .blur(radius: .point(20))
-            .opacity(0.3)
+            .opacity(0.2)
             .blendMode(.screen)
     }
     
