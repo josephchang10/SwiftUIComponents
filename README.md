@@ -562,6 +562,7 @@ struct SliderPreview: View {
 ### Menu / Filter
 #### Side Menu
 <img width="538" alt="Screenshot 2024-06-16 at 2 15 20 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/324a004c-d0b8-4b46-80bf-ae536e52dacf">
+
 ![Side Menu](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/6e1e8776-cd36-4aba-aa97-ec45399fbf58)
 
 ```swift
