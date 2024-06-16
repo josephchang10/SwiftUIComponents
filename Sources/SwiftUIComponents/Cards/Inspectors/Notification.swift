@@ -20,6 +20,7 @@ public struct Notification<Buttons: View, Content: View>: View {
         }
         .padding(20)
         .background(.container(.background))
+        .background(.ultraThinMaterial)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .overlay {
             RoundedRectangle(cornerRadius: 10)
@@ -27,6 +28,7 @@ public struct Notification<Buttons: View, Content: View>: View {
                 .stroke(.container(.border), lineWidth: 1)
         }
         .frame(minWidth: 260, maxWidth: 400)
+        .shadowBlur(.extraLarge)
     }
     
     var title: some View {

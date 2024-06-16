@@ -1,5 +1,5 @@
 //
-//  FianceCard.swift
+//  FinanceCard.swift
 //
 //
 //  Created by Jiafu Zhang on 6/16/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct FianceCard<Content: View>: View {
+public struct FinanceCard<Content: View>: View {
     private let content: Content
     
     public var body: some View {
@@ -61,7 +61,7 @@ public struct FianceCard<Content: View>: View {
 
 struct FinanceCardView: View {
     var body: some View {
-        FianceCard {
+        FinanceCard {
             BankCard(.card1, number: "****   ****   ****   2859", validThru: "Valid thru 06/24", notchLabel: "DEBIT CARD") {
                 CompanyLogo(.visa)
                     .frame(width: 80, height: 24)
