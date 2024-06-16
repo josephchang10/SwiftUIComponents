@@ -1459,7 +1459,7 @@ InspectorDetail {
 <img width="832" alt="Screenshot 2024-06-16 at 11 30 05 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/2beeb897-ce78-42c3-8024-cd27bca8a9d8">
 
 ```swift
-FianceCard {
+FinanceCard {
     BankCard(.card1, number: "****   ****   ****   2859", validThru: "Valid thru 06/24", notchLabel: "DEBIT CARD") {
         CompanyLogo(.visa)
             .frame(width: 80, height: 24)
