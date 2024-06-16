@@ -88,7 +88,6 @@ public struct ButtonMenu: View {
         .font(size.font)
         .padding(.horizontal, size.horizontalPadding)
         .padding(.vertical, size.verticalPadding)
-        .frame(width: 150)
         .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
         .overlay(alignment: .leading) {
             if state == .selected {
@@ -103,7 +102,7 @@ public struct ButtonMenu: View {
         .background {
             if state == .selected {
                 LinearGradient(colors: [color, color.opacity(0)], startPoint: .leading, endPoint: .trailing)
-                    .opacity(0.3)
+                    .opacity(colorScheme == .dark ? 0.1 : 0.3)
             }
         }
         .onHover { hovering in
@@ -120,85 +119,78 @@ public struct ButtonMenu: View {
             .blur(radius: 10)
     }
     
-    public init(_ text: LocalizedStringKey, state: _State = .normal, _ size: Size) {
-        self.state = state
+    public init( _ size: Size, text: LocalizedStringKey, state: _State = .normal) {
         self.size = size
+        self.state = state
         self.text = text
         self.icon = nil
     }
     
-    public init(_ text: LocalizedStringKey, state: _State = .normal, _ size: Size, @ViewBuilder icon: () -> some View) {
-        self.state = state
+    public init(_ size: Size, text: LocalizedStringKey, state: _State = .normal, @ViewBuilder icon: () -> some View) {
         self.size = size
+        self.state = state
         self.text = text
         self.icon = AnyView(icon())
     }
 }
 
+struct ButtonMenuView: View {
+    var body: some View {
+        HStack(spacing: 10) {
+            Group {
+                ButtonMenu(.small, text: "Account") {
+                    Image(systemName: "person")
+                }
+                ButtonMenu(.medium, text: "Account") {
+                    Image(systemName: "person")
+                }
+                ButtonMenu(.large, text: "Account") {
+                    Image(systemName: "person")
+                }
+                ButtonMenu(.extraLarge, text: "Account") {
+                    Image(systemName: "person")
+                }
+            }
+            .frame(width: 150)
+        }
+    }
+}
+
+struct ButtonMenuSelectedView: View {
+    var body: some View {
+        HStack(alignment: .top, spacing: 12) {
+            Group {
+                ButtonMenu(.small, text: "Account", state: .selected) {
+                    Image(systemName: "person")
+                }
+                ButtonMenu(.medium, text: "Account", state: .selected) {
+                    Image(systemName: "person")
+                }
+                ButtonMenu(.large, text: "Account", state: .selected) {
+                    Image(systemName: "person")
+                }
+                ButtonMenu(.extraLarge, text: "Account", state: .selected) {
+                    Image(systemName: "person")
+                }
+            }
+            .frame(width: 150)
+        }
+    }
+}
+
 #Preview {
     VStack(spacing: 10) {
-        HStack(spacing: 10) {
-            ButtonMenu("Account", .small) {
-                Image(systemName: "person")
-            }
-            ButtonMenu("Account", .medium) {
-                Image(systemName: "person")
-            }
-            ButtonMenu("Account", .large) {
-                Image(systemName: "person")
-            }
-            ButtonMenu("Account", .extraLarge) {
-                Image(systemName: "person")
-            }
-        }
-        .environment(\.colorScheme, .light)
-        HStack(spacing: 10) {
-            ButtonMenu("Account", .small) {
-                Image(systemName: "person")
-            }
-            ButtonMenu("Account", .medium) {
-                Image(systemName: "person")
-            }
-            ButtonMenu("Account", .large) {
-                Image(systemName: "person")
-            }
-            ButtonMenu("Account", .extraLarge) {
-                Image(systemName: "person")
-            }
-        }
-        .environment(\.colorScheme, .dark)
-        HStack(spacing: 10) {
-            ButtonMenu("Account", state: .selected, .small) {
-                Image(systemName: "person")
-            }
-            ButtonMenu("Account", state: .selected, .medium) {
-                Image(systemName: "person")
-            }
-            ButtonMenu("Account", state: .selected, .large) {
-                Image(systemName: "person")
-            }
-            ButtonMenu("Account", state: .selected, .extraLarge) {
-                Image(systemName: "person")
-            }
-        }
-        .environment(\.colorScheme, .light)
-        HStack(spacing: 10) {
-            ButtonMenu("Account", state: .selected, .small) {
-                Image(systemName: "person")
-            }
-            ButtonMenu("Account", state: .selected, .medium) {
-                Image(systemName: "person")
-            }
-            ButtonMenu("Account", state: .selected, .large) {
-                Image(systemName: "person")
-            }
-            ButtonMenu("Account", state: .selected, .extraLarge) {
-                Image(systemName: "person")
-            }
-        }
-        .environment(\.colorScheme, .dark)
+        ButtonMenuView()
+            .environment(\.colorScheme, .light)
+        ButtonMenuView()
+            .environment(\.colorScheme, .dark)
+        ButtonMenuSelectedView()
+            .environment(\.colorScheme, .light)
+        ButtonMenuSelectedView()
+            .environment(\.colorScheme, .dark)
     }
-    .padding()
+    .padding(10)
+    .padding(60)
     .background(Color(red: 53 / 255, green: 53 / 255, blue: 53 / 255))
     .preferredColorScheme(.dark)
 }
