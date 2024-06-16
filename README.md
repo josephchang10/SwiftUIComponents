@@ -25,6 +25,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Slider](#Slider)
 * [Stepper](#Stepper)
 ### Menu / Filter
+* [Side Menu](#Side-Menu)
 * [Filters Card](#Filters-Card)
 ### Inputs
 * [Input](#Input)
@@ -559,6 +560,65 @@ struct SliderPreview: View {
 ```
 
 ### Menu / Filter
+#### Side Menu
+<img width="538" alt="Screenshot 2024-06-16 at 2 15 20 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/324a004c-d0b8-4b46-80bf-ae536e52dacf">
+![Side Menu](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/6e1e8776-cd36-4aba-aa97-ec45399fbf58)
+
+```swift
+SideMenu {
+    ButtonMenu(.large, text: "Account") {
+        Image(systemName: "person")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+            .fontWeight(.bold)
+    }
+    DividerLine()
+    ButtonMenu(.large, text: "Pricing", state: .selected) {
+        Image(systemName: "creditcard")
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+            .fontWeight(.bold)
+    }
+    DividerLine()
+    ButtonMenu(.large, text: "Billing") {
+        Image(systemName: "doc.plaintext")
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+            .fontWeight(.bold)
+    }
+    DividerLine()
+    ButtonMenu(.large, text: "Settings") {
+        Image(systemName: "person.2.badge.gearshape")
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+            .fontWeight(.bold)
+    }
+    DividerLine()
+    ButtonMenu(.large, text: "Support") {
+        Image(systemName: "questionmark.diamond")
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+            .fontWeight(.bold)
+    }
+    DividerLine()
+    ButtonMenu(.large, text: "Contact") {
+        Image(systemName: "envelope")
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+            .fontWeight(.bold)
+    }
+    DividerLine()
+    ButtonMenu(.large, text: "Sign Out") {
+        Image(systemName: "arrow.left.square")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+            .fontWeight(.bold)
+    }
+}
+```
+
 #### Filters Card
 ![Filters Card](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/e5173a83-850f-4d03-8319-bcad6c269844)
 
