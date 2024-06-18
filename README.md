@@ -33,6 +33,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 ### Navigation
 * [Menu](#Menu-2)
 * [Inspector Menu](#Inspector-Menu)
+* [Browser Buttons](#Browser-Buttons)
 ### Segmented Controls
 * [Segmented Control](#Segmented-Control)
 * [Toggle](#Toggle)
@@ -903,6 +904,14 @@ InspectorMenu {
     }
     .padding(10)
 }
+```
+
+#### Browser Buttons
+![Browser Buttons](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/5bc210c9-b019-4a22-b367-dc5895487da2)
+![Hover](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/851ab505-86ee-4e15-a456-abb4447e4a9a)
+
+```swift
+BrowserButtons()
 ```
 
 ### Segmented Controls
