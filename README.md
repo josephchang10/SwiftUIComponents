@@ -7,8 +7,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Button Menu](#Button-Menu)
 * [Activity](#Activity)
 * [Button Toggle](#Button-Toggle)
-### Symbols
-#### Icons
+### Symbols | Icons
 * [Button Circle](#Button-Circle)
 * [Avatar Letter](#Avatar-Letter)
 * [Icon Circle](#Icon-Circle)
@@ -312,8 +311,7 @@ HStack(spacing: 20) {
 }
 ```
 
-### Symbols
-#### Icons
+### Symbols | Icons
 #### Button Circle
 ![Button Circle](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/b9be8074-e57f-4e47-bc29-d4568ef89acb)
 ![Hover](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/df939822-cec9-4957-9c06-fea9cf76cf24)
