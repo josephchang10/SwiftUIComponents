@@ -856,31 +856,31 @@ SegmentedMenu {
 
 ```swift
 InspectorMenu {
-    ButtonTooltip("Pixel Density") {
+    ButtonTooltip(.small, text: "Pixel Density") {
         Image(systemName: "arrow.up.backward.and.arrow.down.forward")
     } rightIcon: {
         Image(systemName: "chevron.down")
-    } action: {}
+    }
     ZStack {
         SegmentedControl {
-            ButtonToggle("1x", .small, state: .selected, showRightIcon: false)
-            ButtonToggle("2x", .small, showRightIcon: false)
-            ButtonToggle("3x", .small, showRightIcon: false)
-            ButtonToggle("4x", .small, showRightIcon: false)
+            ButtonToggle(.small, text: "1x", state: .selected, showRightIcon: false)
+            ButtonToggle(.small, text: "2x", showRightIcon: false)
+            ButtonToggle(.small, text: "3x", showRightIcon: false)
+            ButtonToggle(.small, text: "4x", showRightIcon: false)
         }
     }
     .padding(10)
     DividerLine()
-    ButtonTooltip("Format") {
+    ButtonTooltip(.small, text: "Format") {
         Image(systemName: "doc.text")
     } rightIcon: {
         Image(systemName: "chevron.down")
-    } action: {}
+    }
     ZStack {
         SegmentedControl {
-            ButtonToggle("PNG", .small, state: .selected, showRightIcon: false)
-            ButtonToggle("JPG", .small, showRightIcon: false)
-            ButtonToggle("WebP", .small, showRightIcon: false)
+            ButtonToggle(.small, text: "PNG", state: .selected, showRightIcon: false)
+            ButtonToggle(.small, text: "JPG", showRightIcon: false)
+            ButtonToggle(.small, text: "WebP", showRightIcon: false)
         }
     }
     .padding(10)
