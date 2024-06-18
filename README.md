@@ -907,7 +907,7 @@ InspectorMenu {
 ```
 
 #### Browser Buttons
-![Browser Buttons](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/5bc210c9-b019-4a22-b367-dc5895487da2)
+![Browser Buttons](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/a94cd395-305b-4881-8d79-b34ca5c4443f)
 ![Hover](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/851ab505-86ee-4e15-a456-abb4447e4a9a)
 
 ```swift
