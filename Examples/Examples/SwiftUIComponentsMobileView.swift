@@ -153,30 +153,30 @@ struct SwiftUIComponentsMobileView: View {
     var menu: some View {
         VStack(spacing: 30) {
             LayersMenu {
-                ButtonTooltip("Wallpaper") {
+                ButtonTooltip(.medium, text: "Wallpaper") {
                     Image(systemName: "photo")
                 } rightIcon: {
                     Image(systemName: "eye")
-                } action: {}
+                }
                 DividerLine()
-                ButtonTooltip("Blurs") {
+                ButtonTooltip(.medium, text: "Blurs") {
                     Image(systemName: "drop.halffull")
                 } rightIcon: {
                     Image(systemName: "eye")
-                } action: {}
+                }
                 DividerLine()
-                ButtonTooltip("Overlay") {
+                ButtonTooltip(.medium, text: "Overlay") {
                     Image(systemName: "wand.and.stars.inverse")
                 } rightIcon: {
                     Image(systemName: "eye")
-                } action: {}
+                }
                 DividerLine()
-                ButtonTooltip("UI Components", state: .selected) {
+                ButtonTooltip(.medium, text: "UI Components", state: .selected) {
                     Image(systemName: "iphone")
                         .symbolRenderingMode(.monochrome)
                 } rightIcon: {
                     Image(systemName: "eye")
-                } action: {}
+                }
                 SegmentedControl {
                     ButtonToggle(.small, text: "Glass", state: .selected, showRightIcon: false)
                     ButtonToggle(.small, text: "Outline", showRightIcon: false)

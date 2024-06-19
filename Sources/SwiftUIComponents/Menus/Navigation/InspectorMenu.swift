@@ -37,11 +37,11 @@ public struct InspectorMenu<Content: View>: View {
 struct InsepctorMenuView: View {
     var body: some View {
         InspectorMenu {
-            ButtonTooltip("Pixel Density") {
+            ButtonTooltip(.small, text: "Pixel Density") {
                 Image(systemName: "arrow.up.backward.and.arrow.down.forward")
             } rightIcon: {
                 Image(systemName: "chevron.down")
-            } action: {}
+            }
             ZStack {
                 SegmentedControl {
                     ButtonToggle(.small, text: "1x", state: .selected, showRightIcon: false)
@@ -52,11 +52,11 @@ struct InsepctorMenuView: View {
             }
             .padding(10)
             DividerLine()
-            ButtonTooltip("Format") {
+            ButtonTooltip(.small, text: "Format") {
                 Image(systemName: "doc.text")
             } rightIcon: {
                 Image(systemName: "chevron.down")
-            } action: {}
+            }
             ZStack {
                 SegmentedControl {
                     ButtonToggle(.small, text: "PNG", state: .selected, showRightIcon: false)

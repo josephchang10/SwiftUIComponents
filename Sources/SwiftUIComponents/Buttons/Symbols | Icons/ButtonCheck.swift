@@ -23,7 +23,6 @@ public struct ButtonCheck<Icon: View>: View {
                 .stroke(.container(.divider), lineWidth: 1)
                 .padding(5)
                 .rotationEffect(.degrees(45))
-                .blendMode(.overlay)
             icon
                 .font(.captionMedium)
                 .foregroundStyle(.foreground(.primary))
