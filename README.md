@@ -32,6 +32,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Switch](#Switch)
 ### Navigation
 * [Menu](#Menu-2)
+* [Layers Menu](#Layers-Menu)
 * [Inspector Menu](#Inspector-Menu)
 * [Browser Buttons](#Browser-Buttons)
 ### Segmented Controls
@@ -860,6 +861,88 @@ struct SwitchView: View {
 SegmentedMenu {
     ButtonToggle("Menu", .small, showRightIcon: false)
     ButtonToggle("Menu", .small, state: .selected)
+}
+```
+
+#### Layers Menu
+<img width="607" alt="Screenshot 2024-06-19 at 11 32 26 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/d959fe77-ff8d-441e-bb31-f1b3afa71390">
+
+```swift
+LayersMenu {
+    ButtonTooltip(.medium, text: "Wallpaper") {
+        Image(systemName: "photo")
+    } rightIcon: {
+        Image(systemName: "eye")
+    }
+    DividerLine()
+    ButtonTooltip(.medium, text: "Blurs") {
+        Image(systemName: "drop.halffull")
+    } rightIcon: {
+        Image(systemName: "eye")
+    }
+    DividerLine()
+    ButtonTooltip(.medium, text: "Overlay") {
+        Image(systemName: "wand.and.stars.inverse")
+    } rightIcon: {
+        Image(systemName: "eye")
+    }
+    DividerLine()
+    ButtonTooltip(.medium, text: "UI Components", state: .selected) {
+        Image(systemName: "iphone")
+            .symbolRenderingMode(.monochrome)
+    } rightIcon: {
+        Image(systemName: "eye")
+    }
+    SegmentedControl {
+        ButtonToggle(.small, text: "Glass", state: .selected, showRightIcon: false)
+        ButtonToggle(.small, text: "Outline", showRightIcon: false)
+        ButtonToggle(.small, text: "Flat", showRightIcon: false)
+    }
+    .padding(10)
+    .width(.full)
+    HStack(spacing: 10) {
+        GridItem {
+            Image(systemName: "moon")
+                .resizable()
+                .fontWeight(.medium)
+                .scaledToFit()
+                .frame(width: 16, height: 16)
+                .padding(12)
+        }
+        GridItem {
+            Image(systemName: "sun.max")
+                .resizable()
+                .fontWeight(.medium)
+                .scaledToFit()
+                .frame(width: 20, height: 20)
+                .padding(10)
+        }
+        GridItem {
+            Image(systemName: "wand.and.stars.inverse")
+                .resizable()
+                .fontWeight(.medium)
+                .scaledToFit()
+                .frame(width: 20, height: 20)
+                .padding(10)
+        }
+        GridItem {
+            Image(systemName: "eye")
+                .resizable()
+                .fontWeight(.medium)
+                .scaledToFit()
+                .frame(width: 20, height: 20)
+                .padding(10)
+        }
+    }
+    .padding(10)
+    .width(.full)
+    SegmentedControl {
+        ButtonToggle(.small, text: "sm", state: .selected, showRightIcon: false)
+        ButtonToggle(.small, text: "md", showRightIcon: false)
+        ButtonToggle(.small, text: "lg", showRightIcon: false)
+    }
+    .padding(10)
+    .width(.full)
 }
 ```
 
