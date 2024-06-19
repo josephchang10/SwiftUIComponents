@@ -25,15 +25,17 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Slider](#Slider)
 * [Stepper](#Stepper)
 ### Menu / Filter
-* [Side Menu](#Side-Menu)
 * [Filters Card](#Filters-Card)
+### Menu / Filter
+* [Side Menu](#Side-Menu)
+* [Popover](#Popover)
+* [Layers Menu](#Layers-Menu)
+* [Inspector Menu](#Inspector-Menu)
 ### Inputs
 * [Input](#Input)
 * [Switch](#Switch)
 ### Navigation
 * [Menu](#Menu-2)
-* [Layers Menu](#Layers-Menu)
-* [Inspector Menu](#Inspector-Menu)
 * [Browser Buttons](#Browser-Buttons)
 ### Segmented Controls
 * [Segmented Control](#Segmented-Control)
@@ -571,66 +573,6 @@ struct SliderPreview: View {
 ```
 
 ### Menu / Filter
-#### Side Menu
-<img width="538" alt="Screenshot 2024-06-16 at 2 15 20 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/324a004c-d0b8-4b46-80bf-ae536e52dacf">
-
-![Side Menu](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/6e1e8776-cd36-4aba-aa97-ec45399fbf58)
-
-```swift
-SideMenu {
-    ButtonMenu(.large, text: "Account") {
-        Image(systemName: "person")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 16, height: 16)
-            .fontWeight(.bold)
-    }
-    DividerLine()
-    ButtonMenu(.large, text: "Pricing", state: .selected) {
-        Image(systemName: "creditcard")
-            .scaledToFit()
-            .frame(width: 16, height: 16)
-            .fontWeight(.bold)
-    }
-    DividerLine()
-    ButtonMenu(.large, text: "Billing") {
-        Image(systemName: "doc.plaintext")
-            .scaledToFit()
-            .frame(width: 16, height: 16)
-            .fontWeight(.bold)
-    }
-    DividerLine()
-    ButtonMenu(.large, text: "Settings") {
-        Image(systemName: "person.2.badge.gearshape")
-            .scaledToFit()
-            .frame(width: 16, height: 16)
-            .fontWeight(.bold)
-    }
-    DividerLine()
-    ButtonMenu(.large, text: "Support") {
-        Image(systemName: "questionmark.diamond")
-            .scaledToFit()
-            .frame(width: 16, height: 16)
-            .fontWeight(.bold)
-    }
-    DividerLine()
-    ButtonMenu(.large, text: "Contact") {
-        Image(systemName: "envelope")
-            .scaledToFit()
-            .frame(width: 16, height: 16)
-            .fontWeight(.bold)
-    }
-    DividerLine()
-    ButtonMenu(.large, text: "Sign Out") {
-        Image(systemName: "arrow.left.square")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 16, height: 16)
-            .fontWeight(.bold)
-    }
-}
-```
-
 #### Filters Card
 ![Filters Card](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/e5173a83-850f-4d03-8319-bcad6c269844)
 
@@ -816,51 +758,120 @@ FiltersCard {
 }
 ```
 
-### Inputs
-#### Input
-<img width="229" alt="Screenshot 2024-05-23 at 12 10 22 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/42fe138d-a0bc-46e1-a696-57668f1d9760">
+### Menu / Filter
+#### Side Menu
+<img width="538" alt="Screenshot 2024-06-16 at 2 15 20 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/324a004c-d0b8-4b46-80bf-ae536e52dacf">
+
+![Side Menu](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/6e1e8776-cd36-4aba-aa97-ec45399fbf58)
 
 ```swift
-struct InputView: View {
-    @State private var text = ""
-    
-    var body: some View {
-        Input("Email address", text: $text) {
-            IconCircle {
-                Image(systemName: "envelope")
-                    .resizable()
-                    .scaledToFit()
-                    .fontWeight(.bold)
-                    .frame(width: 16, height: 16)
-            }
-        }
-        .frame(width: 200)
+SideMenu {
+    ButtonMenu(.large, text: "Account") {
+        Image(systemName: "person")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+            .fontWeight(.bold)
+    }
+    DividerLine()
+    ButtonMenu(.large, text: "Pricing", state: .selected) {
+        Image(systemName: "creditcard")
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+            .fontWeight(.bold)
+    }
+    DividerLine()
+    ButtonMenu(.large, text: "Billing") {
+        Image(systemName: "doc.plaintext")
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+            .fontWeight(.bold)
+    }
+    DividerLine()
+    ButtonMenu(.large, text: "Settings") {
+        Image(systemName: "person.2.badge.gearshape")
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+            .fontWeight(.bold)
+    }
+    DividerLine()
+    ButtonMenu(.large, text: "Support") {
+        Image(systemName: "questionmark.diamond")
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+            .fontWeight(.bold)
+    }
+    DividerLine()
+    ButtonMenu(.large, text: "Contact") {
+        Image(systemName: "envelope")
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+            .fontWeight(.bold)
+    }
+    DividerLine()
+    ButtonMenu(.large, text: "Sign Out") {
+        Image(systemName: "arrow.left.square")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+            .fontWeight(.bold)
     }
 }
 ```
 
-#### Switch
-![Switch](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/831c2abc-65c2-4b74-bfd1-69b2dbeca336)
-![Switch](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/79d17274-65a2-4805-b4a7-f0478d168d81)
+### Popover
+![Popover](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/e63d2617-ae18-42c9-8870-88ac94eb2b81)
+![Hover](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/05a53c3d-c35d-4dae-86f6-10b9c7b9db5e)
 
-```swift
-struct SwitchView: View {
-    @State private var isOn = false
-    
-    var body: some View {
-        Switch(isOn: $isOn)
+```swift 
+Popover {
+    ButtonTooltip(.medium, text: "iPhone 15") {
+        Image(systemName: "iphone")
+            .symbolRenderingMode(.monochrome)
+            .resizable()
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+    } rightIcon: {
+        Image(systemName: "eye")
     }
-}
-```
-
-### Navigation
-#### Menu
-<img width="178" alt="Screenshot 2024-04-11 at 3 08 22 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/ccc4d9cd-bd5c-4789-adc8-f3eb84bb4780">
-
-```swift
-SegmentedMenu {
-    ButtonToggle("Menu", .small, showRightIcon: false)
-    ButtonToggle("Menu", .small, state: .selected)
+    DividerLine()
+    ButtonTooltip(.medium, text: "iPad Pro") {
+        Image(systemName: "apps.ipad")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+    }
+    DividerLine()
+    ButtonTooltip(.medium, text: "Apple Watch") {
+        Image(systemName: "watchface.applewatch.case")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+    } rightIcon: {
+        Image(systemName: "chevron.right")
+    }
+    DividerLine()
+    ButtonTooltip(.medium, text: "MacBook") {
+        Image(systemName: "macbook")
+            .symbolRenderingMode(.monochrome)
+            .resizable()
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+    }
+    DividerLine()
+    ButtonTooltip(.medium, text: "Vision Pro", state: .selected) {
+        Image(systemName: "eye.square")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+    }
+    DividerLine()
+    ButtonTooltip(.medium, text: "Accessories") {
+        Image(systemName: "keyboard")
+            .resizable()
+            .scaledToFit()
+            .frame(width: 16, height: 16)
+    }
 }
 ```
 
@@ -986,6 +997,54 @@ InspectorMenu {
         }
     }
     .padding(10)
+}
+```
+
+### Inputs
+#### Input
+<img width="229" alt="Screenshot 2024-05-23 at 12 10 22 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/42fe138d-a0bc-46e1-a696-57668f1d9760">
+
+```swift
+struct InputView: View {
+    @State private var text = ""
+    
+    var body: some View {
+        Input("Email address", text: $text) {
+            IconCircle {
+                Image(systemName: "envelope")
+                    .resizable()
+                    .scaledToFit()
+                    .fontWeight(.bold)
+                    .frame(width: 16, height: 16)
+            }
+        }
+        .frame(width: 200)
+    }
+}
+```
+
+#### Switch
+![Switch](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/831c2abc-65c2-4b74-bfd1-69b2dbeca336)
+![Switch](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/79d17274-65a2-4805-b4a7-f0478d168d81)
+
+```swift
+struct SwitchView: View {
+    @State private var isOn = false
+    
+    var body: some View {
+        Switch(isOn: $isOn)
+    }
+}
+```
+
+### Navigation
+#### Menu
+<img width="178" alt="Screenshot 2024-04-11 at 3 08 22 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/ccc4d9cd-bd5c-4789-adc8-f3eb84bb4780">
+
+```swift
+SegmentedMenu {
+    ButtonToggle("Menu", .small, showRightIcon: false)
+    ButtonToggle("Menu", .small, state: .selected)
 }
 ```
 
