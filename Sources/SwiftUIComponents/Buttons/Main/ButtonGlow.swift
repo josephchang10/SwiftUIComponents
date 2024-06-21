@@ -96,9 +96,8 @@ public struct ButtonGlow<Icon: View>: View {
     var backgroundGlow: some View {
         RoundedRectangle(cornerRadius: 10)
             .fill(.angular1)
-//            .blur(radius: .point(20))
             .blur(radius: 20)
-            .opacity(0.8)
+            .opacity(0.2)
             .blendMode(.screen)
     }
     
