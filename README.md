@@ -53,6 +53,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 ### Content
 * [Bank Card](#Bank-Card)
 * [Testimonial](#Testimonial)
+* [Alert](#Alert)
 ### Modal
 * [Payment Modal](#Payment-Modal)
 * [Newsletter](#Newsletter)
@@ -1765,6 +1766,36 @@ Testimonial {
             .frame(width: 24, height: 24)
     }
     .frame(width: 44, height: 44)
+}
+```
+
+#### Alert
+![Alert](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/75d82f51-63be-4542-bc01-b6de2a4d4ecc)
+![Alert](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/eb3ab1e9-dd8a-4d8d-925e-cc90ea987ae2)
+
+```swift
+struct AlertPreview: View {
+    @State private var isPresented = true
+    
+    var body: some View {
+        ZStack {
+            Button("Show Alert") {
+                isPresented = true
+            }
+        }
+        .frame(width: 330, height: 229)
+        .alert(isPresented: $isPresented, title: "Alert", message: "Are you sure you want to change your profile information? This cannot be undone.") {
+            HStack(spacing: 10) {
+                Button {
+                    isPresented = false
+                } label: {
+                    ButtonPrimary(.small, title: "Cancel")
+                }
+                .buttonStyle(.plain)
+                ButtonPrimary(.small, title: "Yes, go ahead")
+            }
+        }
+    }
 }
 ```
 
