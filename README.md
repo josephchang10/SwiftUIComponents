@@ -39,6 +39,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Menu](#Menu-2)
 * [Browser Buttons](#Browser-Buttons)
 ### Segmented Controls
+* [Tab](#Tab)
 * [Segmented Control](#Segmented-Control)
 * [Toggle](#Toggle)
 ## Cards
@@ -1050,6 +1051,17 @@ BrowserButtons()
 ```
 
 ### Segmented Controls
+#### Tab
+![Tab](https://github.com/user-attachments/assets/1a95a58c-2803-4e54-bb14-b3b9c73e125e)
+
+```swift
+Tab {
+    TabButton("CSS", state: .selected)
+    TabButton("React")
+    TabButton("Tailwind")
+}
+```
+
 #### Segmented Control
 <img width="692" alt="Screenshot 2024-06-08 at 2 39 25 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/39b0df9b-3eca-4291-b09d-16e02fb2e602">
 
