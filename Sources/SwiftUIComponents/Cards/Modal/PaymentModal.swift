@@ -64,14 +64,14 @@ struct PaymentModalView: View {
                     .font(.captionRegular)
                     .foregroundStyle(.foreground(.primary))
                     .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                ButtonShiny("Subscribe", .medium) {
+                ButtonShiny(.medium, titleKey: "Subscribe") {
                     Image(systemName: "chevron.right")
                 }
                 DividerLine()
                 Text("OR, PAY WITH PAYPAL")
                     .font(.footnoteMedium)
                     .foregroundStyle(.foreground(.primary))
-                ButtonShiny("Pay with PayPal", .medium) {
+                ButtonShiny(.medium, titleKey: "Pay with PayPal") {
                     Image(systemName: "chevron.right")
                 }
                 Text("This purchase will not auto-review. You will be taken to PayPal to complete the payment.")

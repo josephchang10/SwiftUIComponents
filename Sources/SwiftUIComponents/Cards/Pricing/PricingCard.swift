@@ -75,7 +75,7 @@ public struct PricingCard<Content: View>: View {
                 }
                 .frame(width: 220)
                 DividerLine()
-                ButtonShiny("Buy now", .medium) {
+                ButtonShiny(.medium, titleKey: "Buy now") {
                     Image(systemName: "creditcard")
                 }
             }
@@ -108,7 +108,7 @@ public struct PricingCard<Content: View>: View {
                 }
                 .frame(width: 220)
                 DividerLine()
-                ButtonShiny("Buy now", .medium) {
+                ButtonShiny(.medium, titleKey: "Buy now") {
                     Image(systemName: "creditcard")
                 }
             }

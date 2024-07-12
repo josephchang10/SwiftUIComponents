@@ -107,7 +107,7 @@ public struct ButtonShiny<Icon: View>: View {
             .blur(radius: 20)
     }
     
-    public init(_ titleKey: LocalizedStringKey, _ size: Size, showLeftIcon: Bool = false, showRightIcon: Bool = true, @ViewBuilder icon: () -> Icon) {
+    public init(_ size: Size, titleKey: LocalizedStringKey, showLeftIcon: Bool = false, showRightIcon: Bool = true, @ViewBuilder icon: () -> Icon) {
         self.titleKey = titleKey
         self.size = size
         self.iconContent = icon()
@@ -116,38 +116,31 @@ public struct ButtonShiny<Icon: View>: View {
     }
 }
 
+struct ButtonShinyView: View {
+    var body: some View {
+        HStack(alignment: .top, spacing: 10) {
+            ButtonShiny(.small, titleKey: "Shiny") {
+                Image(systemName: "chevron.right")
+            }
+            ButtonShiny(.medium, titleKey: "Shiny") {
+                Image(systemName: "chevron.right")
+            }
+            ButtonShiny(.large, titleKey: "Shiny") {
+                Image(systemName: "chevron.right")
+            }
+            ButtonShiny(.extraLarge, titleKey: "Shiny") {
+                Image(systemName: "chevron.right")
+            }
+        }
+    }
+}
+
 #Preview {
     VStack(spacing: 10) {
-        HStack(spacing: 10) {
-            ButtonShiny("Shiny", .small) {
-                Image(systemName: "chevron.right")
-            }
-            ButtonShiny("Shiny", .medium) {
-                Image(systemName: "chevron.right")
-            }
-            ButtonShiny("Shiny", .large) {
-                Image(systemName: "chevron.right")
-            }
-            ButtonShiny("Shiny", .extraLarge) {
-                Image(systemName: "chevron.right")
-            }
-        }
-        .environment(\.colorScheme, .light)
-        HStack(spacing: 10) {
-            ButtonShiny("Shiny", .small) {
-                Image(systemName: "chevron.right")
-            }
-            ButtonShiny("Shiny", .medium) {
-                Image(systemName: "chevron.right")
-            }
-            ButtonShiny("Shiny", .large) {
-                Image(systemName: "chevron.right")
-            }
-            ButtonShiny("Shiny", .extraLarge) {
-                Image(systemName: "chevron.right")
-            }
-        }
-        .environment(\.colorScheme, .dark)
+        ButtonShinyView()
+            .environment(\.colorScheme, .light)
+        ButtonShinyView()
+            .environment(\.colorScheme, .dark)
     }
     .padding(40)
     .background(.background(.secondary))
