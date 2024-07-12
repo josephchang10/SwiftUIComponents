@@ -13,7 +13,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Icon Circle](#Icon-Circle)
 * [Button Browser](#Button-Browser)
 * [Large Badge Button](#Large-Badge-Button)
-### Main
+### Text Buttons
 * [Button Primary](#Button-Primary)
 * [Button Secondary](#Button-Secondary)
 * [Button Ghost](#Button-Ghost)
@@ -409,7 +409,7 @@ LargeBadgeButton {
 }
 ```
 
-### Main
+### Text Buttons
 #### Button Primary
 <img width="499" alt="Screenshot 2024-04-16 at 7 40 45 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/f3db6fd0-0e3c-4c7e-a475-ed6dcb604e47">
 
@@ -480,39 +480,21 @@ ButtonGlow(.extraLarge, text: "Glow") {
 
 
 #### Button Shiny
-<img width="480" alt="Screenshot 2024-04-15 at 5 42 39 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/fb1b2d31-32b0-4ee3-bb92-6851a51c5491">
+<img width="479" alt="Screenshot 2024-07-12 at 1 14 16 AM" src="https://github.com/user-attachments/assets/14fc2318-f7ad-407c-bca4-ad5d27d59917">
 
 ```swift
-HStack(spacing: 10) {
-    ButtonShiny("Shiny", .small) {
-        Image(systemName: "chevron.right")
-    }
-    ButtonShiny("Shiny", .medium) {
-        Image(systemName: "chevron.right")
-    }
-    ButtonShiny("Shiny", .large) {
-        Image(systemName: "chevron.right")
-    }
-    ButtonShiny("Shiny", .extraLarge) {
-        Image(systemName: "chevron.right")
-    }
+ButtonShiny(.small, titleKey: "Shiny") {
+    Image(systemName: "chevron.right")
 }
-.environment(\.colorScheme, .light)
-HStack(spacing: 10) {
-    ButtonShiny("Shiny", .small) {
-        Image(systemName: "chevron.right")
-    }
-    ButtonShiny("Shiny", .medium) {
-        Image(systemName: "chevron.right")
-    }
-    ButtonShiny("Shiny", .large) {
-        Image(systemName: "chevron.right")
-    }
-    ButtonShiny("Shiny", .extraLarge) {
-        Image(systemName: "chevron.right")
-    }
+ButtonShiny(.medium, titleKey: "Shiny") {
+    Image(systemName: "chevron.right")
 }
-.environment(\.colorScheme, .dark)
+ButtonShiny(.large, titleKey: "Shiny") {
+    Image(systemName: "chevron.right")
+}
+ButtonShiny(.extraLarge, titleKey: "Shiny") {
+    Image(systemName: "chevron.right")
+}
 ```
 
 #### Button Gradient
