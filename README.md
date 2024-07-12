@@ -298,6 +298,15 @@ Activity(.selected, title: "Dawyne Joe", text: "prepared a report", time: .now.a
 .frame(width: 220)
 ```
 
+#### Tab Button
+![Tab Button](https://github.com/user-attachments/assets/203a1027-6f3a-4487-a406-4b2b176691f7)
+![Hover](https://github.com/user-attachments/assets/c226afcf-3914-47ca-af63-0ee07052ab3f)
+
+```swift
+TabButton("CSS")
+TabButton("CSS", state: .selected)
+```
+
 #### Button Toggle
 <img width="476" alt="Screenshot 2024-04-11 at 4 06 38 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/0da95188-5888-4988-9567-77284bce49e5">
 <img width="476" alt="Screenshot 2024-04-11 at 4 06 46 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/e7979df2-2cca-46bd-968c-6e418c85676e">
