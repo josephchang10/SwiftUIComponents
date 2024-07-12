@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct ButtonShiny<Icon: View>: View {
+public struct ButtonShiny<LeftIcon: View, RightIcon: View>: View {
     public enum Size {
         case small, medium, large, extraLarge
         
@@ -58,20 +58,17 @@ public struct ButtonShiny<Icon: View>: View {
     
     let size: Size
     let titleKey: LocalizedStringKey
-    let iconContent: Icon
-    let showRightIcon: Bool
-    let showLeftIcon: Bool
+    let leftIcon: LeftIcon?
+    let rightIcon: RightIcon?
     
     public var body: some View {
         ZStack {
             HStack(spacing: size.spacing) {
-                if showLeftIcon {
-                    icon
-                }
+                leftIcon
+                    .frame(width: 16, height: 16)
                 Text(titleKey)
-                if showRightIcon {
-                    icon
-                }
+                rightIcon
+                    .frame(width: 16, height: 16)
             }
             .font(size.font)
             .foregroundStyle(.foreground(.primary))
@@ -94,11 +91,6 @@ public struct ButtonShiny<Icon: View>: View {
         }
     }
     
-    var icon: some View {
-        iconContent
-            .frame(width: 16, height: 16)
-    }
-    
     var glow: some View {
         RoundedRectangle(cornerRadius: 10)
             .fill(Angular1())
@@ -107,12 +99,18 @@ public struct ButtonShiny<Icon: View>: View {
             .blur(radius: 20)
     }
     
-    public init(_ size: Size, titleKey: LocalizedStringKey, showLeftIcon: Bool = false, showRightIcon: Bool = true, @ViewBuilder icon: () -> Icon) {
+    public init(_ size: Size, titleKey: LocalizedStringKey, @ViewBuilder rightIcon: () -> RightIcon) where LeftIcon == EmptyView {
         self.titleKey = titleKey
         self.size = size
-        self.iconContent = icon()
-        self.showLeftIcon = showLeftIcon
-        self.showRightIcon = showRightIcon
+        self.leftIcon = nil
+        self.rightIcon = rightIcon()
+    }
+    
+    public init(_ size: Size, titleKey: LocalizedStringKey, @ViewBuilder leftIcon: () -> LeftIcon, @ViewBuilder rightIcon: () -> RightIcon) {
+        self.titleKey = titleKey
+        self.size = size
+        self.leftIcon = leftIcon()
+        self.rightIcon = rightIcon()
     }
 }
 
