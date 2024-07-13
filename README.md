@@ -1775,20 +1775,18 @@ Testimonial {
 ```
 
 #### Code Block
-![Code Block](https://github.com/user-attachments/assets/f3d017f1-9c04-437e-bc0f-de642b6298d5)
+![Code Block](https://github.com/user-attachments/assets/554db059-0797-4dfe-ae72-d4b82dc5b200)
 
 ```swift
 CodeBlock("""
 // Type or paste the code you want to highlight below
-// or select a text node and run the plugin
 ​
-import syntaxHighlight from 'syntax-highlight'
-​
-const codeBlock = document.querySelector("#code")
-​
-function highlight(code) {
-  return syntaxHighlight(code)
+function greet(name) {
+  return `Hello, ${name}!`;
 }
+
+const message = greet("World");
+console.log(message);
 """) {
     Tab {
         TabButton("CSS", state: .selected)
