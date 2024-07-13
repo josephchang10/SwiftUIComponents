@@ -9,8 +9,6 @@ import SwiftUI
 import WebKit
 
 public struct CodeBlock<Header: View>: View {
-    @State private var dynamicHeight: CGFloat = 0
-    
     private let code: String
     private let header: Header
     private let language: String?
@@ -19,8 +17,7 @@ public struct CodeBlock<Header: View>: View {
         VStack(alignment: .leading, spacing: 4) {
             BrowserButtons()
             header
-            SyntaxHighlighter(code: code, dynamicHeight: $dynamicHeight, language: language)
-                .frame(height: dynamicHeight + 26)
+            SyntaxHighlighter(code, language: language)
         }
         .padding(10)
         .background {
@@ -44,13 +41,30 @@ public struct CodeBlock<Header: View>: View {
     }
 }
 
+public struct SyntaxHighlighter: View {
+    @State private var dynamicHeight: CGFloat = 0
+    
+    private let code: String
+    private let language: String?
+    
+    public var body: some View {
+        SyntaxHighlighterWebView(code: code, dynamicHeight: $dynamicHeight, language: language)
+            .frame(height: dynamicHeight + 26)
+    }
+    
+    public init(_ code: String, language: String? = nil) {
+        self.code = code
+        self.language = language
+    }
+}
+
 #if canImport(AppKit)
 typealias ViewRepresentable = NSViewRepresentable
 #else
 typealias ViewRepresentable = UIViewRepresentable
 #endif
 
-struct SyntaxHighlighter: ViewRepresentable {
+struct SyntaxHighlighterWebView: ViewRepresentable {
     let code: String
     @Binding var dynamicHeight: CGFloat
     let language: String?
@@ -144,9 +158,9 @@ struct SyntaxHighlighter: ViewRepresentable {
     }
     
     class Coordinator: NSObject, WKNavigationDelegate {
-        let parent: SyntaxHighlighter
+        let parent: SyntaxHighlighterWebView
         
-        init(_ parent: SyntaxHighlighter) {
+        init(_ parent: SyntaxHighlighterWebView) {
             self.parent = parent
         }
         
