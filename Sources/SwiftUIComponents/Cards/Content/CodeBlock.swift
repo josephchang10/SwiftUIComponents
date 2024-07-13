@@ -26,6 +26,7 @@ public struct CodeBlock<Header: View>: View {
         .background {
             RoundedRectangle(cornerRadius: 10)
                 .fill(.container(.background))
+                .fill(.ultraThinMaterial)
         }
         .overlay {
             RoundedRectangle(cornerRadius: 10)
@@ -59,7 +60,8 @@ struct SyntaxHighlighter: ViewRepresentable {
         <!DOCTYPE html>
         <html>
         <head>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+            <link rel="stylesheet" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.10.0/build/styles/panda-syntax-light.min.css">
+            <link rel="stylesheet" media="(prefers-color-scheme: dark)" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/night-owl.min.css">
             <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
             <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
@@ -98,76 +100,8 @@ struct SyntaxHighlighter: ViewRepresentable {
                     padding-left: 16px;
                 }
         
-                .hljs-keyword, .hljs-title {
-                    font-weight: normal;
-                }
-        
-                @media (prefers-color-scheme: light) {
-                    .hljs-comment {
-                        color: rgba(0, 0, 0, 0.5);
-                    }
-        
-                    .hljs-ln-code, .hljs-variable {
-                        color: #000;
-                    }
-        
-                    .hljs-keyword {
-                        color: #B546BE;
-                    }
-        
-                    .hljs-string {
-                        color: #4A2BB2;
-                    }
-        
-                    .hljs-variable + .hljs-title {
-                        color: #614EA2;
-                    }
-        
-                    .hljs-keyword + .hljs-title {
-                        color: #000;
-                    }  
-        
-                    .hljs-params, .hljs-keyword + .hljs-title:has(+ .hljs-params) {
-                        color: #176E94;
-                    } 
-        
-                    .hljs-ln-numbers {
-                        color: rgba(0, 0, 0, 0.7);
-                    }
-                }
-        
-                @media (prefers-color-scheme: dark) {
-                    .hljs-comment {
-                        color: rgba(255, 255, 255, 0.7);
-                    }
-        
-                    .hljs-ln-code {
-                        color: #FFF;
-                    }
-        
-                    .hljs-keyword {
-                        color: #C792EA;
-                    }
-        
-                    .hljs-string {
-                        color: #ECC48D;
-                    }
-        
-                    .hljs-variable, .hljs-keyword + .hljs-title {
-                        color: #7DD8C7;
-                    }
-        
-                    .hljs-variable + .hljs-title {
-                        color: #ADDB67;
-                    } 
-        
-                    .hljs-params, .hljs-keyword + .hljs-title:has(+ .hljs-params) {
-                        color: #F9C789;
-                    }
-        
-                    .hljs-ln-numbers {
-                        color: rgba(255, 255, 255, 0.7);
-                    }
+                .hljs-comment, .hljs-keyword, .hljs-title {
+                    font-style: normal;
                 }
             </style>
         </head>
@@ -233,16 +167,26 @@ struct CodeBlockView: View {
         CodeBlock("""
         // Type or paste the code you want to highlight below
         ​
-        function greet(name) {
-          return `Hello, ${name}!`;
+        import React, { useState } from 'react';
+
+        function Counter() {
+          const [count, setCount] = useState(0);
+
+          return (
+            <div>
+              <p>You clicked {count} times</p>
+              <button onClick={() => setCount(count + 1)}>
+                Click me
+              </button>
+            </div>
+          );
         }
 
-        const message = greet("World");
-        console.log(message);
+        export default Counter;
         """) {
             Tab {
-                TabButton("CSS", state: .selected)
-                TabButton("React")
+                TabButton("CSS")
+                TabButton("React", state: .selected)
                 TabButton("Tailwind")
             }
         }
