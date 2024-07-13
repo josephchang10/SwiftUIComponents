@@ -60,17 +60,17 @@ struct SwiftUIComponentsMobileView: View {
                         .padding(3)
                 }
             }
-            ButtonShiny("Preview in Xcode", .large, showLeftIcon: true, showRightIcon: false) {
+            ButtonShiny(.large, titleKey: "Preview in Xcode") {
                 Image("Xcode Logo")
                     .resizable()
                     .scaledToFit()
-            }
-            ButtonShiny("SwiftUI Template", .large, showLeftIcon: true, showRightIcon: false) {
+            } rightIcon: {}
+            ButtonShiny(.large, titleKey: "SwiftUI Template") {
                 Image(systemName: "swift")
                     .resizable()
                     .scaledToFit()
                     .padding(2)
-            }
+            } rightIcon: {}
         }
         .padding(.top, 64)
     }
