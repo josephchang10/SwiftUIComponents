@@ -1775,22 +1775,32 @@ Testimonial {
 ```
 
 #### Code Block
-![Code Block](https://github.com/user-attachments/assets/554db059-0797-4dfe-ae72-d4b82dc5b200)
+![Code Block](https://github.com/user-attachments/assets/2ef70902-2f70-4d1a-942a-6c979bd37f2b)
 
 ```swift
 CodeBlock("""
 // Type or paste the code you want to highlight below
 ​
-function greet(name) {
-  return `Hello, ${name}!`;
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
 }
 
-const message = greet("World");
-console.log(message);
+export default Counter;
 """) {
     Tab {
-        TabButton("CSS", state: .selected)
-        TabButton("React")
+        TabButton("CSS")
+        TabButton("React", state: .selected)
         TabButton("Tailwind")
     }
 }
