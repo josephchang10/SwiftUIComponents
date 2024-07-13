@@ -55,6 +55,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 ### Content
 * [Bank Card](#Bank-Card)
 * [Testimonial](#Testimonial)
+* [Code Block](#Code-Block)
 * [Alert](#Alert)
 ### Modal
 * [Payment Modal](#Payment-Modal)
@@ -1770,6 +1771,30 @@ Testimonial {
             .frame(width: 24, height: 24)
     }
     .frame(width: 44, height: 44)
+}
+```
+
+#### Code Block
+![Code Block](https://github.com/user-attachments/assets/f3d017f1-9c04-437e-bc0f-de642b6298d5)
+
+```swift
+CodeBlock("""
+// Type or paste the code you want to highlight below
+// or select a text node and run the plugin
+​
+import syntaxHighlight from 'syntax-highlight'
+​
+const codeBlock = document.querySelector("#code")
+​
+function highlight(code) {
+  return syntaxHighlight(code)
+}
+""") {
+    Tab {
+        TabButton("CSS", state: .selected)
+        TabButton("React")
+        TabButton("Tailwind")
+    }
 }
 ```
 
