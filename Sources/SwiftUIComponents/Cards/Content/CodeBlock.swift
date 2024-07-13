@@ -13,12 +13,13 @@ public struct CodeBlock<Header: View>: View {
     
     private let code: String
     private let header: Header
+    private let language: String?
     
     public var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             BrowserButtons()
             header
-            SyntaxHighlighter(code: code, dynamicHeight: $dynamicHeight)
+            SyntaxHighlighter(code: code, dynamicHeight: $dynamicHeight, language: language)
                 .frame(height: dynamicHeight + 26)
         }
         .padding(10)
@@ -35,8 +36,9 @@ public struct CodeBlock<Header: View>: View {
         .shadowBlur(.extraLarge)
     }
     
-    public init(_ code: String, @ViewBuilder header: () -> Header) {
+    public init(_ code: String, language: String? = nil, @ViewBuilder header: () -> Header) {
         self.code = code
+        self.language = language
         self.header = header()
     }
 }
@@ -50,6 +52,7 @@ typealias ViewRepresentable = UIViewRepresentable
 struct SyntaxHighlighter: ViewRepresentable {
     let code: String
     @Binding var dynamicHeight: CGFloat
+    let language: String?
     
     private var html: String {
         """
@@ -169,7 +172,7 @@ struct SyntaxHighlighter: ViewRepresentable {
             </style>
         </head>
         <body>
-            <pre><code>\(code)</code></pre>
+            <pre><code\(language.map { " class=\"language-\($0))\"" } ?? "")>\(code.replacingOccurrences(of: "<", with: "&lt;"))</code></pre>
         """
     }
     
@@ -229,15 +232,13 @@ struct CodeBlockView: View {
     var body: some View {
         CodeBlock("""
         // Type or paste the code you want to highlight below
-        // or select a text node and run the plugin
         ​
-        import syntaxHighlight from 'syntax-highlight'
-        ​
-        const codeBlock = document.querySelector("#code")
-        ​
-        function highlight(code) {
-          return syntaxHighlight(code)
+        function greet(name) {
+          return `Hello, ${name}!`;
         }
+
+        const message = greet("World");
+        console.log(message);
         """) {
             Tab {
                 TabButton("CSS", state: .selected)
