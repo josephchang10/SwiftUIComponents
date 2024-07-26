@@ -77,6 +77,10 @@ public struct Input: View {
                 .white.opacity(colorScheme == .dark ? 0.5 : 0.05)
             ], startPoint: .bottom, endPoint: .top).opacity(colorScheme == .dark ? 0.1 : 1)))
         }
+        .background {
+            RoundedRectangle(cornerRadius: 8)
+                .fill(.ultraThinMaterial)
+        }
         .overlay {
             RoundedRectangle(cornerRadius: 8)
                 .strokeBorder(border ?? AnyShapeStyle(LinearGradient(colors: [
