@@ -58,10 +58,10 @@ public struct SyntaxHighlighter: View {
     }
 }
 
-#if canImport(AppKit)
-typealias ViewRepresentable = NSViewRepresentable
-#else
+#if canImport(UIKit)
 typealias ViewRepresentable = UIViewRepresentable
+#else
+typealias ViewRepresentable = NSViewRepresentable
 #endif
 
 struct SyntaxHighlighterWebView: ViewRepresentable {
@@ -124,21 +124,21 @@ struct SyntaxHighlighterWebView: ViewRepresentable {
         """
     }
     
-    #if canImport(AppKit)
-    func makeNSView(context: Context) -> WKWebView {
-        makeWebView(context: context)
-    }
-    
-    func updateNSView(_ nsView: WKWebView, context: Context) {
-        nsView.loadHTMLString(html, baseURL: nil)
-    }
-    #else
+    #if canImport(UIKit)
     func makeUIView(context: Context) -> WKWebView {
         makeWebView(context: context)
     }
     
     func updateUIView(_ uiView: WKWebView, context: Context) {
         uiView.loadHTMLString(html, baseURL: nil)
+    }
+    #else
+    func makeNSView(context: Context) -> WKWebView {
+        makeWebView(context: context)
+    }
+    
+    func updateNSView(_ nsView: WKWebView, context: Context) {
+        nsView.loadHTMLString(html, baseURL: nil)
     }
     #endif
     
