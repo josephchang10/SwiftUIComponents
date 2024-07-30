@@ -1038,8 +1038,8 @@ struct SwitchView: View {
 
 ```swift
 SegmentedMenu {
-    ButtonToggle("Menu", .small, showRightIcon: false)
-    ButtonToggle("Menu", .small, state: .selected)
+    ButtonToggle(.small, text: "Menu", showRightIcon: false)
+    ButtonToggle(.small, text: "Menu", state: .selected)
 }
 ```
 
