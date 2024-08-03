@@ -10,7 +10,7 @@ import TailwindSwiftUI
 
 public struct BackgroundWeb2: View {
     public enum Mode {
-        case dark
+        case dark(showStars: Bool = true)
         case dark3(showStars: Bool = true)
     }
     
@@ -23,7 +23,7 @@ public struct BackgroundWeb2: View {
             let verticalRatio = proxy.size.height / 1440
             if colorScheme == .dark, let darkMode {
                 switch darkMode {
-                case .dark:
+                case let .dark(showStars):
                     Rectangle()
                         .fill(Color(red: 5 / 255, green: 6 / 255, blue: 20 / 255))
                     Image("Background 2", bundle: .module)
@@ -45,12 +45,14 @@ public struct BackgroundWeb2: View {
                             .frame(width: 1280 * horizontalRatio, height: horizontalRatio * 900)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                         }
-                    Image("Stars 3", bundle: .module)
-                        .resizable()
-                        .scaledToFill()
-                        .blendMode(.screen)
-                        .frame(width: 1244.16 * horizontalRatio, height: horizontalRatio * 995.33)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    if showStars {
+                        Image("Stars 3", bundle: .module)
+                            .resizable()
+                            .scaledToFill()
+                            .blendMode(.screen)
+                            .frame(width: 1244.16 * horizontalRatio, height: horizontalRatio * 995.33)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    }
                     Image("Background Web 2 Grid", bundle: .module)
                         .resizable()
                         .scaledToFit()
@@ -100,7 +102,7 @@ public struct BackgroundWeb2: View {
         }
     }
     
-    public init(darkMode: Mode? = .dark) {
+    public init(darkMode: Mode? = .dark()) {
         self.darkMode = darkMode
     }
 }
