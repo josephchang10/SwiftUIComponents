@@ -52,64 +52,75 @@ public struct TemplateCard<Image: View, Content: View>: View {
     }
 }
 
-#Preview {
-    TemplateCard {
-        ZStack(alignment: .topLeading) {
-            Color.clear
-                .frame(height: 200)
-                .overlay {
-                    Image("Image", bundle: .module)
+struct TemplateCardView: View {
+    var body: some View {
+        TemplateCard {
+            ZStack(alignment: .topLeading) {
+                Color.clear
+                    .frame(height: 200)
+                    .overlay {
+                        Image("Image", bundle: .module)
+                            .resizable()
+                            .scaledToFill()
+                    }
+                    .clipShape(RoundedRectangle(cornerRadius: 6))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 6)
+                            .inset(by: 0.5)
+                            .stroke(LinearGradient(stops: [
+                                .init(color: .white, location: 0),
+                                .init(color: .white.opacity(0), location: 0.48),
+                                .init(color: .white, location: 1)
+                            ], startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: /*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
+                            .stroke(.white.opacity(0.1), lineWidth: 1)
+                            .blendMode(.overlay)
+                    }
+                    .compositingGroup()
+                    .shadow(color: .black.opacity(0.1), radius: 60, y: 30)
+                    .shadow(color: .black.opacity(0.5), radius: 60, y: 30)
+                ButtonLogo {
+                    Image(systemName: "swift")
+                }
+                .padding(10)
+            }
+        } content: {
+            VStack(alignment: .leading, spacing: 10) {
+                HStack(spacing: 8) {
+                    Image(systemName: "circle.dotted")
                         .resizable()
-                        .scaledToFill()
+                        .frame(width: 16, height: 16)
+                        .fontWeight(.black)
+                    Text("New update")
+                        .font(.captionRegular)
+                        .foregroundStyle(.foreground(.secondary))
+                    Spacer()
+                    NavigationOutline()
                 }
-                .clipShape(RoundedRectangle(cornerRadius: 6))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 6)
-                        .inset(by: 0.5)
-                        .stroke(LinearGradient(stops: [
-                            .init(color: .white, location: 0),
-                            .init(color: .white.opacity(0), location: 0.48),
-                            .init(color: .white, location: 1)
-                        ], startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: /*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
-                        .stroke(.white.opacity(0.1), lineWidth: 1)
-                        .blendMode(.overlay)
+                DividerLine()
+                Text("UI Templates")
+                    .font(.footnoteMedium)
+                Text("Introducing a collection of fully designed and functional components, tailored to enhance...")
+                    .font(.captionRegular)
+                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    .width(.full, alignment: .leading)
+                DividerLine()
+                ButtonGlow(.medium, text: "Browse templates") {
+                    Image(systemName: "circle.hexagongrid")
                 }
-                .compositingGroup()
-                .shadow(color: .black.opacity(0.1), radius: 60, y: 30)
-                .shadow(color: .black.opacity(0.5), radius: 60, y: 30)
-            ButtonLogo {
-                Image(systemName: "swift")
             }
             .padding(10)
         }
-    } content: {
-        VStack(alignment: .leading, spacing: 10) {
-            HStack(spacing: 8) {
-                Image(systemName: "circle.dotted")
-                    .resizable()
-                    .frame(width: 16, height: 16)
-                    .fontWeight(.black)
-                Text("New update")
-                    .font(.captionRegular)
-                    .foregroundStyle(.foreground(.secondary))
-                Spacer()
-                NavigationOutline()
-            }
-            DividerLine()
-            Text("UI Templates")
-                .font(.footnoteMedium)
-            Text("Introducing a collection of fully designed and functional components, tailored to enhance...")
-                .font(.captionRegular)
-                .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                .width(.full, alignment: .leading)
-            DividerLine()
-            ButtonGlow(.medium, text: "Browse templates") {
-                Image(systemName: "circle.hexagongrid")
-            }
-        }
-        .padding(10)
+        .frame(width: 260)
     }
-    .frame(width: 260)
+}
+
+#Preview {
+    HStack(spacing: 20) {
+        TemplateCardView()
+            .environment(\.colorScheme, .light)
+        TemplateCardView()
+            .environment(\.colorScheme, .dark)
+    }
     .padding(20)
-    .environment(\.colorScheme, .light)
+    .padding(60)
 }
