@@ -15,9 +15,9 @@ public struct ButtonIcon<Icon: View>: View {
         var padding: EdgeInsets {
             switch self {
             case .small:
-                return EdgeInsets(top: 4, leading: 12, bottom: 4, trailing: 12)
+                return .init(top: 4, leading: 12, bottom: 4, trailing: 12)
             case .medium:
-                return EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16)
+                return .init(top: 6, leading: 16, bottom: 6, trailing: 16)
             }
         }
     }

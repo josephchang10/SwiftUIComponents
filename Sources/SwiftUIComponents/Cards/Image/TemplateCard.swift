@@ -93,22 +93,7 @@ public struct TemplateCard<Image: View, Content: View>: View {
                     .font(.captionRegular)
                     .foregroundStyle(.foreground(.secondary))
                 Spacer()
-                HStack(spacing: 0) {
-                    ButtonIcon(.small) {
-                        Image(systemName: "arrow.left")
-                    }
-                    .disabled(true)
-                    Separator()
-                    ButtonIcon(.small) {
-                        Image(systemName: "arrow.right")
-                    }
-                }
-                .fixedSize(horizontal: false, vertical: true)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 30)
-                        .inset(by: 0.5)
-                        .stroke(.container(.divider), lineWidth: /*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
-                }
+                NavigationOutline()
             }
             DividerLine()
             Text("UI Templates")
