@@ -46,6 +46,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 ### Social
 * [Reply Card](#Reply-Card)
 ### Image
+* [Template Card](#Template-Card)
 * [Image Card](#Image-Card)
 ### Insepctors
 * [Notification](#Notification)
@@ -1399,6 +1400,68 @@ ReplyCard(text: .constant("Yes, if you’re new to SwiftUI, I recommend taking t
 ```
 
 ### Image
+#### Template Card
+![Template Card](https://github.com/user-attachments/assets/cfcd1e0f-6e82-413e-80e2-dca5771caa70)
+
+```swift
+TemplateCard {
+    ZStack(alignment: .topLeading) {
+        Color.clear
+            .frame(height: 200)
+            .overlay {
+                Image("Image", bundle: .module)
+                    .resizable()
+                    .scaledToFill()
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 6))
+            .overlay {
+                RoundedRectangle(cornerRadius: 6)
+                    .inset(by: 0.5)
+                    .stroke(LinearGradient(stops: [
+                        .init(color: .white, location: 0),
+                        .init(color: .white.opacity(0), location: 0.48),
+                        .init(color: .white, location: 1)
+                    ], startPoint: .topLeading, endPoint: .bottomTrailing), lineWidth: /*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
+                    .stroke(.white.opacity(0.1), lineWidth: 1)
+                    .blendMode(.overlay)
+            }
+            .compositingGroup()
+            .shadow(color: .black.opacity(0.1), radius: 60, y: 30)
+            .shadow(color: .black.opacity(0.5), radius: 60, y: 30)
+        ButtonLogo {
+            Image(systemName: "swift")
+        }
+        .padding(10)
+    }
+} content: {
+    VStack(alignment: .leading, spacing: 10) {
+        HStack(spacing: 8) {
+            Image(systemName: "circle.dotted")
+                .resizable()
+                .frame(width: 16, height: 16)
+                .fontWeight(.black)
+            Text("New update")
+                .font(.captionRegular)
+                .foregroundStyle(.foreground(.secondary))
+            Spacer()
+            NavigationOutline()
+        }
+        DividerLine()
+        Text("UI Templates")
+            .font(.footnoteMedium)
+        Text("Introducing a collection of fully designed and functional components, tailored to enhance...")
+            .font(.captionRegular)
+            .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+            .width(.full, alignment: .leading)
+        DividerLine()
+        ButtonGlow(.medium, text: "Browse templates") {
+            Image(systemName: "circle.hexagongrid")
+        }
+    }
+    .padding(10)
+}
+```
+
 #### Image Card
 <img width="649" alt="Screenshot 2024-04-14 at 4 27 29 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/578f419a-c741-4a5b-a839-50d38dc364e0">
 
