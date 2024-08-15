@@ -37,6 +37,7 @@ public struct ProgressBar<V: BinaryFloatingPoint>: View where V.Stride : BinaryF
     private let bounds: ClosedRange<V>
     private let step: V?
     private let labelText: String?
+    private let isConstant: Bool
     
     @State private var lastCoordinateValue: CGFloat = 0
     
@@ -64,36 +65,38 @@ public struct ProgressBar<V: BinaryFloatingPoint>: View where V.Stride : BinaryF
                     .frame(height: 6)
                     .padding(.horizontal, 3)
                     .overlay(alignment: .leading) {
-                        Circle()
-                            .fill(LinearGradient(colors: [.init(red: 76 / 255, green: 137 / 255, blue: 1), .init(red: 55 / 255, green: 106 / 255, blue: 205 / 255)], startPoint: .init(x: 0.1, y: 0.1), endPoint: .init(x: 1.1, y: 1.1)))
-                            .overlay {
-                                Circle()
-                                    .inset(by: 0.25)
-                                    .stroke(LinearGradient(colors: [.white.opacity(0.1), .black.opacity(0.3)], startPoint: .init(x: 0.1, y: 0.1), endPoint: .init(x: 1.1, y: 1.1)), lineWidth: 0.5)
-                            }
-                            .frame(width: thumbSize, height: thumbSize)
-                            .overlay(alignment: .bottom) {
-                                label
-                                    .fixedSize()
-                                    .offset(y: -30)
-                            }
-                            .offset(x: percentageValue * (maxValue - minValue) + minValue)
-                            .gesture (
-                                DragGesture(minimumDistance: 0)
-                                    .onChanged { v in
-                                        if (abs(v.translation.width) < 0.1) {
-                                            self.lastCoordinateValue = (maxValue - minValue) * percentageValue + minValue
+                        if !isConstant {
+                            Circle()
+                                .fill(LinearGradient(colors: [.init(red: 76 / 255, green: 137 / 255, blue: 1), .init(red: 55 / 255, green: 106 / 255, blue: 205 / 255)], startPoint: .init(x: 0.1, y: 0.1), endPoint: .init(x: 1.1, y: 1.1)))
+                                .overlay {
+                                    Circle()
+                                        .inset(by: 0.25)
+                                        .stroke(LinearGradient(colors: [.white.opacity(0.1), .black.opacity(0.3)], startPoint: .init(x: 0.1, y: 0.1), endPoint: .init(x: 1.1, y: 1.1)), lineWidth: 0.5)
+                                }
+                                .frame(width: thumbSize, height: thumbSize)
+                                .overlay(alignment: .bottom) {
+                                    label
+                                        .fixedSize()
+                                        .offset(y: -30)
+                                }
+                                .offset(x: percentageValue * (maxValue - minValue) + minValue)
+                                .gesture (
+                                    DragGesture(minimumDistance: 0)
+                                        .onChanged { v in
+                                            if (abs(v.translation.width) < 0.1) {
+                                                self.lastCoordinateValue = (maxValue - minValue) * percentageValue + minValue
+                                            }
+                                            let translation = v.translation.width
+                                            let newValue = V((translation + lastCoordinateValue - minValue) / (maxValue - minValue)) * (bounds.upperBound - bounds.lowerBound) + bounds.lowerBound
+                                            if let step {
+                                                value = round(newValue / step) * step
+                                            } else {
+                                                value = newValue
+                                            }
+                                            value = min(Swift.max(value, bounds.lowerBound), bounds.upperBound)
                                         }
-                                        let translation = v.translation.width
-                                        let newValue = V((translation + lastCoordinateValue - minValue) / (maxValue - minValue)) * (bounds.upperBound - bounds.lowerBound) + bounds.lowerBound
-                                        if let step {
-                                            value = round(newValue / step) * step
-                                        } else {
-                                            value = newValue
-                                        }
-                                        value = min(Swift.max(value, bounds.lowerBound), bounds.upperBound)
-                                    }
-                            )
+                                )
+                        }
                     }
             }
         }
@@ -129,11 +132,20 @@ public struct ProgressBar<V: BinaryFloatingPoint>: View where V.Stride : BinaryF
         }
     }
     
-    public init(value: Binding<V>, in bounds: ClosedRange<V>, step: V? = nil, labelText: String?) {
+    public init(value: Binding<V>, in bounds: ClosedRange<V>, step: V? = nil, labelText: String? = nil) {
         _value = value
         self.bounds = bounds
         self.step = step
         self.labelText = labelText
+        self.isConstant = false
+    }
+    
+    public init(value: V, in bounds: ClosedRange<V>) {
+        _value = .constant(value)
+        self.bounds = bounds
+        self.step = nil
+        self.labelText = nil
+        self.isConstant = true
     }
 }
 
