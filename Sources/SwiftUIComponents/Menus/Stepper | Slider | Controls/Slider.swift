@@ -52,7 +52,7 @@ public struct ProgressBar<V: BinaryFloatingPoint>: View where V.Stride : BinaryF
             let minValue = gr.size.width * 0.015
             let maxValue = (gr.size.width * 0.98) - thumbSize
             
-            ZStack {
+            ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 20)
                     .fill(.button(.inactive))
                     .frame(height: 12)
@@ -63,6 +63,7 @@ public struct ProgressBar<V: BinaryFloatingPoint>: View where V.Stride : BinaryF
                 RoundedRectangle(cornerRadius: radius)
                     .fill(LinearGradient(colors: [.init(red: 76 / 255, green: 137 / 255, blue: 1)], startPoint: .top, endPoint: .bottom))
                     .frame(height: 6)
+                    .frame(width: isConstant ? gr.size.width * percentageValue : nil)
                     .padding(.horizontal, 3)
                     .overlay(alignment: .leading) {
                         if !isConstant {
