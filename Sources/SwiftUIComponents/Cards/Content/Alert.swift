@@ -55,6 +55,7 @@ struct AlertView<Message: View, Actions: View>: View {
                     .multilineTextAlignment(.center)
                     .font(.footnoteRegular)
                     .foregroundStyle(.foreground(.secondary))
+                    .fixedSize(horizontal: false, vertical: true)
             }
             DividerLine()
             actions
@@ -83,11 +84,9 @@ struct AlertViewModifier<Actions: View, Message: View>: ViewModifier {
         ZStack {
             content
             if isPresented {
-                if let messageKey {
-                    AlertView(title, isPresented: $isPresented, messageKey: messageKey, message: { message },  actions: { actions })
-                        .frame(width: width)
-                        .transition(.scale.combined(with: .opacity))
-                }
+                AlertView(title, isPresented: $isPresented, messageKey: messageKey, message: { message },  actions: { actions })
+                    .frame(width: width)
+                    .transition(.scale.combined(with: .opacity))
             }
         }
         .animation(.spring(response: 0.3, dampingFraction: 0.7, blendDuration: 0), value: isPresented)
@@ -112,11 +111,11 @@ struct AlertViewModifier<Actions: View, Message: View>: ViewModifier {
 }
 
 public extension View {
-    func alert<Content: View>(isPresented: Binding<Bool>, title: LocalizedStringKey, message: LocalizedStringKey, width: CGFloat = 300, @ViewBuilder actions: () -> Content) -> some View {
+    func alert<Actions: View>(isPresented: Binding<Bool>, title: LocalizedStringKey, message: LocalizedStringKey, width: CGFloat = 300, @ViewBuilder actions: () -> Actions) -> some View {
         modifier(AlertViewModifier(isPresented: isPresented, title: title, message: message, width: width, actions: actions))
     }
     
-    func alert<Content: View>(isPresented: Binding<Bool>, title: LocalizedStringKey, width: CGFloat = 300, @ViewBuilder message: () -> Content, @ViewBuilder actions: () -> Content) -> some View {
+    func alert<Message: View, Actions: View>(isPresented: Binding<Bool>, title: LocalizedStringKey, width: CGFloat = 300, @ViewBuilder message: () -> Message, @ViewBuilder actions: () -> Actions) -> some View {
         modifier(AlertViewModifier(isPresented: isPresented, title: title, width: width, message: message, actions: actions))
     }
 }
