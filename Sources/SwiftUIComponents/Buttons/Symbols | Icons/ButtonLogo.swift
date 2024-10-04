@@ -34,14 +34,27 @@ public struct ButtonLogo<Logo: View>: View {
     }
 }
 
+struct ButtonLogoView: View {
+    var body: some View {
+        HStack(spacing: 10) {
+            ButtonLogo {
+                Image(systemName: "calendar")
+                    .resizable()
+                    .padding(3)
+            }
+        }
+    }
+}
+
 #Preview {
-    ButtonLogo {
-        Image(systemName: "calendar")
-            .resizable()
-            .padding(3)
+    HStack(spacing: 10) {
+        ButtonLogoView()
+            .environment(\.colorScheme, .light)
+        ButtonLogoView()
+            .environment(\.colorScheme, .dark)
     }
     .padding(20)
     .background(.background(.secondary))
     .background(Color(red: 30 / 255, green: 30 / 255, blue: 30 / 255))
-    .environment(\.colorScheme, .light)
+    .preferredColorScheme(.light)
 }
