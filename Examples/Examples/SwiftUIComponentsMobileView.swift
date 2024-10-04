@@ -17,7 +17,12 @@ struct SwiftUIComponentsMobileView: View {
                 }
             }
             .ignoresSafeArea()
-            NavigationMenu("SwiftUI Components", logo: Image(systemName: "square.on.square.intersection.dashed")) {} buttons: {}
+            NavigationMenu("SwiftUI Components") {
+                Image(systemName: "square.on.square.intersection.dashed")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 24, height: 24)
+            } menu: {} buttons: {}
             .padding(.horizontal, 20)
         }
     }

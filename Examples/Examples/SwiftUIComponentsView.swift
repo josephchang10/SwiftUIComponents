@@ -14,7 +14,12 @@ struct SwiftUIComponentsView: View {
             ScrollView {
                 HeroView()
             }
-            NavigationMenu("SwiftUI Components", logo: Image(systemName: "square.on.square.intersection.dashed")) {
+            NavigationMenu("SwiftUI Components") {
+                Image(systemName: "square.on.square.intersection.dashed")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 24, height: 24)
+            } menu: {
                 ButtonToggle(.medium, text: "Components", showRightIcon: false, font: .footnoteMedium)
                 ButtonToggle(.medium, text: "Pricing", showRightIcon: false, font: .footnoteMedium)
                 ButtonToggle(.medium, text: "Changelog", showRightIcon: false, font: .footnoteMedium)

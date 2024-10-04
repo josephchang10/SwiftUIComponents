@@ -1,14 +1,14 @@
 //
 //  NavigationMenu.swift
-//  
+//
 //
 //  Created by Jiafu Zhang on 4/4/24.
 //
 
 import SwiftUI
 
-public struct NavigationMenu<MenuContent: View, ButtonsContent: View>: View {
-    let logoImage: Image
+public struct NavigationMenu<LogoContent: View, MenuContent: View, ButtonsContent: View>: View {
+    let logoContent: LogoContent
     let titleKey: LocalizedStringKey
     let menuContent: MenuContent
     let buttonsContent: ButtonsContent
@@ -32,10 +32,7 @@ public struct NavigationMenu<MenuContent: View, ButtonsContent: View>: View {
     
     var logo: some View {
         HStack(spacing: 4) {
-            logoImage
-                .resizable()
-                .scaledToFit()
-                .frame(width: 24, height: 24)
+            logoContent
             Text(titleKey)
                 .font(.system(size: 18))
                 .bold()
@@ -62,25 +59,46 @@ public struct NavigationMenu<MenuContent: View, ButtonsContent: View>: View {
         }
     }
     
-    public init(_ title: LocalizedStringKey, logo: Image, @ViewBuilder menu menuContent: () -> MenuContent, @ViewBuilder buttons buttonsContent: () -> ButtonsContent) {
-        self.logoImage = logo
+    public init(_ title: LocalizedStringKey, @ViewBuilder logo logoContent: () -> LogoContent, @ViewBuilder menu menuContent: () -> MenuContent, @ViewBuilder buttons buttonsContent: () -> ButtonsContent) {
+        self.logoContent = logoContent()
         self.titleKey = title
         self.menuContent = menuContent()
         self.buttonsContent = buttonsContent()
     }
 }
 
+struct NavigationMenuView: View {
+    var body: some View {
+        NavigationMenu("Company") {
+            Image(systemName: "rays")
+                .resizable()
+                .scaledToFit()
+                .fontWeight(.bold)
+                .frame(width: 24, height: 24)
+                .padding(3)
+        } menu: {
+            ButtonToggle(.medium, text: "Product", showRightIcon: false, font: .footnoteMedium)
+            ButtonToggle(.medium, text: "Pricing", showRightIcon: false, font: .footnoteMedium)
+            ButtonToggle(.medium, text: "Changelog", showRightIcon: false, font: .footnoteMedium)
+        } buttons: {
+            ButtonToggle(.medium, text: "Log in", showRightIcon: false, font: .footnoteMedium)
+            ButtonToggle(.medium, text: "Sign up", state: .selected, showRightIcon: false)
+                .shadowBlur(.small)
+        }
+        .frame(width: 780)
+    }
+}
+
 #Preview {
-    NavigationMenu("Company", logo: Image(systemName: "rays")) {
-        ButtonToggle(.medium, text: "Product", showRightIcon: false, font: .footnoteMedium)
-        ButtonToggle(.medium, text: "Pricing", showRightIcon: false, font: .footnoteMedium)
-        ButtonToggle(.medium, text: "Changelog", showRightIcon: false, font: .footnoteMedium)
-    } buttons: {
-        ButtonToggle(.medium, text: "Log in", showRightIcon: false, font: .footnoteMedium)
-        ButtonToggle(.medium, text: "Sign up", style: .glass, showRightIcon: false)
-            .shadowBlur(.small)
+    VStack(spacing: 20) {
+        NavigationMenuView()
+            .environment(\.colorScheme, .light)
+        NavigationMenuView()
+            .environment(\.colorScheme, .dark)
     }
     .padding(20)
+    .padding(60)
     .background(.background(.secondary))
     .background(Color(red: 30 / 255, green: 30 / 255, blue: 30 / 255))
+    .preferredColorScheme(.light)
 }
