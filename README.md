@@ -36,11 +36,12 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Input](#Input)
 * [Switch](#Switch)
 ### Navigation
-* [Menu](#Menu)
+* [NavigationMenu](#Navigation-Menu)
 * [Browser Buttons](#Browser-Buttons)
 ### Segmented Controls
-* [Tab](#Tab)
+* [Tab/Default](#Tab/Default)
 * [Segmented Control](#Segmented-Control)
+* [Menu](#Menu)
 * [Toggle](#Toggle)
 ## Cards
 ### Social
@@ -1034,14 +1035,27 @@ struct SwitchView: View {
 ```
 
 ### Navigation
-#### Menu
-<img width="178" alt="Screenshot 2024-04-11 at 3 08 22 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/ccc4d9cd-bd5c-4789-adc8-f3eb84bb4780">
+#### Navigation Menu
+<img width="928" alt="Screenshot 2024-10-05 at 12 19 24 AM" src="https://github.com/user-attachments/assets/33e01bf1-11f0-49be-a0d3-03ded4aa2395">
 
 ```swift
-SegmentedMenu {
-    ButtonToggle(.small, text: "Menu", showRightIcon: false)
-    ButtonToggle(.small, text: "Menu", state: .selected)
+NavigationMenu("Company") {
+    Image(systemName: "rays")
+        .resizable()
+        .scaledToFit()
+        .fontWeight(.bold)
+        .frame(width: 24, height: 24)
+        .padding(3)
+} menu: {
+    ButtonToggle(.medium, text: "Product", showRightIcon: false, font: .footnoteMedium)
+    ButtonToggle(.medium, text: "Pricing", showRightIcon: false, font: .footnoteMedium)
+    ButtonToggle(.medium, text: "Changelog", showRightIcon: false, font: .footnoteMedium)
+} buttons: {
+    ButtonToggle(.medium, text: "Log in", showRightIcon: false, font: .footnoteMedium)
+    ButtonToggle(.medium, text: "Sign up", state: .selected, showRightIcon: false)
+        .shadowBlur(.small)
 }
+.frame(width: 780)
 ```
 
 #### Browser Buttons
@@ -1053,8 +1067,8 @@ BrowserButtons()
 ```
 
 ### Segmented Controls
-#### Tab
-![Tab](https://github.com/user-attachments/assets/1a95a58c-2803-4e54-bb14-b3b9c73e125e)
+#### Tab/Default
+![Tab/Default](https://github.com/user-attachments/assets/1a95a58c-2803-4e54-bb14-b3b9c73e125e)
 
 ```swift
 Tab {
@@ -1149,6 +1163,15 @@ SegmentedControl {
     ButtonToggle(.small, text: "Label", showRightIcon: false)
     ButtonToggle(.small, text: "Label", showRightIcon: false)
     ButtonToggle(.small, text: "Label", state: .selected, showRightIcon: false)
+}
+```
+#### Menu
+<img width="178" alt="Screenshot 2024-04-11 at 3 08 22 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/ccc4d9cd-bd5c-4789-adc8-f3eb84bb4780">
+
+```swift
+SegmentedMenu {
+    ButtonToggle(.small, text: "Menu", showRightIcon: false)
+    ButtonToggle(.small, text: "Menu", state: .selected)
 }
 ```
 
