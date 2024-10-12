@@ -449,10 +449,10 @@ ButtonGradient("Get Started", .extraLarge) {
 <img width="718" alt="Screenshot 2024-10-12 at 9 41 56 AM" src="https://github.com/user-attachments/assets/3d36fbca-a6d7-4b7b-bcd5-3ba0719a975b">
 
 ```swift
-TextButton(.small, "Components", image: Image(systemName: "doc.on.doc"))
-TextButton(.medium, "Components", image: Image(systemName: "doc.on.doc"))
-TextButton(.large, "Components", image: Image(systemName: "doc.on.doc"))
-TextButton(.extraLarge, "Components", image: Image(systemName: "doc.on.doc"))
+TextButton(.small, "Components", systemImage: "doc.on.doc")
+TextButton(.medium, "Components", systemImage: "doc.on.doc")
+TextButton(.large, "Components", systemImage: "doc.on.doc")
+TextButton(.extraLarge, "Components", systemImage: "doc.on.doc")
 ```
 
 #### Button Primary
