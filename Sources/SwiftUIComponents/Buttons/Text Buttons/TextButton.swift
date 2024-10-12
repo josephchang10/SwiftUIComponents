@@ -70,6 +70,14 @@ public struct TextButton<ImageView: View>: View {
         self.imageView = nil
     }
     
+    public init(_ size: Size, _ titleKey: LocalizedStringKey, systemImage: String) where ImageView == EmptyView {
+        self.size = size
+        self.titleKey = titleKey
+        self.image = .init(systemName: systemImage)
+        self.imageView = nil
+    }
+    
+    
     public init(_ size: Size, _ titleKey: LocalizedStringKey, @ViewBuilder image: () -> ImageView) {
         self.size = size
         self.titleKey = titleKey
@@ -81,10 +89,10 @@ public struct TextButton<ImageView: View>: View {
 struct TextButtonView: View {
     var body: some View {
         HStack(alignment: .top, spacing: 10) {
-            TextButton(.small, "Components", image: Image(systemName: "doc.on.doc"))
-            TextButton(.medium, "Components", image: Image(systemName: "doc.on.doc"))
-            TextButton(.large, "Components", image: Image(systemName: "doc.on.doc"))
-            TextButton(.extraLarge, "Components", image: Image(systemName: "doc.on.doc"))
+            TextButton(.small, "Components", systemImage: "doc.on.doc")
+            TextButton(.medium, "Components", systemImage: "doc.on.doc")
+            TextButton(.large, "Components", systemImage: "doc.on.doc")
+            TextButton(.extraLarge, "Components", systemImage: "doc.on.doc")
         }
     }
 }
