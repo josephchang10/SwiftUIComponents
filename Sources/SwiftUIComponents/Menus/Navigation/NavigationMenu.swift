@@ -59,6 +59,13 @@ public struct NavigationMenu<LogoContent: View, MenuContent: View, ButtonsConten
         }
     }
     
+    public init(_ title: LocalizedStringKey, logo: Image, @ViewBuilder menu menuContent: () -> MenuContent, @ViewBuilder buttons buttonsContent: () -> ButtonsContent) where LogoContent == Image {
+        self.logoContent = logo
+        self.titleKey = title
+        self.menuContent = menuContent()
+        self.buttonsContent = buttonsContent()
+    }
+    
     public init(_ title: LocalizedStringKey, @ViewBuilder logo logoContent: () -> LogoContent, @ViewBuilder menu menuContent: () -> MenuContent, @ViewBuilder buttons buttonsContent: () -> ButtonsContent) {
         self.logoContent = logoContent()
         self.titleKey = title
