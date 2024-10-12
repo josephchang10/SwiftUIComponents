@@ -14,13 +14,15 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Icon Circle](#Icon-Circle)
 * [Button Browser](#Button-Browser)
 * [Large Badge Button](#Large-Badge-Button)
+### Custom Buttons
+* [Button Gradient](#Button-Gradient)
 ### Text Buttons
+* [Text Button](#Text-Button)
 * [Button Primary](#Button-Primary)
 * [Button Secondary](#Button-Secondary)
 * [Button Ghost](#Button-Ghost)
 * [Button Glow](#Button-Glow)
 * [Button Shiny](#Button-Shiny)
-* [Button Gradient](#Button-Gradient)
 ## Menus
 ### Stepper | Slider | Controls
 * [Slider](#Slider)
@@ -423,7 +425,36 @@ LargeBadgeButton {
 }
 ```
 
+### Custom Buttons
+#### Button Gradient
+<img width="579" alt="Screenshot 2024-06-07 at 2 14 56 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/d01c77a8-1696-4135-9ff4-4c2dac2270e1">
+
+```swift
+ButtonGradient("Get Started", .small) {
+    Image(systemName: "chevron.right")
+}
+ButtonGradient("Get Started", .medium) {
+    Image(systemName: "chevron.right")
+}
+ButtonGradient("Get Started", .large) {
+    Image(systemName: "chevron.right")
+}
+ButtonGradient("Get Started", .extraLarge) {
+    Image(systemName: "chevron.right")
+}
+```
+
 ### Text Buttons
+#### Text Button
+<img width="718" alt="Screenshot 2024-10-12 at 9 41 56 AM" src="https://github.com/user-attachments/assets/3d36fbca-a6d7-4b7b-bcd5-3ba0719a975b">
+
+```swift
+TextButton(.small, "Components", image: Image(systemName: "doc.on.doc"))
+TextButton(.medium, "Components", image: Image(systemName: "doc.on.doc"))
+TextButton(.large, "Components", image: Image(systemName: "doc.on.doc"))
+TextButton(.extraLarge, "Components", image: Image(systemName: "doc.on.doc"))
+```
+
 #### Button Primary
 <img width="499" alt="Screenshot 2024-04-16 at 7 40 45 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/f3db6fd0-0e3c-4c7e-a475-ed6dcb604e47">
 
@@ -507,24 +538,6 @@ ButtonShiny(.large, titleKey: "Shiny") {
     Image(systemName: "chevron.right")
 }
 ButtonShiny(.extraLarge, titleKey: "Shiny") {
-    Image(systemName: "chevron.right")
-}
-```
-
-#### Button Gradient
-<img width="579" alt="Screenshot 2024-06-07 at 2 14 56 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/d01c77a8-1696-4135-9ff4-4c2dac2270e1">
-
-```swift
-ButtonGradient("Get Started", .small) {
-    Image(systemName: "chevron.right")
-}
-ButtonGradient("Get Started", .medium) {
-    Image(systemName: "chevron.right")
-}
-ButtonGradient("Get Started", .large) {
-    Image(systemName: "chevron.right")
-}
-ButtonGradient("Get Started", .extraLarge) {
     Image(systemName: "chevron.right")
 }
 ```
