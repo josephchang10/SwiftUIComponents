@@ -1425,7 +1425,7 @@ HStack(spacing: 20) {
 ## Cards
 ### Small
 #### Thermostats
-![Thermostats](https://github.com/user-attachments/assets/8b846259-ad2c-4c0a-9731-bc7d9ea088f8)
+<img width="290" alt="Screenshot 2024-10-22 at 12 25 16 AM" src="https://github.com/user-attachments/assets/160dbffa-26c9-4f04-99df-87185eec5c4f">
 
 ```swift
 struct ThermostatsView: View {
@@ -1439,7 +1439,7 @@ struct ThermostatsView: View {
                         .resizable()
                         .scaledToFit()
                         .padding(1)
-                        .padding(.leading, 4)
+                        .padding(.leading, 3)
                 }
                 VStack(spacing: 4) {
                     Text("Thermostats")
