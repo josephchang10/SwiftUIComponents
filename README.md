@@ -47,6 +47,8 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 * [Menu](#Menu)
 * [Toggle](#Toggle)
 ## Cards
+### Small
+* [Thermostats](#Thermostats)
 ### Social
 * [Reply Card](#Reply-Card)
 ### Image
@@ -1421,6 +1423,39 @@ HStack(spacing: 20) {
 ```
 
 ## Cards
+### Small
+#### Thermostats
+![Thermostats](https://github.com/user-attachments/assets/8b846259-ad2c-4c0a-9731-bc7d9ea088f8)
+
+```swift
+struct ThermostatsView: View {
+    @State private var isOn = true
+    
+    var body: some View {
+        Thermostats(isOn: $isOn) {
+            VStack(spacing: 16) {
+                ButtonCircle(.extraLarge, state: .selected) {
+                    Image(systemName: "thermometer")
+                        .resizable()
+                        .scaledToFit()
+                        .padding(1)
+                        .padding(.leading, 4)
+                }
+                VStack(spacing: 4) {
+                    Text("Thermostats")
+                        .font(.bodyMedium)
+                        .foregroundStyle(.foreground(.primary))
+                    Text("1 device")
+                        .font(.bodyRegular)
+                        .foregroundStyle(.foreground(.secondary))
+                }
+            }
+        }
+        .frame(width: 180)
+    }
+}
+```
+
 ### Social
 #### Reply Card
 <img width="687" alt="Screenshot 2024-06-03 at 5 46 03 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/a9f5b32b-ac23-46d2-99e1-1ecbe51a25d3">
