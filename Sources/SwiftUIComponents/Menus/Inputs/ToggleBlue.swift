@@ -12,7 +12,7 @@ public struct ToggleBlue: View {
     
     public var body: some View {
         HStack(spacing: 0) {
-            thumb
+            knob
                 .padding(isOn ? .leading : .trailing, 28)
         }
         .padding(2)
@@ -39,7 +39,7 @@ public struct ToggleBlue: View {
         }
     }
     
-    var thumb: some View {
+    var knob: some View {
         Circle()
             .fill(
                 isOn ?
