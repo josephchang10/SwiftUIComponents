@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct ToggleBlue: View {
-    @Binding var isOn: Bool
+    @Binding private var isOn: Bool
     
     public var body: some View {
         HStack(spacing: 0) {
@@ -63,6 +63,10 @@ public struct ToggleBlue: View {
             }
             .shadow(color: .black.opacity(isOn ? 0 : 0.3), radius: 10, y: 4)
             .frame(width: 28)
+    }
+    
+    public init(isOn: Binding<Bool>) {
+        _isOn = isOn
     }
 }
 
