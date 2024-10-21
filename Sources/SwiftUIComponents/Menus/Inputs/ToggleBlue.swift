@@ -23,6 +23,7 @@ public struct ToggleBlue: View {
             ], startPoint: .init(x: 0.2, y: 0.1), endPoint: .init(x: 0.8, y: 0.9))
             .opacity(0.5)
         }
+        .cornerRadius(20)
         .overlay {
             RoundedRectangle(cornerRadius: 20)
                 .inset(by: 0.5)
@@ -32,7 +33,6 @@ public struct ToggleBlue: View {
                 ], startPoint: .init(x: 0.2, y: 0.1), endPoint: .init(x: 0.8, y: 0.9)), lineWidth: 1)
                 .opacity(0.2)
         }
-        .cornerRadius(20)
         .animation(.easeInOut, value: isOn)
         .onTapGesture {
             isOn.toggle()
