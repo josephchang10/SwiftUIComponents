@@ -57,7 +57,7 @@ struct ThermostatsView: View {
                         .resizable()
                         .scaledToFit()
                         .padding(1)
-                        .padding(.leading, 4)
+                        .padding(.leading, 3)
                 }
                 VStack(spacing: 4) {
                     Text("Thermostats")
