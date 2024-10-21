@@ -37,6 +37,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 ### Inputs
 * [Input](#Input)
 * [Switch](#Switch)
+* [Toggle Blue](#Toggle-Blue)
 ### Navigation
 * [Navigation Menu](#Navigation-Menu)
 * [Browser Buttons](#Browser-Buttons)
@@ -1043,6 +1044,19 @@ struct SwitchView: View {
     
     var body: some View {
         Switch(isOn: $isOn)
+    }
+}
+```
+
+#### Toggle Blue
+![Toggle Blue](https://github.com/user-attachments/assets/ffdf65b1-0a39-48b0-b03d-de30bc8f15fe)
+
+```swift
+struct ToggleBlueView: View {
+    @State private var isOn = true
+    
+    var body: some View {
+        ToggleBlue(isOn: $isOn)
     }
 }
 ```
