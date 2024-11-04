@@ -54,7 +54,7 @@ public struct MailList<ButtonList: View, Content: View>: View {
             .overlay {
                 Circle()
                     .inset(by: 0.5)
-                    .stroke(.container(.border), lineWidth: 1)
+                    .stroke(.foreground(.primary).opacity(0.1), lineWidth: 1)
             }
     } content: {
         VStack(alignment: .leading, spacing: 4) {
