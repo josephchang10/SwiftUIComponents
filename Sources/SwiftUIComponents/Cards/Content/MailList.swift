@@ -68,6 +68,7 @@ public struct MailList<ButtonList: View, Content: View>: View {
                     .foregroundStyle(.foreground(.secondary))
             }
             Text("Don't Miss Out! Join the live session with your instructor tomorrow at 9 AM.")
+                .font(.footnoteRegular)
                 .foregroundStyle(.foreground(.secondary))
         }
     }
