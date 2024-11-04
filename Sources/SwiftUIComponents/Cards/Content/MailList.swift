@@ -26,6 +26,10 @@ public struct MailList<ButtonList: View, Content: View>: View {
                         .init(red: 17 / 255, green: 16 / 255, blue: 24 / 255, opacity: 0.51),
                     ], startPoint: .init(x: 0, y: 0.7), endPoint: .init(x: 1.3, y: 0.75))
                 )
+                .blendMode(.overlay)
+        }
+        .overlay {
+            RoundedRectangle(cornerRadius: 20)
                 .stroke(.foreground(.primary).opacity(0.1), lineWidth: 1)
         }
     }
