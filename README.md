@@ -1889,7 +1889,7 @@ PricingCard {
 
 ### Content
 #### Mail List
-<img width="546" alt="Screenshot 2024-11-04 at 6 23 32 PM" src="https://github.com/user-attachments/assets/d7355b4c-029f-482e-a310-0d5501bc3764">
+<img width="546" alt="Screenshot 2024-11-04 at 6 53 30 PM" src="https://github.com/user-attachments/assets/74c76986-51f6-4356-a885-c042f93f82fa">
 
 ```swift
 MailList {
@@ -1923,6 +1923,7 @@ MailList {
                 .foregroundStyle(.foreground(.secondary))
         }
         Text("Don't Miss Out! Join the live session with your instructor tomorrow at 9 AM.")
+            .foregroundStyle(.foreground(.secondary))
     }
 }
 ```
