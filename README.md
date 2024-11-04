@@ -1889,7 +1889,7 @@ PricingCard {
 
 ### Content
 #### Mail List
-<img width="547" alt="Screenshot 2024-11-04 at 7 05 16 PM" src="https://github.com/user-attachments/assets/11b74ffc-7c27-4ce2-8d0b-d4efd214d9c8">
+<img width="548" alt="Screenshot 2024-11-04 at 7 20 17 PM" src="https://github.com/user-attachments/assets/2a41acea-1711-49c9-aa24-4a75d83bdfd0">
 
 ```swift
 MailList {
@@ -1905,7 +1905,7 @@ MailList {
         .overlay {
             Circle()
                 .inset(by: 0.5)
-                .stroke(.container(.border), lineWidth: 1)
+                .stroke(.foreground(.primary).opacity(0.1), lineWidth: 1)
         }
 } content: {
     VStack(alignment: .leading, spacing: 4) {
