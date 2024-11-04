@@ -60,7 +60,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 ### Media / Image / Gallery
 * [Finance Card](#Finance-Card)
 ### Content
-* [Mail List)(#Mail-List)
+* [Mail List](#Mail-List)
 ### Modal
 * [Payment Modal](#Payment-Modal)
 * [Alert](#Alert)
