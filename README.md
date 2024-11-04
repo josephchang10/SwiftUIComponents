@@ -60,13 +60,15 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 ### Media / Image / Gallery
 * [Finance Card](#Finance-Card)
 ### Content
-* [Bank Card](#Bank-Card)
-* [Testimonial](#Testimonial)
-* [Code Block](#Code-Block)
-* [Alert](#Alert)
+* [Mail List)(#Mail-List)
 ### Modal
 * [Payment Modal](#Payment-Modal)
+* [Alert](#Alert)
 * [Newsletter](#Newsletter)
+### Content
+* [Code Block](#Code-Block)
+* [Bank Card](#Bank-Card)
+* [Testimonial](#Testimonial)
 ## Icons
 * [Logos](#Logos)
 ## Backgrounds
@@ -1846,6 +1848,221 @@ FinanceCard {
 }
 ```
 
+### Pricing
+
+#### Pricing Card
+<img width="625" alt="Screenshot 2024-04-15 at 7 36 54 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/e676439c-074f-42a5-8e30-9ed1a89f3ddf">
+
+```swift
+PricingCard {
+    VStack(spacing: 20) {
+        VStack(spacing: 0) {
+            Text("All-Access")
+                .font(.footnoteMedium)
+            HStack(spacing: 4) {
+                Text("$")
+                    .font(.heading4)
+                    .foregroundStyle(.foreground(.secondary))
+                Text("99")
+                    .font(.heading1)
+                    .foregroundStyle(.foreground(.primary))
+            }
+            Text("One-time")
+                .font(.captionRegular)
+                .foregroundStyle(.foreground(.tertiary))
+        }
+        DividerLine()
+        VStack(alignment: .leading, spacing: 8) {
+            TextCheck("All 300+ components")
+            TextCheck("2,000+ SwiftUI variants")
+            TextCheck("2,116 unique icons")
+        }
+        .frame(width: 220)
+        DividerLine()
+        ButtonShiny("Buy now", .medium) {
+            Image(systemName: "creditcard")
+        }
+    }
+    .padding(10)
+}
+```
+
+### Content
+#### Mail List
+<img width="546" alt="Screenshot 2024-11-04 at 6 23 32 PM" src="https://github.com/user-attachments/assets/d7355b4c-029f-482e-a310-0d5501bc3764">
+
+```swift
+MailList {
+    Image(systemName: "righttriangle")
+        .fontWeight(.bold)
+        .rotationEffect(.degrees(-135))
+        .offset(y: 3)
+        .frame(width: 46, height: 46)
+        .background {
+            Circle()
+                .fill(.button(.normal))
+        }
+        .overlay {
+            Circle()
+                .inset(by: 0.5)
+                .stroke(.container(.border), lineWidth: 1)
+        }
+} content: {
+    VStack(alignment: .leading, spacing: 4) {
+        HStack {
+            HStack(spacing: 10) {
+                Text("Live Session Reminder")
+                    .font(.bodyMedium)
+                Circle()
+                    .fill(.button(.normal))
+                    .frame(width: 6, height: 6)
+            }
+            Spacer()
+            Text("24m")
+                .font(.footnoteRegular)
+                .foregroundStyle(.foreground(.secondary))
+        }
+        Text("Don't Miss Out! Join the live session with your instructor tomorrow at 9 AM.")
+    }
+}
+```
+
+
+### Modal
+
+#### Payment Modal
+<img width="686" alt="Screenshot 2024-04-15 at 9 14 38 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/ca0cebb1-e6d2-44d4-9111-45c1615c8867">
+
+```swift
+struct PaymentModalView: View {
+    @State private var email = ""
+    
+    var body: some View {
+        PaymentModal {
+            VStack(spacing: 12) {
+                VStack(spacing: 0) {
+                    Text("Pro Plan")
+                        .font(.footnoteMedium)
+                        .foregroundStyle(.foreground(.secondary))
+                    HStack(spacing: 0) {
+                        Text("$")
+                            .font(.heading4)
+                        Text("25")
+                            .font(.heading1)
+                    }
+                    .foregroundStyle(.foreground(.primary))
+                    Text("per month, billed monthly")
+                        .font(.footnoteMedium)
+                        .foregroundStyle(.foreground(.secondary))
+                }
+                Input(.large, prompt: "Email address", text: $email, showLeftIcon: true) {
+                    Image(systemName: "envelope")
+                        .resizable()
+                        .scaledToFit()
+                }
+                Text("You will be charged $120 for a one year access. When you click on \"Subscribe\", your subscription will begin and you will be charged $120 immediately. It will renew automatically. You are also agreeing to our Terms of Service and our Privacy Policy.")
+                    .font(.captionRegular)
+                    .foregroundStyle(.foreground(.primary))
+                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                ButtonShiny("Subscribe", .medium) {
+                    Image(systemName: "chevron.right")
+                }
+                DividerLine()
+                Text("OR, PAY WITH PAYPAL")
+                    .font(.footnoteMedium)
+                    .foregroundStyle(.foreground(.primary))
+                ButtonShiny("Pay with PayPal", .medium) {
+                    Image(systemName: "chevron.right")
+                }
+                Text("This purchase will not auto-review. You will be taken to PayPal to complete the payment.")
+                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    .font(.captionRegular)
+                    .foregroundStyle(.foreground(.primary))
+            }
+            .padding(12)
+        }
+        .frame(width: 310)
+    }
+}
+```
+
+#### Alert
+![Alert](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/75d82f51-63be-4542-bc01-b6de2a4d4ecc)
+![Alert](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/eb3ab1e9-dd8a-4d8d-925e-cc90ea987ae2)
+
+```swift
+struct AlertPreview: View {
+    @State private var isPresented = true
+    
+    var body: some View {
+        ZStack {
+            Button("Show Alert") {
+                isPresented = true
+            }
+        }
+        .frame(width: 330, height: 229)
+        .alert(isPresented: $isPresented, title: "Alert", message: "Are you sure you want to change your profile information? This cannot be undone.") {
+            HStack(spacing: 10) {
+                Button {
+                    isPresented = false
+                } label: {
+                    ButtonPrimary(.small, title: "Cancel")
+                }
+                .buttonStyle(.plain)
+                ButtonPrimary(.small, title: "Yes, go ahead")
+            }
+        }
+    }
+}
+```
+
+#### Newsletter
+<img width="748" alt="Screenshot 2024-06-15 at 10 18 17 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/411bad07-8859-4d60-8823-06e353bd7573">
+
+```swift 
+struct NewsletterView: View {
+    @State private var email = "Email address"
+    
+    var body: some View {
+        Newsletter {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Subscribe via Email")
+                    .font(.heading5)
+                    .width(.full, alignment: .leading)
+                    .foregroundStyle(.textGradient(.secondary))
+                    .shadow(color: .black.opacity(0.5), radius: 60, y: 30)
+                Text("We release monthly updates to the content an make regular site improvements.")
+                    .font(.footnoteMedium)
+                    .foregroundStyle(.foreground(.secondary))
+            }
+            Input(.small, text: $email) {
+                IconCircle {
+                    Image(systemName: "envelope")
+                        .resizable()
+                        .scaledToFit()
+                        .fontWeight(.bold)
+                        .frame(width: 16, height: 16)
+                }
+            }
+            ButtonPrimary(.small, title: "Subscribe to Newsletter") {
+                Image(systemName: "tray")
+            }
+            Text("No spam ever. We typically send 1 email per month for product updates, events and discounts.")
+                .font(.captionRegular)
+                .fixedSize(horizontal: false, vertical: true)
+            DividerLine()
+            ButtonSecondary(.small, title: "Subscribe to YouTube") {
+                Logo(.youtube)
+            }
+            ButtonSecondary(.small, title: "Follow on") {
+                Logo(.x)
+            }
+        }
+        .frame(width: 320)
+    }
+}
+```
+
 ### Content
 #### Bank Card
 <img width="651" alt="Screenshot 2024-05-12 at 6 38 32 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/fe4ef7ec-92ab-4b30-8d9a-8c98b637c306">
@@ -1950,180 +2167,6 @@ export default Counter;
         TabButton("CSS")
         TabButton("React", state: .selected)
         TabButton("Tailwind")
-    }
-}
-```
-
-#### Alert
-![Alert](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/75d82f51-63be-4542-bc01-b6de2a4d4ecc)
-![Alert](https://github.com/josephchang10/SwiftUIComponents/assets/5158525/eb3ab1e9-dd8a-4d8d-925e-cc90ea987ae2)
-
-```swift
-struct AlertPreview: View {
-    @State private var isPresented = true
-    
-    var body: some View {
-        ZStack {
-            Button("Show Alert") {
-                isPresented = true
-            }
-        }
-        .frame(width: 330, height: 229)
-        .alert(isPresented: $isPresented, title: "Alert", message: "Are you sure you want to change your profile information? This cannot be undone.") {
-            HStack(spacing: 10) {
-                Button {
-                    isPresented = false
-                } label: {
-                    ButtonPrimary(.small, title: "Cancel")
-                }
-                .buttonStyle(.plain)
-                ButtonPrimary(.small, title: "Yes, go ahead")
-            }
-        }
-    }
-}
-```
-
-### Pricing
-
-#### Pricing Card
-<img width="625" alt="Screenshot 2024-04-15 at 7 36 54 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/e676439c-074f-42a5-8e30-9ed1a89f3ddf">
-
-```swift
-PricingCard {
-    VStack(spacing: 20) {
-        VStack(spacing: 0) {
-            Text("All-Access")
-                .font(.footnoteMedium)
-            HStack(spacing: 4) {
-                Text("$")
-                    .font(.heading4)
-                    .foregroundStyle(.foreground(.secondary))
-                Text("99")
-                    .font(.heading1)
-                    .foregroundStyle(.foreground(.primary))
-            }
-            Text("One-time")
-                .font(.captionRegular)
-                .foregroundStyle(.foreground(.tertiary))
-        }
-        DividerLine()
-        VStack(alignment: .leading, spacing: 8) {
-            TextCheck("All 300+ components")
-            TextCheck("2,000+ SwiftUI variants")
-            TextCheck("2,116 unique icons")
-        }
-        .frame(width: 220)
-        DividerLine()
-        ButtonShiny("Buy now", .medium) {
-            Image(systemName: "creditcard")
-        }
-    }
-    .padding(10)
-}
-```
-
-### Modal
-
-#### Payment Modal
-<img width="686" alt="Screenshot 2024-04-15 at 9 14 38 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/ca0cebb1-e6d2-44d4-9111-45c1615c8867">
-
-```swift
-struct PaymentModalView: View {
-    @State private var email = ""
-    
-    var body: some View {
-        PaymentModal {
-            VStack(spacing: 12) {
-                VStack(spacing: 0) {
-                    Text("Pro Plan")
-                        .font(.footnoteMedium)
-                        .foregroundStyle(.foreground(.secondary))
-                    HStack(spacing: 0) {
-                        Text("$")
-                            .font(.heading4)
-                        Text("25")
-                            .font(.heading1)
-                    }
-                    .foregroundStyle(.foreground(.primary))
-                    Text("per month, billed monthly")
-                        .font(.footnoteMedium)
-                        .foregroundStyle(.foreground(.secondary))
-                }
-                Input(.large, prompt: "Email address", text: $email, showLeftIcon: true) {
-                    Image(systemName: "envelope")
-                        .resizable()
-                        .scaledToFit()
-                }
-                Text("You will be charged $120 for a one year access. When you click on \"Subscribe\", your subscription will begin and you will be charged $120 immediately. It will renew automatically. You are also agreeing to our Terms of Service and our Privacy Policy.")
-                    .font(.captionRegular)
-                    .foregroundStyle(.foreground(.primary))
-                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                ButtonShiny("Subscribe", .medium) {
-                    Image(systemName: "chevron.right")
-                }
-                DividerLine()
-                Text("OR, PAY WITH PAYPAL")
-                    .font(.footnoteMedium)
-                    .foregroundStyle(.foreground(.primary))
-                ButtonShiny("Pay with PayPal", .medium) {
-                    Image(systemName: "chevron.right")
-                }
-                Text("This purchase will not auto-review. You will be taken to PayPal to complete the payment.")
-                    .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                    .font(.captionRegular)
-                    .foregroundStyle(.foreground(.primary))
-            }
-            .padding(12)
-        }
-        .frame(width: 310)
-    }
-}
-```
-
-#### Newsletter
-<img width="748" alt="Screenshot 2024-06-15 at 10 18 17 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/411bad07-8859-4d60-8823-06e353bd7573">
-
-```swift 
-struct NewsletterView: View {
-    @State private var email = "Email address"
-    
-    var body: some View {
-        Newsletter {
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Subscribe via Email")
-                    .font(.heading5)
-                    .width(.full, alignment: .leading)
-                    .foregroundStyle(.textGradient(.secondary))
-                    .shadow(color: .black.opacity(0.5), radius: 60, y: 30)
-                Text("We release monthly updates to the content an make regular site improvements.")
-                    .font(.footnoteMedium)
-                    .foregroundStyle(.foreground(.secondary))
-            }
-            Input(.small, text: $email) {
-                IconCircle {
-                    Image(systemName: "envelope")
-                        .resizable()
-                        .scaledToFit()
-                        .fontWeight(.bold)
-                        .frame(width: 16, height: 16)
-                }
-            }
-            ButtonPrimary(.small, title: "Subscribe to Newsletter") {
-                Image(systemName: "tray")
-            }
-            Text("No spam ever. We typically send 1 email per month for product updates, events and discounts.")
-                .font(.captionRegular)
-                .fixedSize(horizontal: false, vertical: true)
-            DividerLine()
-            ButtonSecondary(.small, title: "Subscribe to YouTube") {
-                Logo(.youtube)
-            }
-            ButtonSecondary(.small, title: "Follow on") {
-                Logo(.x)
-            }
-        }
-        .frame(width: 320)
     }
 }
 ```
