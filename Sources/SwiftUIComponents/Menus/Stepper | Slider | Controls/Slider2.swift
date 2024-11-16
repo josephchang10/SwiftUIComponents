@@ -49,8 +49,8 @@ public struct ProgressBar<V: BinaryFloatingPoint>: View where V.Stride : BinaryF
         GeometryReader { gr in
             let thumbSize: CGFloat = 18
             let radius: CGFloat = 3
-            let minValue = gr.size.width * 0.015
-            let maxValue = (gr.size.width * 0.98) - thumbSize
+            let minValue = gr.size.width * 0.015 - thumbSize / 2
+            let maxValue = (gr.size.width * 0.98) - thumbSize / 2
             
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 20)
@@ -63,7 +63,7 @@ public struct ProgressBar<V: BinaryFloatingPoint>: View where V.Stride : BinaryF
                 RoundedRectangle(cornerRadius: radius)
                     .fill(LinearGradient(colors: [.init(red: 76 / 255, green: 137 / 255, blue: 1)], startPoint: .top, endPoint: .bottom))
                     .frame(height: 6)
-                    .frame(width: isConstant ? gr.size.width * percentageValue : nil)
+                    .frame(width: percentageValue * (maxValue - minValue) + minValue)
                     .padding(.horizontal, 3)
                     .overlay(alignment: .leading) {
                         if !isConstant {
@@ -151,7 +151,7 @@ public struct ProgressBar<V: BinaryFloatingPoint>: View where V.Stride : BinaryF
 }
 
 fileprivate struct SliderView: View {
-    @State private var value = 3000.0
+    @State private var value = 3800.0
     
     var body: some View {
         Slider2(value: $value, in: 0...6000, label: "CA$ \(Int(value))") {
@@ -172,6 +172,10 @@ fileprivate struct SliderView: View {
 
 #Preview {
     SliderView()
+        .padding(60)
+        .background(.background(.gray))
+    ProgressBar(value: 0.5, in: 0...1)
+        .frame(width: 320)
         .padding(60)
         .background(.background(.gray))
 }
