@@ -26,6 +26,7 @@ What makes SwiftUI Components unqiue is its theming. The aesthetic is unmistakab
 ## Menus
 ### Stepper | Slider | Controls
 * [Slider](#Slider)
+* [Slider](#Slider-1)
 * [Stepper](#Stepper)
 ### Menu / Filter
 * [Filters Card](#Filters-Card)
@@ -549,28 +550,38 @@ ButtonShiny(.extraLarge, titleKey: "Shiny") {
 
 ## Menus
 ### Stepper | Slider | Controls
-#### Stepper
-<img width="186" alt="Screenshot 2024-06-10 at 1 33 43 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/d5447319-447b-4237-90d3-3f0f89cdb0c7">
+#### Slider
+<img width="389" alt="Screenshot 2024-11-16 at 8 38 19 AM" src="https://github.com/user-attachments/assets/f52eebf1-ace5-4bf3-a200-1bb423f35b90">
 
 ```swift
-struct StepperPreview: View {
-    @State private var value = 1
+struct SliderView: View {
+    @State private var value = 0.12
     
     var body: some View {
-        StepperView(value: $value)
+        Slider1(value: $value) {
+            HStack {
+                Text("2:10")
+                Spacer()
+                Text("4:21")
+            }
+            .font(.smallRegular)
+            .foregroundStyle(.foreground(.secondary))
+            .padding(.vertical, 4)
+        }
+        .frame(width: 280)
     }
 }
 ```
 
 #### Slider
-<img width="390" alt="Screenshot 2024-06-09 at 12 15 31 AM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/a9ff7391-5156-443b-8ed8-db92c0330582">
+<img width="431" alt="Screenshot 2024-11-16 at 8 38 03 AM" src="https://github.com/user-attachments/assets/d96d26ac-768c-480f-9140-44152b465904">
 
 ```swift
-struct SliderPreview: View {
+struct SliderView: View {
     @State private var value = 3000.0
     
     var body: some View {
-        SliderView(value: $value, in: 0...6000, label: "CA$ \(Int(value))") {
+        Slider2(value: $value, in: 0...6000, label: "CA$ \(Int(value))") {
             HStack {
                 Text("Up to CA$6000")
                 Spacer()
@@ -583,6 +594,19 @@ struct SliderPreview: View {
             .foregroundStyle(.foreground(.primary))
         }
         .frame(width: 320)
+    }
+}
+```
+
+#### Stepper
+<img width="186" alt="Screenshot 2024-06-10 at 1 33 43 PM" src="https://github.com/josephchang10/SwiftUIComponents/assets/5158525/d5447319-447b-4237-90d3-3f0f89cdb0c7">
+
+```swift
+struct StepperPreview: View {
+    @State private var value = 1
+    
+    var body: some View {
+        StepperView(value: $value)
     }
 }
 ```
