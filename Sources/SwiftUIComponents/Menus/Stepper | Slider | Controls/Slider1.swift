@@ -95,4 +95,5 @@ fileprivate struct SliderView: View {
 #Preview {
     SliderView()
         .padding(60)
+        .background(.background(.gray))
 }
