@@ -574,7 +574,7 @@ struct SliderView: View {
 ```
 
 #### Slider
-<img width="431" alt="Screenshot 2024-11-16 at 8 38 03 AM" src="https://github.com/user-attachments/assets/d96d26ac-768c-480f-9140-44152b465904">
+<img width="431" alt="Screenshot 2024-11-16 at 8 56 38 AM" src="https://github.com/user-attachments/assets/f33c3e1e-14ea-4a41-a12d-63dd4e49bc55">
 
 ```swift
 struct SliderView: View {
