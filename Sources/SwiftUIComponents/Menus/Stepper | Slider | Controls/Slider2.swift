@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct SliderView<Content: View, V: BinaryFloatingPoint>: View where V.Stride : BinaryFloatingPoint {
+public struct Slider2<Content: View, V: BinaryFloatingPoint>: View where V.Stride : BinaryFloatingPoint {
     private let content: Content
     private let labelText: String?
     @Binding private var value: V
@@ -150,11 +150,11 @@ public struct ProgressBar<V: BinaryFloatingPoint>: View where V.Stride : BinaryF
     }
 }
 
-struct SliderPreview: View {
+fileprivate struct SliderView: View {
     @State private var value = 3000.0
     
     var body: some View {
-        SliderView(value: $value, in: 0...6000, label: "CA$ \(Int(value))") {
+        Slider2(value: $value, in: 0...6000, label: "CA$ \(Int(value))") {
             HStack {
                 Text("Up to CA$6000")
                 Spacer()
@@ -171,6 +171,6 @@ struct SliderPreview: View {
 }
 
 #Preview {
-    SliderPreview()
+    SliderView()
         .padding(60)
 }

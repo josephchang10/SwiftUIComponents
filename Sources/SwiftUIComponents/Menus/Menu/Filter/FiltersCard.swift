@@ -124,7 +124,7 @@ struct FiltersCardView: View {
                     .font(.bodyLargeMedium)
                     .foregroundStyle(.foreground(.primary))
                     .width(.full, alignment: .leading)
-                SliderView(value: $price, in: 0...6000, label: "CA$ \(Int(price))") {
+                Slider2(value: $price, in: 0...6000, label: "CA$ \(Int(price))") {
                     HStack {
                         Text("Up to CA$6000")
                         Spacer()
