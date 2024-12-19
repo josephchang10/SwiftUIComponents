@@ -19,6 +19,8 @@ public struct Angular1: ShapeStyle {
             .init(color: .init(red: 113.0 / 255, green: 71.0 / 255, blue: 255.0 / 255), location: 1)
         ], center: .center, startAngle: .degrees(120), endAngle: .degrees(120 + 360))
     }
+    
+    public init() {}
 }
 
 public extension ShapeStyle where Self == Angular1 {
